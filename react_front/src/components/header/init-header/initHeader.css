@@ -1,0 +1,15 @@
+.sign_up {
+    width: 212px;
+    height: 73px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Montserrat";
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 31.4px;
+    color: black;
+    border-radius: 10px;
+    border: 2px solid black;
+  }
+  

@@ -1,0 +1,16 @@
+.profile {
+    border-radius: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: black;
+  }
+  
+
+  
+  .navbar {
+    width: 171px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }

@@ -1,0 +1,22 @@
+.header_logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 454px;
+    max-height: 73px;
+  }
+  
+  .svg_logo {
+    width: 27px;
+  }
+  
+  .dunice_logo img {
+    width: 197px;
+    height: 73px;
+  }
+  
+  .event_tech_logo {
+    height: 73px;
+    width: 176px;
+  }
+  

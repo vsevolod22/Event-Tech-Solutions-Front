@@ -1,0 +1,16 @@
+.navbar_admin {
+  display: flex;
+  align-items: center;
+  gap: 299px;
+}
+.privilege_navbar ul {
+  width: 670px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Montserrat";
+  font-size: 25px;
+  line-height: 30.48px;
+  font-weight: 400;
+}

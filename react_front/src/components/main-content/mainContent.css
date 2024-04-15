@@ -1,0 +1,16 @@
+.main_content {
+  width: 1920px;
+  height: 960px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  letter-spacing: 3%;
+  font-weight: 400;
+  font-size: 54px;
+  line-height: 65.83px;
+  text-align: center;
+
+  border: solid 1px #D9D9D945; 
+  box-shadow: inset 0 -7;
+}

@@ -1,0 +1,32 @@
+.human_frame {
+  width: 923px;
+  height: 264px;
+  display: flex;
+}
+
+.human_data h1 {
+  color: #000000;
+  font-family: Montserrat;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 43.88px;
+}
+
+.human_data h1::first-letter {
+  color: #47a67c;
+}
+
+.human_data h2 {
+    font-weight: 400;
+    font-family: Montserrat;
+    font-size: 32px;
+    line-height: 39.01px;color: black;
+}
+
+.edit {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
