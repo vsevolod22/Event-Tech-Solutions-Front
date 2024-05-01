@@ -1,0 +1,28 @@
+.choice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 143px;
+}
+
+.your_events_rewards {
+  gap: 17px;
+  display: flex;
+  flex-flow: column;
+}
+
+.your_events_rewards p {
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 68.26px;
+  color: black;
+}
+
+.underline_default {
+  width: 100%;
+  border: #d9d9d9 solid 5px;
+}
+
+.underline_selected {
+  border: rgba(71, 166, 124, 1) solid 5px;
+}

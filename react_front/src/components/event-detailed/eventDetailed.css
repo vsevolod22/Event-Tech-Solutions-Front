@@ -1,0 +1,144 @@
+.event_detailed {
+  display: flex;
+  width: 1920px;
+  justify-content: space-between;
+  margin-top: 150px;
+}
+
+.first_event_detailed {
+  height: 744px;
+  justify-content: space-between;
+  width: 866px;
+  display: flex;
+  flex-flow: column;
+}
+
+.type_event {
+  border: 1px solid rgba(136, 136, 136, 1);
+  border-radius: 10px;
+  width: 114px;
+  height: 38px;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18.29px;
+  color: rgba(136, 136, 136, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.online_offline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.online_offline p {
+  color: rgba(0, 0, 0, 1);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18.9px;
+}
+
+.svg_online_offline {
+  width: 30px;
+  height: 26px;
+}
+
+.count_month_year_time {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.count_month_year_time p {
+  color: rgba(0, 0, 0, 1);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19.5px;
+}
+
+.svg_clock {
+  width: 30px;
+  height: 26px;
+}
+
+.event_duration {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.event_duration p {
+  color: rgba(0, 0, 0, 1);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19.5px;
+}
+
+.svg_duration {
+  width: 19px;
+  height: 23.52px;
+}
+
+.sign_up_event_btn {
+  background-color: rgba(71, 166, 124, 1);
+  color: rgba(0, 0, 0, 1);
+  font-size: 25px;
+  line-height: 30.48px;
+  font-weight: 400;
+  border-radius: 10px;
+  width: 480px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link_event {
+  color: rgba(44, 65, 255, 1);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.download_video_event {
+  font-size: 25px;
+  line-height: 30.48px;
+  color: rgba(0, 0, 0, 1);
+}
+
+.list_users_event {
+  width: 340px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(96, 116, 175, 1);
+  border-radius: 10px;
+  color: rgba(0, 0, 0, 1);
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 30.48px;
+}
+
+.second_event_detailed {
+  width: 604px;
+  display: flex;
+  flex-flow: column;
+
+  gap: 58px;
+  height: 700px;
+}
+
+.preview_img {
+  width: 100%;
+  height: 350px;
+  background-color: aqua;
+}
+
+.questions {
+  width: 100%;
+  height: 286px;
+  border: rgba(208, 210, 216, 1) 1px solid;
+  border-radius: 10px;
+}

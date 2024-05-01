@@ -9,18 +9,12 @@ const AdminHeader = function () {
       <Logo />
       <div className="privilege_navbar">
         <ul>
-          <li>
-            <a href="/event">Мероприятия</a>
-          </li>
-          <li>
-            <a href="/event">Пользователи</a>
-          </li>
-          <li>
-            <a href="/event">Статистика</a>
-          </li>
+          <li>Мероприятия</li>
+          <li>Пользователи</li>
+          <li>Статистика</li>
         </ul>
       </div>
-      <HeaderProfile/>
+      <HeaderProfile />
     </>
   );
 };

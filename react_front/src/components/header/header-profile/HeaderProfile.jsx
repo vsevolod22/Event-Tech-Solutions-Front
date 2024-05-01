@@ -1,5 +1,6 @@
 import React from "react";
 import "./headerProfile.css";
+import { Link } from "react-router-dom";
 const HeaderProfile = function () {
   return (
     <div className="navbar">
@@ -17,7 +18,9 @@ const HeaderProfile = function () {
           />
         </svg>
       </button>
-      <button className="profile"></button>
+      <Link to="/profile">
+        <button className="profile"></button>
+      </Link>
     </div>
   );
 };

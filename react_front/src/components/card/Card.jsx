@@ -1,9 +1,12 @@
 import React from "react";
 import "./card.css";
+import { useNavigate } from "react-router-dom";
 
 const Card = function ({ dataCard }) {
+  const navigate = useNavigate();
+
   return (
-    <div className="card">
+    <div onClick={() => navigate(`/event/${dataCard.id}`)} className="card">
       <div className="image_content">
         {/* style={{background: `url(${dataCard.image})`}}> */}
         {dataCard.is_upcoming ? (
@@ -34,8 +37,11 @@ const Card = function ({ dataCard }) {
       <div className="description_content">
         <div className="description_content_statuses">
           <div className="type_status">{dataCard.type}</div>
-          {/* ? :*/}
-          <div className="reg_event">Зарегистрирован</div>
+          {dataCard.user_state !== -1 ? (
+            <div className="reg_event_green">Зарегистрирован</div>
+          ) : (
+            <div className="reg_event_red">Не зарегистрирован</div>
+          )}
         </div>
 
         <div className="description_content_text">{dataCard.name}</div>

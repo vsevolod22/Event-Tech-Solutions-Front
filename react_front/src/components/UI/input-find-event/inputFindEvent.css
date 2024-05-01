@@ -1,0 +1,9 @@
+.solo_input_filter {
+  width: 1520px;
+  height: 70px;
+  border: 1px solid rgba(208, 210, 216, 1);
+  border-radius: 10px;
+  padding-left: 78px;
+  display: flex;
+  align-items: center;
+}

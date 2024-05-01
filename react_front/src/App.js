@@ -8,7 +8,7 @@ import Profile from "./pages/Profile.jsx";
 function App() {
   const [user, setUser] = useState({
     reg: true,
-    role: 2,
+    role: 0,
   });
   return (
     <BrowserRouter>

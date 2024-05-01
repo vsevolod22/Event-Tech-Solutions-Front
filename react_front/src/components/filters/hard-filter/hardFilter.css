@@ -1,0 +1,27 @@
+select {
+  border: rgba(208, 210, 216, 1) 1px solid;
+  width: 211px;
+  height: 35px;
+  border-radius: 10px;
+  padding: 0 11px 0 17px;
+  /* appearance: none; */
+  background: url("");
+}
+
+.hard_filter {
+    width: 1920px;
+}
+
+.count_select {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  justify-content: flex-end;
+}
+
+.count_select p {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17.07px;
+  color: rgba(0, 0, 0, 1);
+}

@@ -16,7 +16,7 @@ const Events = function () {
         seconds: 1,
       },
       is_upcoming: false,
-      user_state: -1,
+      user_state: 0,
       reference: "erer",
       reference_video: "erere",
       type: "Musci",
@@ -173,7 +173,7 @@ const Events = function () {
         seconds: 1,
       },
       is_upcoming: true,
-      user_state: -1,
+      user_state: 2,
       reference: "erer",
       reference_video: "erere",
       type: "Sport",
@@ -378,6 +378,7 @@ const Events = function () {
     },
   ]);
   const [data, setData] = useState(null);
+  console.log(dataCards);
 
   //   useEffect(() => {
   //     const fetchData = async () => {
@@ -388,13 +389,6 @@ const Events = function () {
   //   }, []);
   return (
     <div className="events">
-      <div className="filter">
-        <div className="find_event">Найти мероприятие</div>
-        <div className="options_event">
-          <div className="time_event_filter">Время мероприятия</div>
-          <div className="type_event_filter">Тип мероприятия</div>
-        </div>
-      </div>
       <div className="cards">
         {dataCards &&
           dataCards.map((card) => <Card dataCard={card} key={card.id} />)}

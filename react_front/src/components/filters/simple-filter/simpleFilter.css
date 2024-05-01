@@ -1,0 +1,15 @@
+.simple_filter {
+  height: 165px;
+  display: flex;
+  flex-flow: column;
+  gap: 60px;
+  width: 1920px;
+}
+
+.selects{
+  display: flex;
+  gap: 51px;
+  align-items: center;
+}
+
+    
