@@ -1,12 +1,24 @@
 import React from "react";
 import "./eventDetailed.css";
+import Skeleton from '@mui/material/Skeleton';
+const EventDetailed = function ({meet}) {
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
 
-const EventDetailed = function () {
+    };
+    return date.toLocaleString('ru-RU', options); // Можно использовать locale-specific formatting
+  };
   return (
     <div className="event_detailed container">
       <div className="first_event_detailed">
-        <h1>Интерактивная лекция "Питание для Работоспособности"</h1>
-        <div className="type_event">Психология</div>
+        <h1>{meet && meet.name ? meet.name : <Skeleton variant="text" sx={{ fontSize: '32px' }} />} </h1>
+        <div className="type_event">{meet && meet.type.name ? meet.type.name : <Skeleton variant="rounded" width={114} height={38} />}</div>
         <div className="online_offline">
           <div className="svg_online_offline">
             <svg
@@ -73,7 +85,7 @@ const EventDetailed = function () {
               </defs>
             </svg>
           </div>
-          <p>23 декабря 2023 года, 15:00</p>
+          <p>{meet && meet.time_start ? formatDate(meet.time_start) : <Skeleton variant="text" sx={{ fontSize: '32px' }} />}</p>
         </div>
         <div className="event_duration">
           <div className="svg_duration">
@@ -90,7 +102,7 @@ const EventDetailed = function () {
               />
             </svg>
           </div>
-          <p>2 часа</p>
+          <p>{meet && meet.duration.hours ? meet.duration.hours : <Skeleton variant="text" sx={{ fontSize: '16px' }} />}</p>
         </div>
         <div className="sign_up_event_btn">ЗАПИСАТЬСЯ НА МЕРОПРИЯТИЕ</div>
         <div className="link_event">Ссылка на мероприятие</div>
