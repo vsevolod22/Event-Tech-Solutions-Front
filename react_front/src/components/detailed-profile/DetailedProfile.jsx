@@ -1,20 +1,41 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./detailedProfile.css";
+import { HttpApiMethods } from '../utils/FetchUtils';
+import Skeleton from '@mui/material/Skeleton';
+const httpApiMethods = new HttpApiMethods()
+
 
 const DetailedProfile = function () {
+  const [user, setUser] = useState(null);
+  const id = 1
+  useEffect(() => {
+  
+      const getMeet = async (id) => {
+    
+        const newSpeaker = await httpApiMethods.GetUserById(id)
+        console.log(newSpeaker);
+        setUser(newSpeaker);
+          
+          
+  
+      };
+      getMeet(id);
+    
+    
+  }, [id]);
   return (
     <div className="human_frame">
       <div className="photo_card">
-        <div className="human_logo"></div>
+        {user && user.avatar ? <img src={user.avatar} alt="avatar"></img> : <div className="human_logo"></div>}
         <div className="role">
-          <p>Участник</p>
+          <p>{user && user.role ? user.role :  <Skeleton variant="text" sx={{ fontSize: '24px' }} />}</p>
         </div>
       </div>
       <div className="human_data">
-        <h1>Кириллов Алексей Викторович</h1>
-        <h2>Junior PHP разработчик</h2>
-        <p>TG: @dkir</p>
-        <p>gmail@gmail.com</p>
+        <h1>{user && user.first_name && user.last_name ?  user.last_name + ' ' + user.first_name :  <Skeleton variant="text" sx={{ fontSize: '36px' }} />}</h1>
+        <h2>{user && user.job ?  user.job :  <Skeleton variant="text" sx={{ fontSize: '32px' }} />}</h2>
+        <p>{user && user.telegram ? `TG: ${user.telegram}` : <Skeleton variant="text" sx={{ fontSize: '20px' }} />}</p>
+        <p>{user && user.mail ? user.mail : <Skeleton variant="text" sx={{ fontSize: '20px' }} />}</p>
         <div className="exp">
           <div className="lvl">
             <p>0</p>

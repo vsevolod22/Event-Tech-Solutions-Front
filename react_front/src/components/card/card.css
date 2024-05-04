@@ -12,7 +12,7 @@
   width: 343px;
   height: 340px;
   /* background: url(); */
-  background-color: black;
+
   display: flex;
   flex-flow: column;
   align-items: flex-end;

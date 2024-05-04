@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./specialist.css";
 import SvgBookLink from "../../svg/svg-book-link/SvgBookLink";
 import SvgTelegramLink from "../../svg/svg-telegram-link/SvgTelegramLink";
+import { HttpApiMethods } from '../utils/FetchUtils';
+import Skeleton from '@mui/material/Skeleton';
+const httpApiMethods = new HttpApiMethods()
+const Specialist = function ({ meet }) {
+  const [speaker, setSpeaker] = useState(null);
+  useEffect(() => {
+    if (meet) {
+      const getMeet = async (id) => {
+    
+        const newSpeaker = await httpApiMethods.GetUserById(id)
+        console.log(newSpeaker);
+        setSpeaker(newSpeaker);
+          
+          
+  
+      };
+      getMeet(meet.speaker.id);
+    }
+    
+  }, [meet]);
 
-const Specialist = function ({ specialistData }) {
-  console.log(specialistData);
+
   return (
     <div className="specialist container">
       <h1>Специалист</h1>
@@ -12,10 +31,10 @@ const Specialist = function ({ specialistData }) {
         <div className="about_specialist">
           <div className="logo_specialist"></div>
           <div className="data_specialist">
-            <h1>Петрова Ирина Владимировна</h1>
-            <h2>Ведущий Диетолог</h2>
-            <p>+7 (999) 333 - 11 - 11</p>
-            <p>petrova_ira@gmail.com</p>
+            <h1>{speaker && speaker.first_name && speaker.last_name ?  speaker.last_name + ' ' + speaker.first_name :  <Skeleton variant="text" sx={{ fontSize: '36px' }} />}</h1>
+            <h2>{speaker && speaker.job ?  speaker.job :  <Skeleton variant="text" sx={{ fontSize: '32px' }} />}</h2>
+            <p>{speaker && speaker.phone_number ?  speaker.phone_number :  <Skeleton variant="text" sx={{ fontSize: '22px' }} />}</p>
+            <p>{speaker && speaker.mail ?  speaker.mail :  <Skeleton variant="text" sx={{ fontSize: '22px' }} />}</p>
           </div>
         </div>
         <div className="specialist_links">

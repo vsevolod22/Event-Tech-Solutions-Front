@@ -4,26 +4,39 @@ import { useNavigate } from "react-router-dom";
 import SvgOnlineOffline from "../../svg/svg-online-offline/SvgOnlineOffline";
 import SvgClock from "../../svg/svg-clock/SvgCLock";
 import SvgDuration from "../../svg/svg-duration/SvgDuration";
-
-const EventDetailed = function () {
+import Skeleton from '@mui/material/Skeleton';
+const EventDetailed = function ({meet}) {
   const navigate_users_list = useNavigate();
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+
+    };
+    return date.toLocaleString('ru-RU', options); // Можно использовать locale-specific formatting
+  };
 
   return (
     <form className="event_detailed container">
       <div className="first_event_detailed">
-        <h1>Интерактивная лекция "Питание для Работоспособности"</h1>
-        <div className="type_event">Психология</div>
+        <h1>{meet && meet.name ? meet.name : <Skeleton variant="text" sx={{ fontSize: '32px' }} />} </h1>
+        <div className="type_event">{meet && meet.type.name ? meet.type.name : <Skeleton variant="rounded" width={114} height={38} />}</div>
         <div className="online_offline">
           <SvgOnlineOffline />
           <p>Онлайн</p>
         </div>
         <div className="count_month_year_time">
-          <SvgClock />
-          <p>23 декабря 2023 года, 15:00</p>
+           SvgClock />
+          <p>{meet && meet.time_start ? formatDate(meet.time_start) : <Skeleton variant="text" sx={{ fontSize: '32px' }} />}</p>
         </div>
         <div className="event_duration">
-          <SvgDuration />
-          <p>2 часа</p>
+           <SvgDuration />
+          <p>{meet && meet.duration.hours ? meet.duration.hours : <Skeleton variant="text" sx={{ fontSize: '16px' }} />}</p>
+
         </div>
         <button type="submit" className="sign_up_event_btn">
           ЗАПИСАТЬСЯ НА МЕРОПРИЯТИЕ
