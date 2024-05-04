@@ -7,7 +7,7 @@ const httpApiMethods = new HttpApiMethods()
 
 const DetailedProfile = function () {
   const [user, setUser] = useState(null);
-  const id = 1
+  const id = localStorage.getItem("id")
   useEffect(() => {
   
       const getMeet = async (id) => {

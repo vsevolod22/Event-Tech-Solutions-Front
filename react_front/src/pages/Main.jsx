@@ -1,17 +1,13 @@
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/header/Header.jsx";
 import MainContent from "../components/main-content/MainContent.jsx";
 import Events from "../components/events/Events.jsx";
 import HardFilter from "../components/filters/hard-filter/HardFilter.jsx";
 import Login from "../components/login-window/Login.jsx";
-import React, { useEffect, useState } from "react";
+
 import { HttpApiMethods } from '../components/utils/FetchUtils';
-import Header from "../components/header/Header.jsx";
 import axios from "axios";
-import MainContent from "../components/main-content/MainContent.jsx";
-import Events from "../components/events/Events.jsx";
-import HardFilter from "../components/filters/hard-filter/HardFilter.jsx";
 const httpApiMethods = new HttpApiMethods()
 function Main({ user }) {
   const [modal, setModal] = useState(0);

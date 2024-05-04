@@ -8,7 +8,7 @@ const Header = function (props) {
   return (
     <>
       <div className="header">
-        {props.user.reg && props.user.role !== 2 ? (
+        {localStorage.getItem("token") && localStorage.getItem("id") ? (
           <RegHeader />
         ) : props.user.reg && props.user.role === 2 ? (
           <AdminHeader />
