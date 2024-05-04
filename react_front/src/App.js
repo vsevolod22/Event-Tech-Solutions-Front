@@ -4,10 +4,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Main from "./pages/Main.jsx";
 import Event from "./pages/Event.jsx";
 import Profile from "./pages/Profile.jsx";
+import UsersList from "./pages/UsersList.jsx";
 
 function App() {
   const [user, setUser] = useState({
-    reg: true,
+    reg: 0,
     role: 0,
   });
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Main user={user} />}></Route>
         <Route path="/event/:id" element={<Event user={user} />}></Route>
         <Route path="/profile" element={<Profile user={user} />}></Route>
+        <Route path="/users-list" element={<UsersList user={user} />}></Route>
       </Routes>
     </BrowserRouter>
   );

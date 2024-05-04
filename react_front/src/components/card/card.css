@@ -65,14 +65,6 @@
   font-family: "Montserrat";
 }
 
-.svg_duration_card_event {
-  width: 16px;
-  height: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .description_content {
   height: 259px;
   width: 343px;

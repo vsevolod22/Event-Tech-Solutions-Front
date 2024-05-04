@@ -13,7 +13,7 @@ const Header = function (props) {
         ) : props.user.reg && props.user.role === 2 ? (
           <AdminHeader />
         ) : (
-          <InitHeader></InitHeader>
+          <InitHeader getData={props.getData}/>
         )}
       </div>
     </>

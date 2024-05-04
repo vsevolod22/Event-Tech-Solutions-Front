@@ -6,4 +6,8 @@
   padding-left: 78px;
   display: flex;
   align-items: center;
+  font-size: 22px;
+  color: rgba(136, 136, 136, 1);
+  line-height: 26.82px;
+  font-weight: 400;
 }

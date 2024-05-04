@@ -40,11 +40,6 @@
   line-height: 18.9px;
 }
 
-.svg_online_offline {
-  width: 30px;
-  height: 26px;
-}
-
 .count_month_year_time {
   display: flex;
   align-items: center;
@@ -58,11 +53,6 @@
   line-height: 19.5px;
 }
 
-.svg_clock {
-  width: 30px;
-  height: 26px;
-}
-
 .event_duration {
   display: flex;
   align-items: center;
@@ -74,11 +64,6 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 19.5px;
-}
-
-.svg_duration {
-  width: 19px;
-  height: 23.52px;
 }
 
 .sign_up_event_btn {
@@ -105,11 +90,14 @@
   font-size: 25px;
   line-height: 30.48px;
   color: rgba(0, 0, 0, 1);
+  display: flex;
+  justify-content: start;
 }
 
 .list_users_event {
   width: 340px;
   height: 80px;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
