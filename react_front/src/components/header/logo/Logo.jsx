@@ -1,14 +1,12 @@
 import React from "react";
 import "./logo.css";
 import { Link } from "react-router-dom";
-// import logo from "../../images/logo.png";
 
 const Logo = function () {
   return (
     <Link to="/">
       <div className="header_logo">
         <div className="dunice_logo">
-          {/*<img src={logo} alt="" /> */}
           <svg
             width="197"
             height="73"

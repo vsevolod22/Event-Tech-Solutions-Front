@@ -7,10 +7,10 @@ const SimpleFilter = function () {
     <div className="simple_filter">
       <InputFindEvent />
       <div className="selects">
-        <select name="actuale" id="" className="actuale">
+        <select name="actuale_select" id="" className="actuale_select">
           <option value="">актуальность</option>
         </select>
-        <select name="type_event" id="" className="type_event">
+        <select name="type_even_selectt" id="" className="type_event_select">
           <option value="">тип меропрития</option>
         </select>
       </div>

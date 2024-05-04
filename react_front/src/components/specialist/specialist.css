@@ -12,6 +12,12 @@
   color: black;
 }
 
+.svgs_links_specialist {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
 .specialist_detailed {
   display: flex;
   align-items: center;
@@ -68,9 +74,15 @@
   color: #2c41ff;
 }
 
-.specialist_link p {
+.specialist_links p {
   font-size: 24px;
   font-weight: 400;
   line-height: 29.26px;
   color: black;
+}
+
+.specialist_links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
