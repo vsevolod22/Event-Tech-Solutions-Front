@@ -30,7 +30,7 @@ const EventDetailed = function ({meet}) {
           <p>Онлайн</p>
         </div>
         <div className="count_month_year_time">
-           SvgClock />
+           <SvgClock />
           <p>{meet && meet.time_start ? formatDate(meet.time_start) : <Skeleton variant="text" sx={{ fontSize: '32px' }} />}</p>
         </div>
         <div className="event_duration">

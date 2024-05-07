@@ -6,7 +6,7 @@ const InputFindEvent = function () {
     <div>
       <input
         type="text"
-        placeholder="Найти мероприятие"
+        /* placeholder найти мероприятие найти пользователя */
         className="solo_input_filter"
       />
     </div>
