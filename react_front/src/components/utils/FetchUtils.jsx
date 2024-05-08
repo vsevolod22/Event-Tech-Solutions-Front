@@ -74,6 +74,19 @@ export class HttpApiMethods {
       console.error(error);
    }
   }
+  GetUserAuth = async (data) => {
+    
+    let innerUrl = this.APIURL + `/auth/login/`
+
+    
+    try {
+      const response = await axios.postForm(innerUrl, data);
+      // console.log(response.data);
+      return response.data; // Возвращаем данные из ответа
+   } catch (error) {
+      console.error(error);
+   }
+  }
   
 
   
