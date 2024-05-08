@@ -1,0 +1,30 @@
+.user_users_list {
+  display: flex;
+  gap: 41px;
+  width: 600px;
+}
+
+.logo_role {
+  display: flex;
+  gap: 26px;
+  flex-direction: column;
+}
+
+.logo_role_img {
+  border-radius: 81px;
+  width: 171px;
+  height: 171px;
+  background-color: black;
+}
+
+.logo_role_text {
+  font-weight: 600;
+  font-size: 19.42px;
+  line-height: 23.67px;
+}
+
+.user_info{
+    display: flex;
+    flex-direction: column;
+    gap: 22.22px;
+}

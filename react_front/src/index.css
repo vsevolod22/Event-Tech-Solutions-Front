@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url(./fonts/Montserrat/static/Montserrat-Regular.ttf),
+    url(./fonts/Montserrat/static/Montserrat-Medium.ttf),
+    url(./fonts/Montserrat/static/Montserrat-SemiBold.ttf),
+    url(./fonts/Montserrat/static/Montserrat-ExtraBold.ttf);
+  font-weight: 400, 500, 600 800;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -24,13 +33,4 @@ button {
   border: none;
   padding: 0;
   cursor: pointer;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: url(./fonts/Montserrat/static/Montserrat-Regular.ttf),
-    url(./fonts/Montserrat/static/Montserrat-Medium.ttf),
-    url(./fonts/Montserrat/static/Montserrat-SemiBold.ttf),
-    url(./fonts/Montserrat/static/Montserrat-ExtraBold.ttf);
-  font-weight: 400, 500, 600 800;
 }
