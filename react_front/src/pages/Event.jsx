@@ -12,6 +12,7 @@ const httpApiMethods = new HttpApiMethods()
 function Event({ user }) {
   const { id } = useParams();
   const [meet, setMeet] = useState(null);
+  const [comments, setComments] = useState(null);
 
   useEffect(() => {
     const getMeet = async (id) => {
@@ -23,7 +24,18 @@ function Event({ user }) {
         
 
     };
+    const getComments = async (id) => {
+    
+      const newComments = await httpApiMethods.GetCommentsByMeet(id)
+      console.log(newComments);
+      setComments(newComments);
+        
+        
+
+    };
     getMeet(id);
+    getComments(id);
+
   }, [id]);
 
   return (
@@ -32,7 +44,7 @@ function Event({ user }) {
       <EventDetailed meet={meet} />
       <AboutEvent meet={meet} />
       <Specialist meet={meet} />
-      <InputComment meet={meet} />
+      <InputComment meet={meet} comments={comments} />
     </>
   );
 }

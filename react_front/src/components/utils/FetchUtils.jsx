@@ -56,6 +56,24 @@ export class HttpApiMethods {
       console.error(error);
    }
   }
+  GetCommentsByMeet = async (id) => {
+    
+    let innerUrl = this.APIURL + `/events/event/${id}/comments/`
+
+    
+    try {
+      const response = await axios.get(innerUrl, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${this.API_KEY}`
+        }
+      });
+      // console.log(response.data);
+      return response.data; // Возвращаем данные из ответа
+   } catch (error) {
+      console.error(error);
+   }
+  }
   GetUserById = async (id) => {
     
     let innerUrl = this.APIURL + `/users/user/${id}/`

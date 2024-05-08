@@ -1,12 +1,24 @@
 import React from "react";
 import "./inputComment.css";
 
-const InputComment = function () {
+const InputComment = function ({comments}) {
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+
+    };
+    return date.toLocaleString('ru-RU', options); // Можно использовать locale-specific formatting
+  };
   return (
     <section>
       <div className="input_comm_block container">
         <h1>Комментарии</h1>
-        <p>{/* кол-во мероприятий */}3 КОММЕНТАРИЯ</p>
+        <p>Количество комментариев: {comments && comments.length}</p>
         <div className="comment">
           <div className="logo_profile"></div>
           <textarea
@@ -21,29 +33,27 @@ const InputComment = function () {
         </div>
       </div>
       <div className="container comment_list">
-        <div className="comment_block">
+       
+       {comments && comments.map((comment) => (
+          <div key={comment.id} className="comment_block">
           <div className="logo_profile"></div>
             <div className="data_comment">
               <div className="name_date">
                 <div className="name">
-                  <p>Световой Владислав</p>
+                  <p>{comment.user.last_name} {comment.user.first_name}</p>
                 </div>
                 <div className="date">
-                  <p>4 мая 1990, 00:00</p>
+                  <p>{formatDate(comment.created_at)}</p>
                 </div>
               </div>
               <div className="comm">
                 <p>
-                  Выражаю огромную благодарность организатору за организацию столь
-                  нужного и полезного мероприятия. И приглашение меня. Уверен, данное
-                  мероприятие очень полезно как для начинающих, так и для опытных
-                  предпринимателей. Много получено полезных и нужных знакомств и
-                  контактов, столь необходимых в бизнесе, предпринимательской работе и
-                  деятельности.
+                 {comment.comment}
                 </p>
               </div>
             </div>
         </div>
+       ))}
         
       </div>
     </section>

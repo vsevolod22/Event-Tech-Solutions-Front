@@ -55,7 +55,7 @@ const EventDetailed = function ({meet}) {
         </div>
       </div>
       <div className="second_event_detailed">
-        <div className="preview_img"></div>
+        {meet && meet.image ? <img className="preview_img" src={meet.image} alt="previewIMG"></img> : <div className="preview_img"></div>}
         <div className="questions"></div>{" "}
         {/*component with question compoennt*/}
       </div>
