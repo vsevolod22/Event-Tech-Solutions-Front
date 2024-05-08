@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/header/Header";
 import { useParams } from "react-router-dom";
-import { HttpApiMethods } from '../components/utils/FetchUtils';
+import { HttpApiMethods } from '../components/utils/FetchUtils.tsx';
 import axios from "axios";
 import Specialist from "../components/specialist/Specialist";
 import AboutEvent from "../components/about-event/AboutEvent";

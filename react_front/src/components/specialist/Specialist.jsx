@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./specialist.css";
 import SvgBookLink from "../../svg/svg-book-link/SvgBookLink";
 import SvgTelegramLink from "../../svg/svg-telegram-link/SvgTelegramLink";
-import { HttpApiMethods } from '../utils/FetchUtils';
+import { HttpApiMethods } from '../utils/FetchUtils.tsx';
 import Skeleton from '@mui/material/Skeleton';
 const httpApiMethods = new HttpApiMethods()
 const Specialist = function ({ meet }) {

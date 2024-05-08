@@ -1,7 +1,7 @@
 
 import Login from "../components/login-window/Login.jsx";
 import React, { useEffect, useState } from "react";
-import { HttpApiMethods } from "../components/utils/FetchUtils";
+import { HttpApiMethods } from "../components/utils/FetchUtils.tsx";
 import Header from "../components/header/Header.jsx";
 import axios from "axios";
 import MainContent from "../components/main-content/MainContent.jsx";

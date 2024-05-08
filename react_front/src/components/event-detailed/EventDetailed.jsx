@@ -48,7 +48,7 @@ const EventDetailed = function ({meet}) {
           Скачать видео
         </button>
         <div
-          onClick={() => navigate_users_list("/users-list")}
+          onClick={() => navigate_users_list(`/users-list/meet/${meet.id}`)}
           className="list_users_event"
         >
           Список пользователей
