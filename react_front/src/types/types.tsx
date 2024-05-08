@@ -18,7 +18,7 @@ export interface IAuth {
 
 export interface AllUserInfo {
     role: string;
-    id: number;
+    id: string;
     username: string;
     first_name: string;
     last_name: string;

@@ -36,7 +36,7 @@ export class HttpApiMethods {
       console.error(error);
    }
   }
-  GetMeetingById = async (id : number) :  Promise<IMeet> => {
+  GetMeetingById = async (id : string) :  Promise<IMeet> => {
     
     let innerUrl = this.APIURL + `/events/event/${id}/`
 
@@ -54,7 +54,7 @@ export class HttpApiMethods {
       console.error(error);
    }
   }
-  GetCommentsByMeet = async (id : number) => {
+  GetCommentsByMeet = async (id : string) => {
     
     let innerUrl = this.APIURL + `/events/event/${id}/comments/`
 
@@ -72,7 +72,7 @@ export class HttpApiMethods {
       console.error(error);
    }
   }
-  GetUserById = async (id: number) :  Promise<AllUserInfo> => {
+  GetUserById = async (id: string) :  Promise<AllUserInfo> => {
     
     let innerUrl = this.APIURL + `/users/user/${id}/`
 
@@ -103,7 +103,7 @@ export class HttpApiMethods {
       console.error(error);
    }
   }
-  GetUsersByMeet = async (id : number) => {
+  GetUsersByMeet = async (id : string) => {
       let innerUrl = this.APIURL + `/events/event/${id}/participants/`
       try {
           const response = await axios.get(innerUrl, {
@@ -118,7 +118,7 @@ export class HttpApiMethods {
           console.error(error);
       }
   }
-  PostUserMeetReg = async (id : number) => {
+  PostUserMeetReg = async (id : string) => {
 
       let innerUrl = this.APIURL + `/events/event/${id}/participants/`
       try {

@@ -1,6 +1,6 @@
 import {FC, useEffect, useState} from "react";
 import "./detailedProfile.css";
-// @ts-ignore
+
 import { HttpApiMethods } from '../utils/FetchUtils.tsx';
 import Skeleton from '@mui/material/Skeleton';
 import {useParams} from "react-router-dom";
@@ -9,12 +9,12 @@ const httpApiMethods = new HttpApiMethods()
 
 
 const DetailedProfile: FC = function () {
-  const [user, setUser] = useState<AllUserInfo>(null);
+  const [user, setUser] = useState<AllUserInfo | null>(null);
   const {id: routeId} = useParams<{ id: string }>()
   const id  = routeId || localStorage.getItem("id");
   useEffect(() => {
       console.log(id)
-      const getMeet = async (id) => {
+      const getMeet = async (id : string) => {
     
         const newSpeaker = await httpApiMethods.GetUserById(id)
         console.log(newSpeaker);
@@ -23,7 +23,11 @@ const DetailedProfile: FC = function () {
           
   
       };
-      getMeet(id);
+      if (id) {
+        getMeet(id);
+      }
+
+
     
     
   }, [id]);
