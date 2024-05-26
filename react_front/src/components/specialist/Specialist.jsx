@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./specialist.css";
 import SvgBookLink from "../../svg/svg-book-link/SvgBookLink";
 import SvgTelegramLink from "../../svg/svg-telegram-link/SvgTelegramLink";
-import { HttpApiMethods } from '../utils/FetchUtils';
+import { HttpApiMethods } from '../utils/FetchUtils.tsx';
 import Skeleton from '@mui/material/Skeleton';
 const httpApiMethods = new HttpApiMethods()
 const Specialist = function ({ meet }) {
@@ -29,7 +29,7 @@ const Specialist = function ({ meet }) {
       <h1>Специалист</h1>
       <div className="specialist_detailed">
         <div className="about_specialist">
-          <div className="logo_specialist"></div>
+          {speaker && speaker.avatar ? <img className="logo_specialist" src={speaker.avatar} alt="avatar"></img> : <div className="logo_specialist"></div>}
           <div className="data_specialist">
             <h1>{speaker && speaker.first_name && speaker.last_name ?  speaker.last_name + ' ' + speaker.first_name :  <Skeleton variant="text" sx={{ fontSize: '36px' }} />}</h1>
             <h2>{speaker && speaker.job ?  speaker.job :  <Skeleton variant="text" sx={{ fontSize: '32px' }} />}</h2>

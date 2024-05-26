@@ -48,14 +48,14 @@ const EventDetailed = function ({meet}) {
           Скачать видео
         </button>
         <div
-          onClick={() => navigate_users_list("/users-list")}
+          onClick={() => navigate_users_list(`/users-list/meet/${meet.id}`)}
           className="list_users_event"
         >
           Список пользователей
         </div>
       </div>
       <div className="second_event_detailed">
-        <div className="preview_img"></div>
+        {meet && meet.image ? <img className="preview_img" src={meet.image} alt="previewIMG"></img> : <div className="preview_img"></div>}
         <div className="questions"></div>{" "}
         {/*component with question compoennt*/}
       </div>

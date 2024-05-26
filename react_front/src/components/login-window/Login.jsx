@@ -1,7 +1,7 @@
 import React from "react";
 import "./login.css";
 import SvgCross from "../../svg/svg-cross/SvgCross";
-import { HttpApiMethods } from '../utils/FetchUtils';
+import { HttpApiMethods } from '../utils/FetchUtils.tsx';
 
 const httpApiMethods = new HttpApiMethods()
 const Login = function ({ visible, setVisible, getData }) {

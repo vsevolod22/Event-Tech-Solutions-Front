@@ -1,11 +1,18 @@
-import React from "react";
+
 import Header from "../components/header/Header";
-import DetailedProfile from "../components/detailed-profile/DetailedProfile";
+// @ts-ignore
+import DetailedProfile from "../components/detailed-profile/DetailedProfile.tsx";
 import YourChoice from "../components/your-choice/YourChoice";
 import SimpleFilter from "../components/filters/simple-filter/SimpleFilter";
 import YourEvent from "../components/your-event/YourEvent";
+import {FC} from "react";
+interface ProfileProps {
+    user: {role: number, reg: number}
+}
 
-const Profile = function ({ user }) {
+
+
+const Profile: FC<ProfileProps> =  ({user}) => {
   return (
     <>
       <Header user={user} />

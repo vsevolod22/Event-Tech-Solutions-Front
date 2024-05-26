@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./events.css";
 import Card from "../card/Card.jsx";
-import { HttpApiMethods } from '../utils/FetchUtils.jsx';
+import { HttpApiMethods } from '../utils/FetchUtils.tsx';
 const httpApiMethods = new HttpApiMethods()
 const Events = function (props) {
   

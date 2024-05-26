@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/header/Header";
 import { useParams } from "react-router-dom";
-import { HttpApiMethods } from "../components/utils/FetchUtils";
+
+import { HttpApiMethods } from '../components/utils/FetchUtils.tsx';
+
 import axios from "axios";
 import Specialist from "../components/specialist/Specialist";
 import AboutEvent from "../components/about-event/AboutEvent";
@@ -14,6 +16,7 @@ const httpApiMethods = new HttpApiMethods();
 function Event({ user }) {
   const { id } = useParams();
   const [meet, setMeet] = useState(null);
+  const [comments, setComments] = useState(null);
 
   useEffect(() => {
     const getMeet = async (id) => {
@@ -21,7 +24,18 @@ function Event({ user }) {
       console.log(newMeet);
       setMeet(newMeet);
     };
+    const getComments = async (id) => {
+    
+      const newComments = await httpApiMethods.GetCommentsByMeet(id)
+      console.log(newComments);
+      setComments(newComments);
+        
+        
+
+    };
     getMeet(id);
+    getComments(id);
+
   }, [id]);
 
   return (
@@ -31,7 +45,8 @@ function Event({ user }) {
       <EventDetailed meet={meet} />
       <AboutEvent meet={meet} />
       <Specialist meet={meet} />
-      <InputComment meet={meet} />
+
+      <InputComment meet={meet} comments={comments} />
       <h1>Ещё меропрития</h1>
       <Events />
     </>

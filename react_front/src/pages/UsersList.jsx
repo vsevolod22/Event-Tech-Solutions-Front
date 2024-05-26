@@ -1,10 +1,29 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Header from "../components/header/Header";
+import { HttpApiMethods } from '../components/utils/FetchUtils.tsx';
 import "./userList.css";
 import UserUsersList from "../components/user-users-list/UserUsersList";
 import InputFindEvent from "../components/UI/input-find-event/InputFindEvent";
-
+import {useParams} from "react-router-dom";
+const httpApiMethods = new HttpApiMethods()
 const UsersList = function ({ user }) {
+  const { id } = useParams();
+  const [UsersList, setUsersList] = React.useState(null);
+  useEffect(() => {
+    const getUsers = async (id) => {
+
+      const newUsers = await httpApiMethods.GetUsersByMeet(id)
+      console.log(newUsers);
+      setUsersList(newUsers);
+
+
+
+    };
+
+    getUsers(id);
+
+
+  }, [id]);
   return (
     <>
       <Header user={user} />
@@ -16,12 +35,10 @@ const UsersList = function ({ user }) {
           </select>
         </div>
         <div className="users_list">
-          <UserUsersList />
-          <UserUsersList />
-          <UserUsersList />
-          <UserUsersList />
-          <UserUsersList />
-          <UserUsersList />
+          {UsersList && UsersList.map(userObj =>
+            <UserUsersList user={userObj.user} key={userObj.id} />
+          ) }
+
         </div>
       </div>
     </>
