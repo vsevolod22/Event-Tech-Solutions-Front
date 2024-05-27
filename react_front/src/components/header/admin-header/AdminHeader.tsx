@@ -1,7 +1,7 @@
 import React from "react";
 import "./adminHeader.css";
-import Logo from "../logo/Logo.jsx";
-import HeaderProfile from "../header-profile/HeaderProfile.jsx";
+import Logo from "../logo/Logo";
+import HeaderProfile from "../header-profile/HeaderProfile";
 
 const AdminHeader = function () {
   return (

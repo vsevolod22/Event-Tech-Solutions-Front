@@ -1,25 +1,39 @@
-import React from "react";
+import React, {FC} from "react";
 import "./login.css";
 import SvgCross from "../../svg/svg-cross/SvgCross";
 import { HttpApiMethods } from '../utils/FetchUtils.tsx';
 
 const httpApiMethods = new HttpApiMethods()
-const Login = function ({ visible, setVisible, getData }) {
+
+interface LoginProps {
+  visible: number,
+  setVisible: React.Dispatch<React.SetStateAction<number>>; // Функция для обновления состояния видимости
+  getData: (data: number) => void; // Функция для получения данных
+
+}
+
+
+const Login : FC<LoginProps> = function ({ visible, setVisible, getData }) {
   let visibleClassName = "login_window";
   if (visible) {
     visibleClassName += " login_window_active";
   }
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Предотвращаем стандартное поведение формы
    
     // Получаем данные из полей формы
-    const username = event.target.elements.username.value;
-    const password = event.target.elements.password.value;
-    const email = ''
+    const usernameInput = event.currentTarget.elements.namedItem('username') as HTMLInputElement;
+    const passwordInput = event.currentTarget.elements.namedItem('password') as HTMLInputElement;
+
+
+
+    const userName = usernameInput.value;
+    const password = passwordInput.value;
+    const email = '';
    
     // Собираем данные в объект
     const data = {
-      username,
+      userName,
        email,
        password
     };
@@ -27,9 +41,13 @@ const Login = function ({ visible, setVisible, getData }) {
     // Вызываем функцию GetUserAuth с данными
     try {
       const response = await httpApiMethods.GetUserAuth(data)
-       console.log(response); // Выводим ответ сервера
-       localStorage.setItem("token", response.access);
-       localStorage.setItem("id", response.user.id);
+       console.log(response);
+      if (response && response.access) {
+        // Выводим ответ сервера
+        localStorage.setItem("token", response.access);
+        localStorage.setItem("id", response.id);
+      }
+
 
     } catch (error) {
        console.error(error);

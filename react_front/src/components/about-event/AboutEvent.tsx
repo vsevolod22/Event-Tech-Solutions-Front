@@ -1,8 +1,14 @@
-import React from "react";
+import React, {FC} from "react";
 import { Skeleton } from "@mui/material";
 import "./aboutEvent.css";
+import {IMeet} from "../../types/types.tsx";
 
-const AboutEvent = function ({meet}) {
+interface AboutEventProps {
+    meet: IMeet | null
+}
+
+
+const AboutEvent: FC<AboutEventProps> = function ({meet}) {
   return (
     <div className="about_event container">
       <h1>О мероприятии</h1>

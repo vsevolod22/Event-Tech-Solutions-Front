@@ -1,10 +1,17 @@
-import React from "react";
+import React, {FC} from "react";
 import "./inputComment.css";
+import {IComment} from "../../types/types.tsx";
 
-const InputComment = function ({comments}) {
-  const formatDate = (dateString) => {
+interface InputCommentProps {
+  comments: IComment[] | null
+}
+
+
+
+const InputComment : FC<InputCommentProps> =  ({comments}) => {
+  const formatDate = (dateString : string) => {
     const date = new Date(dateString);
-    const options = {
+    const options : Intl.DateTimeFormatOptions = {
       year: 'numeric',
       month: 'long',
       day: 'numeric',

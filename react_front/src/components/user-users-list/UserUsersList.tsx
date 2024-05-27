@@ -1,8 +1,16 @@
-import React from "react";
+import React, {FC} from "react";
 import "./userUsersList.css";
 import {useNavigate} from "react-router-dom";
+import {IUser} from "../../types/types.tsx";
 
-const UserUsersList = function ({user}) {
+
+interface UserUsersListProps {
+    user: IUser
+}
+
+
+
+const UserUsersList : FC<UserUsersListProps> = ({user}) => {
   const navigate = useNavigate();
   return (
     <div onClick={() => navigate(`/profile/${user.id}`)} className="user_users_list">

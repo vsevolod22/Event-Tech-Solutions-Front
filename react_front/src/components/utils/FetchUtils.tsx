@@ -3,7 +3,7 @@ import axios, {AxiosResponse} from "axios"
 import { useState } from "react"
 
 import './style.css'
-import {AllMeetings, AllUserInfo, IAuth, IMeet} from "../../types/types";
+import {AllMeetings, AllUserInfo, IAuth, IMeet, IUser} from "../../types/types";
 
 
 
@@ -15,10 +15,10 @@ export class HttpApiMethods {
 
   // URL`s
   APIURL = "http://127.0.0.1:8000/api"
-  API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE1MjY2NjY3LCJpYXQiOjE3MTQ2NjE4NjcsImp0aSI6ImI2YTBkZjQ2MWYwNzQ0Zjk5NjcxZDMwZjJjNzJiNjk4IiwidXNlcl9pZCI6MX0.8Qqo1XXw33K_bf2vHdUFt1jCLsBKAW5KJYLSKz6oW1Y';
+  API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE3MzQzODc4LCJpYXQiOjE3MTY3MzkwNzgsImp0aSI6IjgyYWU5Yjg5ZTQ1YTQ5YTBhMzE0MGUwMzA3ZTg0ZTJlIiwidXNlcl9pZCI6MX0.6s9lrrF6Jhbm-wbrWZA0ABYI8OV0FSokgLBSCmmYnH0';
   
   // получение фмльма по ID
-  GetAllMeetings = async () :  Promise<AllMeetings>  => {
+  GetAllMeetings = async () :  Promise<AllMeetings | null> => {
     
     let innerUrl = this.APIURL + `/events/event/`
 
@@ -34,9 +34,10 @@ export class HttpApiMethods {
       return response.data; // Возвращаем данные из ответа
    } catch (error) {
       console.error(error);
+      return null
    }
   }
-  GetMeetingById = async (id : string) :  Promise<IMeet> => {
+  GetMeetingById = async (id : string) :  Promise<IMeet | null> => {
     
     let innerUrl = this.APIURL + `/events/event/${id}/`
 
@@ -52,6 +53,7 @@ export class HttpApiMethods {
       return response.data; // Возвращаем данные из ответа
    } catch (error) {
       console.error(error);
+      return null
    }
   }
   GetCommentsByMeet = async (id : string) => {
@@ -64,6 +66,7 @@ export class HttpApiMethods {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${this.API_KEY}`
+
         }
       });
       // console.log(response.data);
@@ -72,7 +75,7 @@ export class HttpApiMethods {
       console.error(error);
    }
   }
-  GetUserById = async (id: string) :  Promise<AllUserInfo> => {
+  GetUserById = async (id: number | string) :  Promise<AllUserInfo | null> => {
     
     let innerUrl = this.APIURL + `/users/user/${id}/`
 
@@ -88,9 +91,10 @@ export class HttpApiMethods {
       return response.data; // Возвращаем данные из ответа
    } catch (error) {
       console.error(error);
+      return null
    }
   }
-  GetUserAuth = async (data : IAuth) : Promise<AllUserInfo> => {
+  GetUserAuth = async (data : IAuth) : Promise<AllUserInfo | null> => {
     
     let innerUrl = this.APIURL + `/auth/login/`
 
@@ -101,9 +105,10 @@ export class HttpApiMethods {
       return response.data; // Возвращаем данные из ответа
    } catch (error) {
       console.error(error);
+      return null
    }
   }
-  GetUsersByMeet = async (id : string) => {
+  GetUsersByMeet = async (id : string) :  Promise<IUser[] | null> => {
       let innerUrl = this.APIURL + `/events/event/${id}/participants/`
       try {
           const response = await axios.get(innerUrl, {
@@ -116,6 +121,7 @@ export class HttpApiMethods {
           return response.data; // Возвращаем данные из ответа
       } catch (error) {
           console.error(error);
+          return null
       }
   }
   PostUserMeetReg = async (id : string) => {

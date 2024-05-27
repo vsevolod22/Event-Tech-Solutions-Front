@@ -1,15 +1,22 @@
-import React from "react";
+import React, {FC} from "react";
 import "./eventDetailed.css";
 import { useNavigate } from "react-router-dom";
 import SvgOnlineOffline from "../../svg/svg-online-offline/SvgOnlineOffline";
 import SvgClock from "../../svg/svg-clock/SvgCLock";
 import SvgDuration from "../../svg/svg-duration/SvgDuration";
 import Skeleton from '@mui/material/Skeleton';
-const EventDetailed = function ({meet}) {
+import {IMeet} from "../../types/types.tsx";
+
+interface EventDetailedProps {
+  meet: IMeet | null
+}
+
+
+const EventDetailed : FC<EventDetailedProps> =  ({meet})  => {
   const navigate_users_list = useNavigate();
-  const formatDate = (dateString) => {
+  const formatDate = (dateString : string) => {
     const date = new Date(dateString);
-    const options = {
+    const options : Intl.DateTimeFormatOptions = {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -41,18 +48,23 @@ const EventDetailed = function ({meet}) {
         <button type="submit" className="sign_up_event_btn">
           ЗАПИСАТЬСЯ НА МЕРОПРИЯТИЕ
         </button>
-        <div type="submit" className="link_event">
+        <button type="submit" className="link_event">
           Ссылка на мероприятие
-        </div>
+        </button>
         <button type="submit" className="download_video_event">
           Скачать видео
         </button>
-        <div
-          onClick={() => navigate_users_list(`/users-list/meet/${meet.id}`)}
-          className="list_users_event"
+
+        {meet ? <div
+            onClick={() => navigate_users_list(`/users-list/meet/${meet.id}`)}
+            className="list_users_event"
         >
           Список пользователей
-        </div>
+        </div> : <div
+            className="list_users_event"
+        >
+          Список пользователей
+        </div>}
       </div>
       <div className="second_event_detailed">
         {meet && meet.image ? <img className="preview_img" src={meet.image} alt="previewIMG"></img> : <div className="preview_img"></div>}

@@ -1,15 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, {FC, useEffect, useState} from "react";
 import "./specialist.css";
 import SvgBookLink from "../../svg/svg-book-link/SvgBookLink";
 import SvgTelegramLink from "../../svg/svg-telegram-link/SvgTelegramLink";
 import { HttpApiMethods } from '../utils/FetchUtils.tsx';
 import Skeleton from '@mui/material/Skeleton';
+import {AllUserInfo, IMeet} from "../../types/types.tsx";
 const httpApiMethods = new HttpApiMethods()
-const Specialist = function ({ meet }) {
-  const [speaker, setSpeaker] = useState(null);
+
+interface SpecialistProps {
+    meet: IMeet | null
+}
+
+
+const Specialist : FC<SpecialistProps> =  ({ meet }) => {
+  const [speaker, setSpeaker] = useState<AllUserInfo | null>(null);
   useEffect(() => {
     if (meet) {
-      const getMeet = async (id) => {
+      const getMeet = async (id : number) => {
     
         const newSpeaker = await httpApiMethods.GetUserById(id)
         console.log(newSpeaker);

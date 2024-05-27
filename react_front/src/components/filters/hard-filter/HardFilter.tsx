@@ -1,6 +1,6 @@
 import React from "react";
 import "./hardFilter.css";
-import SimpleFilter from "../simple-filter/SimpleFilter";
+import SimpleFilter from "../simple-filter/SimpleFilter.tsx";
 
 const Hardfilter = function () {
   return (
