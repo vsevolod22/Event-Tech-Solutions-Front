@@ -1,6 +1,6 @@
 import React from "react";
 import "./simpleFilter.css";
-import InputFindEvent from "../../UI/input-find-event/InputFindEvent";
+import InputFindEvent from "../../UI/input-find-event/InputFindEvent.tsx";
 
 const SimpleFilter = function () {
   return (

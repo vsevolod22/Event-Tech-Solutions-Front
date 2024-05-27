@@ -1,14 +1,21 @@
-import React from "react";
+import React, {FC} from "react";
 import "./card.css";
 import { useNavigate } from "react-router-dom";
 import SvgDurationCardEvent from "../../svg/svg-duration-card-event/SvgDurationCardEvent";
+import {IMeet} from "../../types/types.tsx";
 
-const Card = function ({ dataCard }) {
+
+interface CardProps {
+  dataCard : IMeet
+}
+
+
+const Card : FC<CardProps> = function ({ dataCard }) {
   const navigate = useNavigate();
   console.log(dataCard)
-  const formatDate = (dateString) => {
+  const formatDate = (dateString : string) => {
     const date = new Date(dateString);
-    const options = {
+    const options : Intl.DateTimeFormatOptions = {
       year: 'numeric',
       month: 'long',
       day: 'numeric',

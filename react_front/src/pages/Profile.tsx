@@ -1,11 +1,11 @@
 
-import Header from "../components/header/Header";
+import Header from "../components/header/Header.tsx";
 // @ts-ignore
 import DetailedProfile from "../components/detailed-profile/DetailedProfile.tsx";
-import YourChoice from "../components/your-choice/YourChoice";
-import SimpleFilter from "../components/filters/simple-filter/SimpleFilter";
-import YourEvent from "../components/your-event/YourEvent";
-import {FC} from "react";
+import YourChoice from "../components/your-choice/YourChoice.tsx";
+import SimpleFilter from "../components/filters/simple-filter/SimpleFilter.tsx";
+import YourEvent from "../components/your-event/YourEvent.tsx";
+import {FC, useState} from "react";
 interface ProfileProps {
     user: {role: number, reg: number}
 }
@@ -13,9 +13,13 @@ interface ProfileProps {
 
 
 const Profile: FC<ProfileProps> =  ({user}) => {
+    const [modal, setModal] = useState(0);
+    const getValueModal = (data: number) => {
+        setModal(data);
+    };
   return (
     <>
-      <Header user={user} />
+      <Header getData={getValueModal} user={user} />
       <section className="container first">
         <DetailedProfile />
       </section>

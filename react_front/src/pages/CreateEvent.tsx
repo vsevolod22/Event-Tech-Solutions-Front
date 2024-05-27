@@ -1,13 +1,25 @@
-import React from "react";
+import React, {FC, useState} from "react";
 import Header from "../components/header/Header";
 import "./createEvent.css";
 import SvgOnlineOffline from "../svg/svg-online-offline/SvgOnlineOffline";
 import SvgClock from "../svg/svg-clock/SvgCLock";
 
-const CreateEvent = function ({ user }) {
+interface CreateEventProps {
+  user : {
+    role: number,
+    reg: number,
+  }
+}
+
+
+const CreateEvent : FC<CreateEventProps> = ({ user }) => {
+  const [modal, setModal] = useState(0);
+  const getValueModal = (data : number) => {
+    setModal(data);
+  };
   return (
     <>
-      <Header user={user}></Header>
+      <Header getData={getValueModal} user={user}></Header>
       <form className="create_event container">
         <section className="main_section_create_event">
           <div className="main_section_create_event_column">
@@ -176,12 +188,12 @@ const CreateEvent = function ({ user }) {
           <button onClick={() => console.log("add")} className="btn_add_user">
             Добавить
           </button>
-          <buttton
+          <button
             onClick={() => console.log("cancel")}
             className="btn_cancel_add_user"
           >
             Отменить
-          </buttton>
+          </button>
         </div>
       </div>
       <div className="window_profile">

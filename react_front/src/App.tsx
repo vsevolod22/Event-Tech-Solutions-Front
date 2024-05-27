@@ -1,11 +1,11 @@
 import "./App.css";
 import React, { Component, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Main from "./pages/Main.jsx";
-import Event from "./pages/Event.jsx";
+import Main from "./pages/Main.tsx";
+import Event from "./pages/Event.tsx";
 import Profile from "./pages/Profile.tsx";
-import UsersList from "./pages/UsersList.jsx";
-import CreateEvent from "./pages/CreateEvent.jsx";
+import UsersList from "./pages/UsersList.tsx";
+import CreateEvent from "./pages/CreateEvent.tsx";
 
 function App() {
   const [user, setUser] = useState({

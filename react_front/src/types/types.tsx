@@ -16,6 +16,31 @@ export interface IAuth {
     password: string;
 }
 
+export interface IEventComment {
+    id: string,
+    name: string,
+    place: string,
+    time_end: TDateISO,
+    time_start: TDateISO,
+    image: string,
+    type: {
+        id: number,
+        name: string,
+    }
+
+}
+
+
+
+export interface IComment {
+    id: string,
+    user: IUser,
+    event: IEventComment,
+    comment: string,
+    created_at: TDateISO,
+}
+
+
 export interface AllUserInfo {
     role: string;
     id: string;
@@ -29,6 +54,7 @@ export interface AllUserInfo {
     mail: string;
     phone_number: string;
     groups: string[];
+    access: string | null
 }
 
 
@@ -38,13 +64,14 @@ export interface AllMeetings {
 
 export interface IUser {
     avatar: string,
-    firstName: string,
+    last_name: string,
     id: number,
-    lastName: string,
+    first_name: string,
     userName: string,
 }
 
 export interface IMeet {
+    id: string,
     description: string,
     duration: {
         hours: number,
@@ -64,7 +91,9 @@ export interface IMeet {
         id: number,
         name: string,
     }
-    userState: number
+    user_state: number,
+    image: string,
+    is_upcoming: boolean,
 
 
 
