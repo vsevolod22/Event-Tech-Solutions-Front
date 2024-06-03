@@ -27,13 +27,13 @@ const Login : FC<LoginProps> = function ({ visible, setVisible, getData }) {
 
 
 
-    const userName = usernameInput.value;
+    const username = usernameInput.value;
     const password = passwordInput.value;
     const email = '';
    
     // Собираем данные в объект
     const data = {
-      userName,
+      username,
        email,
        password
     };
@@ -45,7 +45,8 @@ const Login : FC<LoginProps> = function ({ visible, setVisible, getData }) {
       if (response && response.access) {
         // Выводим ответ сервера
         localStorage.setItem("token", response.access);
-        localStorage.setItem("id", response.id);
+        localStorage.setItem("id", response.user.id);
+        console.log(response)
       }
 
 
