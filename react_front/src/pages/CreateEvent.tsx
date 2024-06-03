@@ -3,7 +3,9 @@ import Header from "../components/header/Header";
 import "./createEvent.css";
 import SvgOnlineOffline from "../svg/svg-online-offline/SvgOnlineOffline";
 import SvgClock from "../svg/svg-clock/SvgCLock";
-
+import {IPostUser} from "../types/types.tsx";
+import {HttpApiMethods} from "../components/utils/FetchUtils.tsx";
+const httpApiMethods = new HttpApiMethods();
 interface CreateEventProps {
   user : {
     role: number,
@@ -17,10 +19,55 @@ const CreateEvent : FC<CreateEventProps> = ({ user }) => {
   const getValueModal = (data : number) => {
     setModal(data);
   };
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+    job: '',
+    avatar: '', // Add initial states for other fields as needed
+    vk: '',
+    telegram: '',
+    mail: '',
+    phone_number: '',
+  });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({...formData, [e.target.name]: e.target.value });
+  };
+  const handleSubmitEvent = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  }
+  const handleSubmitUser = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    // Constructing the IPostUser object
+    const postUser: IPostUser = {
+      username: formData.username,
+      password: formData.password,
+      job: formData.job,
+      avatar: formData.avatar,
+      vk: formData.vk,
+      telegram: formData.telegram,
+      mail: formData.mail,
+      phone_number: formData.phone_number,
+    };
+
+    // Calling the PostUser function with the constructed data
+    const result = await httpApiMethods.PostUser(postUser);
+    console.log(result); // Handle the result as needed
+    setFormData({
+      username: '',
+      password: '',
+      job: '',
+      avatar: '', // Add initial states for other fields as needed
+      vk: '',
+      telegram: '',
+      mail: '',
+      phone_number: '',
+    })
+  };
   return (
     <>
       <Header getData={getValueModal} user={user}></Header>
-      <form className="create_event container">
+      <form className="create_event container" onSubmit={handleSubmitEvent}>
         <section className="main_section_create_event">
           <div className="main_section_create_event_column">
             <input
@@ -96,8 +143,9 @@ const CreateEvent : FC<CreateEventProps> = ({ user }) => {
 
             <div className="adds_specialist_inputs">
               <input
-                placeholder="ФИО специалиста"
-                className="add_name_number_mail_specialist"
+
+                  placeholder="ФИО специалиста"
+                  className="add_name_number_mail_specialist"
               ></input>
               <textarea
                 placeholder="Описание специалиста"
@@ -129,7 +177,7 @@ const CreateEvent : FC<CreateEventProps> = ({ user }) => {
           </button>
         </section>
       </form>
-      <div className="add_user">
+      <form className="add_user" onSubmit={handleSubmitUser}>
         <div className="header_add_user">
           <p>Добавление пользователя</p>
           <div
@@ -154,38 +202,74 @@ const CreateEvent : FC<CreateEventProps> = ({ user }) => {
           <div className="add_logo_user"></div>
           <div className="adds_inputs_user">
             <input
-              className="input_add_user"
-              type="text"
-              placeholder="ФИО специалиста/сотрудника"
+                name="username"
+                onChange={handleChange}
+                value={formData.username}
+                className="input_add_user"
+                type="text"
+                placeholder="ФИО специалиста/сотрудника"
             />
             <input
-              className="input_add_user"
-              type="text"
-              placeholder="Должность"
+                name="password"
+                onChange={handleChange}
+                value={formData.password}
+                className="input_add_user"
+                type="password"
+                placeholder="Пароль"
             />
-            <select
-              defaultValue="default_value_role"
-              className="select_add_user"
-              name="role"
-              id=""
-            >
-              <option
-                disabled
-                style={{ display: "none" }}
-                value="default_value_role"
-              >
-                Роль
-              </option>
-              <option value="user">Пользователь</option>
-              <option value="event-manager">Ивент-менеджер</option>
-              <option value="admin">Админ</option>
-            </select>
-            <input className="input_add_user" type="text" placeholder="Почта" />
-            <input className="input_add_user" type="text" placeholder="TG" />
+            <input
+                name="job"
+                onChange={handleChange}
+                value={formData.job}
+                className="input_add_user"
+                type="text"
+                placeholder="Должность"
+            />
+            {/*<select*/}
+            {/*    defaultValue="default_value_role"*/}
+            {/*    className="select_add_user"*/}
+            {/*    name="role"*/}
+            {/*    id=""*/}
+            {/*>*/}
+            {/*  <option*/}
+            {/*      disabled*/}
+            {/*      style={{display: "none"}}*/}
+            {/*      value="default_value_role"*/}
+            {/*  >*/}
+            {/*    Роль*/}
+            {/*  </option>*/}
+            {/*  <option value="user">Пользователь</option>*/}
+            {/*  <option value="event-manager">Ивент-менеджер</option>*/}
+            {/*  <option value="admin">Админ</option>*/}
+            {/*</select>*/}
+            <input
+                name="mail"
+                onChange={handleChange}
+                value={formData.mail}
+                className="input_add_user"
+                type="text"
+                placeholder="Почта"
+            />
+            <input
+                name="telegram"
+                onChange={handleChange}
+                value={formData.telegram}
+                className="input_add_user"
+                type="text"
+                placeholder="TG"
+            />
+            <input
+                name="phone_number"
+                onChange={handleChange}
+                value={formData.phone_number}
+                className="input_add_user"
+                type="text"
+                placeholder="Номер телефона"
+            />
           </div>
         </div>
         <div className="add_user_btns">
-          <button onClick={() => console.log("add")} className="btn_add_user">
+          <button type="submit" className="btn_add_user">
             Добавить
           </button>
           <button
@@ -195,7 +279,7 @@ const CreateEvent : FC<CreateEventProps> = ({ user }) => {
             Отменить
           </button>
         </div>
-      </div>
+      </form>
       <div className="window_profile">
         <p>Профиль</p>
         <p>Настройки</p>
