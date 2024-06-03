@@ -8,10 +8,14 @@ const SimpleFilter = function () {
       <InputFindEvent />
       <div className="selects">
         <select name="actuale_select" id="" className="actuale_select">
-          <option value="">актуальность</option>
+          <option value="">
+            <p>актуальность</p>
+          </option>
         </select>
         <select name="type_event_select" id="" className="type_event_select">
-          <option value="">тип меропрития</option>
+          <option value="">
+            <p>тип меропрития</p>
+          </option>
         </select>
       </div>
     </div>

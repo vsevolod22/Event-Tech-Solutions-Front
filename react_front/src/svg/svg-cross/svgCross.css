@@ -1,3 +1,4 @@
 .svg_cross {
     cursor: pointer;
+    display: flex;
 }

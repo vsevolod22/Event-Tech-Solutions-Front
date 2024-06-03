@@ -1,11 +1,11 @@
 .page_users_list{
-    padding-top: 150px;
+    padding-top: 7.813vw;
 }
 
 .users_list{
-    padding-top: 114px;
+    padding-top: 5.938vw;
     display: flex;
     flex-wrap: wrap;
-    gap: 105px;
+    gap: 5.469vw;
     justify-content: space-between;
 }

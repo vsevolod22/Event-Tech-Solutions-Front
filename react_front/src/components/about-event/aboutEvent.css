@@ -1,20 +1,21 @@
 .about_event {
   display: flex;
   flex-flow: column;
-  gap: 68px;
-  width: 1658px;
-}
+  gap: 3.542vw;
+  width: 86.354vw;
+  margin-bottom: 8.906vw;
 
-.about_event h1 {
-  color: rgba(0, 0, 0, 1);
-  line-height: 68.26px;
-  font-size: 56px;
-  font-weight: 400;
-}
+  & h1 {
+    color: rgba(0, 0, 0, 1);
+    line-height: 3.555vw;
+    font-size: 2.917vw;
+    font-weight: 400;
+  }
 
-.about_event p {
-  color: rgba(0, 0, 0, 0.9);
-  line-height: 27.6px;
-  font-size: 24px;
-  font-weight: 400;
+  & p {
+    color: rgba(0, 0, 0, 0.9);
+    line-height: 1.438vw;
+    font-size: 1.25vw;
+    font-weight: 400;
+  }
 }

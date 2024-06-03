@@ -7,7 +7,7 @@ const AboutEvent = function ({meet}) {
     <div className="about_event container">
       <h1>О мероприятии</h1>
       <p>
-        {meet && meet.description ? meet.description : <Skeleton variant="text" sx={{ fontSize: '24px' }} />}
+        {meet && meet.description ? meet.description : <Skeleton variant="text" sx={{ fontSize: '1.25vw' }} />}
       </p>
     </div>
   );

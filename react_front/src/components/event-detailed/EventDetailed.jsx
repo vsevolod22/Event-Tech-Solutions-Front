@@ -23,19 +23,19 @@ const EventDetailed = function ({meet}) {
   return (
     <form className="event_detailed container">
       <div className="first_event_detailed">
-        <h1>{meet && meet.name ? meet.name : <Skeleton variant="text" sx={{ fontSize: '32px' }} />} </h1>
-        <div className="type_event">{meet && meet.type.name ? meet.type.name : <Skeleton variant="rounded" width={114} height={38} />}</div>
+        <h1>{meet && meet.name ? meet.name : <Skeleton variant="text" sx={{ fontSize: '1.667vw' }} />} </h1>
+        <div className="type_event">{meet && meet.type.name ? meet.type.name : <Skeleton variant="rounded" width="5.938vw" height="1.979vw" />}</div>
         <div className="online_offline">
           <SvgOnlineOffline />
           <p>Онлайн</p>
         </div>
         <div className="count_month_year_time">
            <SvgClock />
-          <p>{meet && meet.time_start ? formatDate(meet.time_start) : <Skeleton variant="text" sx={{ fontSize: '32px' }} />}</p>
+          <p>{meet && meet.time_start ? formatDate(meet.time_start) : <Skeleton variant="text" sx={{ fontSize: '1.667vw' }} />}</p>
         </div>
         <div className="event_duration">
            <SvgDuration />
-          <p>{meet && meet.duration.hours ? meet.duration.hours : <Skeleton variant="text" sx={{ fontSize: '16px' }} />}</p>
+          <p>{meet && meet.duration.hours ? meet.duration.hours : <Skeleton variant="text" sx={{ fontSize: '0.833vw' }} />}</p>
 
         </div>
         <button type="submit" className="sign_up_event_btn">

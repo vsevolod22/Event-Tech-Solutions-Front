@@ -1,145 +1,137 @@
 .card {
-  cursor:pointer;
-  width: 343px;
-  height: 599px;
+  cursor: pointer;
+  width: 17.865vw;
+  height: 31.198vw;
   display: flex;
-  gap: 10px;
+  gap: 0.521vw;
   flex-flow: column;
 }
 
 .image_content {
-  padding: 15px 9px 0 0;
-  width: 343px;
-  height: 340px;
+  padding: 0.781vw 0.469vw 0 0;
+  width: 17.865vw;
+  height: 1.146vw;
   /* background: url(); */
 
   display: flex;
   flex-flow: column;
   align-items: flex-end;
-  gap: 257px;
+  gap: 13.385vw;
 }
 
 .status_card_event_green {
-  width: 130px;
-  height: 40px;
+  width: 6.771vw;
+  height: 2.083vw;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #e7ffd2;
   color: #60ad1e;
-  line-height: 15.85px;
-  font-size: 13px;
-  border-radius: 10px;
+  line-height: 0.826vw;
+  font-size: 0.677vw;
+  border-radius: 0.521vw;
   font-weight: 400;
-  font-family: "Montserrat";
 }
 
 .status_card_event_red {
-  width: 130px;
-  height: 40px;
+  width: 6.771vw;
+  height: 2.083vw;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #ffd2d2;
   color: #ad1e1e;
-  line-height: 15.85px;
-  font-size: 13px;
-  border-radius: 10px;
+  line-height: 0.826vw;
+  font-size: 0.677vw;
+  border-radius: 0.521vw;
   font-weight: 400;
-  font-family: "Montserrat";
 }
 
 .duration_card_event {
   display: flex;
   align-items: center;
-  height: 27px;
-  width: 53px;
-  gap: 5px;
+  height: 1.406vw;
+  width: 2.76vw;
+  gap: 0.26vw;
 }
 
 .text_duration_card_event {
   color: #ffdd00;
-  font-size: 14px;
-  line-height: 17.07px;
+  font-size: 0.729vw;
+  line-height: 0.889vw;
   font-weight: 800;
-  font-family: "Montserrat";
 }
 
 .description_content {
-  height: 259px;
-  width: 343px;
-  margin-top: 29px;
+  height: 13.49vw;
+  width: 17.865vw;
+  margin-top: 1.51vw;
 }
 
 .description_content_statuses {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 26px;
+  margin-bottom: 1.354vw;
 }
 
 .type_status {
-  width: 114.33px;
-  height: 38px;
+  width: 5.955vw;
+  height: 1.979vw;
   color: #888888;
-  border: solid 1px #888888;
-  border-radius: 10px;
+  border: solid 0.052vw #888888;
+  border-radius: 0.521vw;
   font-weight: 400;
-  font-size: 15px;
-  line-height: 18.29px;
-  /* font-family */
+  font-size: 0.781vw;
+  line-height: 0.953vw;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .reg_event_red {
-  width: 124px;
-  height: 31px;
+  width: 6.458vw;
+  height: 1.615vw;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  border-radius: 10px;
+  border-radius: 0.521vw;
   background-color: #ffd2d2;
-  font-size: 10px;
+  font-size: 0.521vw;
   font-weight: 400;
-  line-height: 12.19px;
+  line-height: 0.635vw;
   color: #ad1e1e;
 }
 
 .reg_event_green {
-  width: 124px;
-  height: 31px;
+  width: 6.458vw;
+  height: 1.615vw;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  border-radius: 10px;
+  border-radius: 0.521vw;
   background-color: #e7ffd2;
-  font-size: 10px;
+  font-size: 0.521vw;
   font-weight: 400;
-  line-height: 12.19px;
+  line-height: 0.635vw;
   color: #60ad1e;
 }
 
 .description_content_text {
-  font-size: 24px;
-  line-height: 29.26px;
+  font-size: 1.25vw;
+  line-height: 1.524vw;
   font-weight: 400;
-  /* font-family */
   color: black;
-  width: 343px;
-  height: 87px;
-  margin-bottom: 55px;
+  width: 17.865vw;
+  height: 4.531vw;
+  margin-bottom: 2.865vw;
 }
 
 .time_event {
   color: #888888;
-  line-height: 26.82px;
-  font-size: 22px;
+  line-height: 1.397vw;
+  font-size: 1.146vw;
   font-weight: 400;
-  /* font-family */
-  width: 343px;
-  height: 27px;
+  width: 17.865vw;
+  height: 1.406vw;
 }

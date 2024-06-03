@@ -8,7 +8,7 @@ const AdminHeader = function () {
     <>
       <Logo />
       <div className="privilege_navbar">
-        <ul>
+        <ul> 
           <li>Мероприятия</li>
           <li>Пользователи</li>
           <li>Статистика</li>

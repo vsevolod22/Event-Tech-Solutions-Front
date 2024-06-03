@@ -1,30 +1,30 @@
 .user_users_list {
   display: flex;
-  gap: 41px;
-  width: 600px;
+  gap: 2.135vw;
+  width: 31.25vw;
 }
 
 .logo_role {
   display: flex;
-  gap: 26px;
+  gap: 1.354vw;
   flex-direction: column;
 }
 
 .logo_role_img {
-  border-radius: 81px;
-  width: 171px;
-  height: 171px;
+  border-radius:   4.219vw;
+  width: 8.906vw;
+  height: 8.906vw;
   background-color: black;
 }
 
 .logo_role_text {
   font-weight: 600;
-  font-size: 19.42px;
-  line-height: 23.67px;
+  font-size: 1.011vw;
+  line-height: 1.233vw;
 }
 
 .user_info{
     display: flex;
     flex-direction: column;
-    gap: 22.22px;
+    gap:1.157vw;
 }

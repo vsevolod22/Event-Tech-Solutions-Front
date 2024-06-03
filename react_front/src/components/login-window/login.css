@@ -17,73 +17,73 @@
 
 .content_login_window {
     background: white;
-    width: 1290px;
-    border: 5px solid rgba(96, 116, 175, 1);
-    height: 771px;
+    width: 67.188vw;
+    border: 0.26vw solid rgba(96, 116, 175, 1);
+    height: 40.156vw;
 }
 
 .header_login_window {
   display: flex;
-  padding: 40px 40px 0 0;
+  padding: 2.083vw 2.083vw 0 0;
   justify-content: flex-end;
-  margin-bottom: 45px;
+  margin-bottom: 2.344vw;
 }
 
 .login_form {
   display: flex;
   flex-flow: column;
-  gap: 75px;
+  gap: 3.906vw;
 }
 
 .login_form h1 {
   font-weight: 600;
-  font-size: 75px;
+  font-size: 3.906vw;
   color: rgba(96, 116, 175, 1);
   text-align: center;
-  line-height: 91.43px;
+  line-height: 4.762vw;
 }
 
 .login_password_name {
   display: flex;
   align-items: center;
   justify-content: space-between; 
-  padding-left: 85px;
-  width: 1023px;
+  padding-left: 4.427vw;
+  width: 53.281vw;
 }
 
 
 .login_password_name input {
-  width: 755px;
-  height: 86px;
-  line-height: 42.67px;
+  width: 39.323vw ;
+  height: 4.479vw;
+  line-height: 2.222vw;
   font-weight: 600;
-  font-size: 35px;
+  font-size: 1.823vw;
   color: black;
-  border: 3px solid rgba(96, 116, 175, 1);
-  border-radius: 100px;
-  padding-left: 35px;
+  border: 0.156vw solid rgba(96, 116, 175, 1);
+  border-radius: 5.208vw;
+  padding-left: 1.823vw;
   display: flex;
   align-items: center;
 }
 
 .login_password_name p {
   color: rgba(96, 116, 175, 1);
-  line-height: 42.67px;
+  line-height: 2.222vw;
   font-weight: 600;
-  font-size: 35px;
+  font-size: 1.823vw;
 }
 
 .btn_login {
-    width: 300px;
-    height: 54px;
+    width: 15.625vw;
+    height: 2.813vw;
     display: flex;
     align-items: center;
     justify-content: center;
     color: rgba(71, 166, 124, 1);
-    font-size: 35px;
-    line-height: 42.67px;
+    font-size: 1.823vw;
+    line-height: 2.222vw;
     font-weight: 600;
-    border: solid 3px rgba(71, 166, 124, 1);
-    border-radius: 100px;
-    margin: 0 495px;
+    border: solid 0.156vw rgba(71, 166, 124, 1);
+    border-radius: 5.208vw;
+    margin: 0 25.781vw;
 }

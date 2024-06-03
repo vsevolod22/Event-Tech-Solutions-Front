@@ -15,7 +15,7 @@ const InputComment = function ({comments}) {
     return date.toLocaleString('ru-RU', options); // Можно использовать locale-specific formatting
   };
   return (
-    <section>
+    <section className="inputCommMargin">
       <div className="input_comm_block container">
         <h1>Комментарии</h1>
         <p>Количество комментариев: {comments && comments.length}</p>

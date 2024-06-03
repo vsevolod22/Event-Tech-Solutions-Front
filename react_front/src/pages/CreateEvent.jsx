@@ -23,7 +23,7 @@ const CreateEvent = function ({ user }) {
                   onClick={() => console.log("+")}
                   className="add_type_event_create_event"
                 >
-                  +
+                  <p>+</p>
                 </button>
               </div>
               <div className="type_of_conduct">
@@ -103,9 +103,15 @@ const CreateEvent = function ({ user }) {
             <div className="adds_specialist_materials_links">
               <p>Ссылки на материалы специалиста</p>
               <div className="circle_links">
-                <div className="add_specialist_material_link">+</div>
-                <div className="add_specialist_material_link">+</div>
-                <div className="add_specialist_material_link">+</div>
+                <div className="add_specialist_material_link">
+                  <p>+</p>
+                </div>
+                <div className="add_specialist_material_link">
+                  <p>+</p>
+                </div>
+                <div className="add_specialist_material_link">
+                  <p>+</p>
+                </div>
               </div>
             </div>
           </div>
@@ -183,11 +189,6 @@ const CreateEvent = function ({ user }) {
             Отменить
           </buttton>
         </div>
-      </div>
-      <div className="window_profile">
-        <p>Профиль</p>
-        <p>Настройки</p>
-        <p>Выйти</p>
       </div>
       <div className="window_notice">
         <div className="window_notice_header">

@@ -1,11 +1,7 @@
-.container {
-  padding: 0 200px;
-}
-
 .header {
-  padding: 0 200px;
-  width: 1920px;
-  height: 120px;
+  padding: 0 10.417vw;
+  width: 100vw;
+  height: 6.25vw;
   display: flex;
   align-items: center;
   justify-content: space-between;

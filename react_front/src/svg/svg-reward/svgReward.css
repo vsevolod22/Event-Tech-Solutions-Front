@@ -1,7 +1,6 @@
-.svg_duration {
-  width: 1.563vw;
-  height: 1.225vw;
+.reward_svg {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 0.104vw;
 }

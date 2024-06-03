@@ -1,13 +1,13 @@
 .solo_input_filter {
-  width: 1520px;
-  height: 70px;
-  border: 1px solid rgba(208, 210, 216, 1);
-  border-radius: 10px;
-  padding-left: 78px;
+  width: 79.167vw;
+  height: 3.646vw;
+  border: 0.052vw solid rgba(208, 210, 216, 1);
+  border-radius: 0.521vw;
+  padding-left: 4.063vw;
   display: flex;
   align-items: center;
-  font-size: 22px;
+  font-size: 1.146vw;
   color: rgba(136, 136, 136, 1);
-  line-height: 26.82px;
+  line-height: 1.397vw;
   font-weight: 400;
 }

@@ -1,22 +1,29 @@
 .header_logo {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-width: 454px;
-    max-height: 73px;
-  }
-  
-  .svg_logo {
-    width: 27px;
-  }
-  
-  .dunice_logo img {
-    width: 197px;
-    height: 73px;
-  }
-  
-  .event_tech_logo {
-    height: 73px;
-    width: 176px;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 23.646vw;
+  max-height: 3.802vw;
+}
+
+.svg_logo {
+  width: 1.406vw;
+  display: flex;
+}
+
+.dunice_logo {
+  display: flex;
+}
+.event_tech_logo {
+  display: flex;
+}
+
+.dunice_logo img {
+  width: 10.26vw;
+  height: 3.802vw;
+}
+
+.event_tech_logo {
+  height: 3.802vw;
+  width: 9.167vw;
+}

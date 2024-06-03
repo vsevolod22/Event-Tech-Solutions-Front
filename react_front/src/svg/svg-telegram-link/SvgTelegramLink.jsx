@@ -1,10 +1,10 @@
 import React from "react";
 const SvgTelegramLink = function () {
   return (
-    <div className="telegram_link_svg">
+    <div className="telegram_link_svg" style={{display: "flex"}}>
       <svg
-        width="85"
-        height="73"
+        width="4.427vw"
+        height="3.802vw"
         viewBox="0 0 85 73"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

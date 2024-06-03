@@ -5,8 +5,8 @@ const SvgDuration = function () {
   return (
     <div className="svg_duration">
       <svg
-        width="19"
-        height="24"
+        width="0.99vw"
+        height="1.25vw"
         viewBox="0 0 19 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

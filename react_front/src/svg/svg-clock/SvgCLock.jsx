@@ -3,8 +3,8 @@ import './svgClock.css'
 const SvgClock = function(){
     return<div className="svg_clock">
     <svg
-      width="30"
-      height="26"
+      width="1.563vw"
+      height="1.354vw"
       viewBox="0 0 30 26"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

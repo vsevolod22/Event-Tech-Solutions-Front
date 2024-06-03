@@ -1,5 +1,6 @@
 
 import Header from "../components/header/Header";
+import './profile.css';
 // @ts-ignore
 import DetailedProfile from "../components/detailed-profile/DetailedProfile.tsx";
 import YourChoice from "../components/your-choice/YourChoice";
@@ -15,9 +16,9 @@ interface ProfileProps {
 const Profile: FC<ProfileProps> =  ({user}) => {
   return (
     <>
-      <Header user={user} />
-      <section className="container first">
-        <DetailedProfile />
+        <Header user={user} />
+        <section className="container first">
+          <DetailedProfile />
       </section>
       <section className="container second">
         <YourChoice />

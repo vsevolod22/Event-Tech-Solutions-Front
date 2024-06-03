@@ -9,18 +9,23 @@ import CreateEvent from "./pages/CreateEvent.jsx";
 
 function App() {
   const [user, setUser] = useState({
-    reg: 1,
-    role: 1
-    ,
+    reg: 2,
+    role: 2,
   });
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main user={user} />}></Route>
         <Route path="/event/:id" element={<Event user={user} />}></Route>
-        <Route path="/create-event" element={<CreateEvent user={user} />}></Route>
+        <Route
+          path="/create-event"
+          element={<CreateEvent user={user} />}
+        ></Route>
         <Route path="/profile/:id" element={<Profile user={user} />}></Route>
-        <Route path="/users-list/meet/:id" element={<UsersList user={user} />}></Route>
+        <Route
+          path="/users-list/meet/:id"
+          element={<UsersList user={user} />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   );

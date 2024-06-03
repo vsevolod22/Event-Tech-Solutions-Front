@@ -8,8 +8,8 @@ const Logo = function () {
       <div className="header_logo">
         <div className="dunice_logo">
           <svg
-            width="197"
-            height="73"
+            width="10.26vw"
+            height="3.802vw"
             viewBox="0 0 197 73"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -39,8 +39,8 @@ const Logo = function () {
         </div>
         <div className="svg_logo">
           <svg
-            width="31"
-            height="30"
+            width="1.615vw"
+            height="1.563vw"
             viewBox="0 0 31 30"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -53,8 +53,8 @@ const Logo = function () {
         </div>
         <div className="event_tech_logo">
           <svg
-            width="176"
-            height="73"
+            width="9.167vw"
+            height="3.802vw"
             viewBox="0 0 176 73"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

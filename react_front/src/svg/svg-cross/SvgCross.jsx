@@ -5,8 +5,8 @@ const SvgCross = function ({getData}) {
   return (
     <div onClick={() => getData(0)} className="svg_cross">
       <svg
-        width="66"
-        height="66"
+        width="3.438vw"
+        height="3.438vw"
         viewBox="0 0 66 66"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

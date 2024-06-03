@@ -2,10 +2,10 @@ import React from "react";
 
 const SvgNotice = function () {
   return (
-    <button className="notice">
+    <button className="notice" style={{ display: "flex" }}>
       <svg
-        width="41"
-        height="41"
+        width="2.135vw"
+        height="2.135vw"
         viewBox="0 0 41 41"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

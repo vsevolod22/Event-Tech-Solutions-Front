@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/header/Header";
 import { useParams } from "react-router-dom";
 
-import { HttpApiMethods } from '../components/utils/FetchUtils.tsx';
+import { HttpApiMethods } from "../components/utils/FetchUtils.tsx";
 
 import axios from "axios";
 import Specialist from "../components/specialist/Specialist";
@@ -25,29 +25,34 @@ function Event({ user }) {
       setMeet(newMeet);
     };
     const getComments = async (id) => {
-    
-      const newComments = await httpApiMethods.GetCommentsByMeet(id)
+      const newComments = await httpApiMethods.GetCommentsByMeet(id);
       console.log(newComments);
       setComments(newComments);
-        
-        
-
     };
     getMeet(id);
     getComments(id);
-
   }, [id]);
 
   return (
     <>
       <Header user={user} />
       <Login></Login>
-      <EventDetailed meet={meet} />
+      <EventDetailed meet={meet}/>
       <AboutEvent meet={meet} />
       <Specialist meet={meet} />
 
       <InputComment meet={meet} comments={comments} />
-      <h1>Ещё меропрития</h1>
+      <h1
+        className="container"
+        style={{
+          color: "rgba(0, 0, 0, 1)",
+          fontWeight: 400,
+          lineHeight: "3.555vw",
+          fontSize: "2.917vw",
+        }}
+      >
+        Ещё меропрития
+      </h1>
       <Events />
     </>
   );

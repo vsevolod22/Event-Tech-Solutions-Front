@@ -31,10 +31,10 @@ const Specialist = function ({ meet }) {
         <div className="about_specialist">
           {speaker && speaker.avatar ? <img className="logo_specialist" src={speaker.avatar} alt="avatar"></img> : <div className="logo_specialist"></div>}
           <div className="data_specialist">
-            <h1>{speaker && speaker.first_name && speaker.last_name ?  speaker.last_name + ' ' + speaker.first_name :  <Skeleton variant="text" sx={{ fontSize: '36px' }} />}</h1>
-            <h2>{speaker && speaker.job ?  speaker.job :  <Skeleton variant="text" sx={{ fontSize: '32px' }} />}</h2>
-            <p>{speaker && speaker.phone_number ?  speaker.phone_number :  <Skeleton variant="text" sx={{ fontSize: '22px' }} />}</p>
-            <p>{speaker && speaker.mail ?  speaker.mail :  <Skeleton variant="text" sx={{ fontSize: '22px' }} />}</p>
+            <h1>{speaker && speaker.first_name && speaker.last_name ?  speaker.last_name + ' ' + speaker.first_name :  <Skeleton variant="text" sx={{ fontSize: '1.875vw' }} />}</h1>
+            <h2>{speaker && speaker.job ?  speaker.job :  <Skeleton variant="text" sx={{ fontSize: '1.667vw' }} />}</h2>
+            <p>{speaker && speaker.phone_number ?  speaker.phone_number :  <Skeleton variant="text" sx={{ fontSize: '1.146vw' }} />}</p>
+            <p>{speaker && speaker.mail ?  speaker.mail :  <Skeleton variant="text" sx={{ fontSize: '1.146vw' }} />}</p>
           </div>
         </div>
         <div className="specialist_links">

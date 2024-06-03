@@ -1,100 +1,69 @@
 .human_frame {
-  width: 923px;
-  height: 264px;
+  width: 48.073vw;
+  height: 13.75vw;
   display: flex;
-  margin-top: 150px;
+  margin-top: 7.813vw;
 }
 
 .photo_card {
   display: flex;
   flex-flow: column;
   align-items: center;
-  margin-right: 50px;
+  margin-right: 2.604vw;
   justify-content: space-between;
 }
 
 .human_logo {
-  width: 212px;
-  height: 212px;
+  width: 11.042vw;
+  height: 11.042vw;
   border-radius: 50%;
   background-color: black;
 }
 
 .role p {
-  font-size: 24px;
+  font-size: 1.25vw;
   font-weight: 600;
-  line-height: 29.26px;
+  line-height: 1.524vw;
 }
 
 .human_data {
   display: flex;
   flex-flow: column;
   justify-content: space-between;
-}
 
-.human_data h1 {
-  color: #000000;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 43.88px;
-}
+  & h1 {
+    color: #000000;
+    font-weight: 700;
+    font-size: 1.875vw;
+    line-height: 2.285vw;
+  }
 
-.human_data h1::first-letter {
-  color: #47a67c;
-}
+  & h1::first-letter {
+    color: #47a67c;
+  }
 
-.human_data h2 {
-  font-weight: 400;
+  & h2 {
+    font-weight: 400;
 
-  font-size: 32px;
-  line-height: 39.01px;
-  color: black;
-}
+    font-size: 1.667vw;
+    line-height: 2.032vw;
+    color: black;
+  }
 
-.human_data p {
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24.38px;
-  color: black;
-}
-
-.edit {
-  width: 34px;
-  height: 34px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 12px;
+  & p {
+    font-weight: 400;
+    font-size: 1.042vw;
+    line-height: 1.27vw;
+    color: black;
+  }
 }
 
 .exp {
   display: flex;
   align-items: center;
-  gap: 8px;
-}
 
-.lvl {
-  display: flex;
-  align-items: center;
-}
-
-.lvl p {
-  font-size: 14px;
-  line-height: 17.07px;
-  font-weight: 400;
-  color: black;
-}
-
-.exp_scale {
-  width: 503.5px;
-  border: 5px solid #47A67C;;
-  border-radius: 5px;
-
-}
-
-.reward_svg {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 2px;
+  & p {
+  }
+  & h3 {
+  }
 }

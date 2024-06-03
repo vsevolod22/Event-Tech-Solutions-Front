@@ -1,10 +1,10 @@
 import React from "react";
 const SvgBookLink = function () {
   return (
-    <div className="book_link_svg">
+    <div className="book_link_svg" style={{display: "flex"}}>
       <svg
-        width="51"
-        height="57"
+        width="2.656vw"
+        height="2.969vw"
         viewBox="0 0 51 57"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

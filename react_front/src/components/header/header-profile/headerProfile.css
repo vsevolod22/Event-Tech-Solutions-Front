@@ -1,13 +1,43 @@
 .profile {
-    border-radius: 30px;
-    width: 60px;
-    height: 60px;
-    background-color: black;
+  border-radius: 1.563vw;
+  width: 3.125vw;
+  height: 3.125vw;
+  background-color: black;
+  display: flex;
+}
+.navbar {
+  width: 8.906vw;
+  height: 3.125vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-menu-container {
+  position: relative;
+  display: inline-block;
+}
+
+.window_profile {
+  width: 10.156vw;
+  height: 8.177vw;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  padding-left: 1.354vw;
+  gap: 0.938vw;
+  border: 0.052vw solid #ccc; /* Граница по умолчанию */
+  border-top: none; /* Убираем верхнюю границу */
+  border-radius: 0.521vw;
+background-color: white;
+  position: absolute;
+  top: 125%;
+  right: 0;
+  z-index: 1000;
+
+  & p {
+    font-size: 1.146vw;
+    font-weight: 400;
+    line-height: 1.397vw;
   }
-  .navbar {
-    width: 171px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+}
