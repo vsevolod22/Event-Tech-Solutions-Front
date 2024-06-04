@@ -1,6 +1,5 @@
 
-import Header from "../components/header/Header.tsx";
-import './profile.css';
+import Header from "../components/header/Header";
 // @ts-ignore
 import DetailedProfile from "../components/detailed-profile/DetailedProfile.tsx";
 import YourChoice from "../components/your-choice/YourChoice.tsx";
