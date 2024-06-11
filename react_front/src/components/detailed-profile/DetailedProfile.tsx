@@ -72,10 +72,8 @@ const DetailedProfile: FC = function () {
           )}
         </p>
         <div className="exp">
-          <p>Количество баллов: </p>
-          <h3>
-            {/* баллы */}
-          </h3>
+          <pre><p>Количество баллов:  </p></pre>
+          <h3>56</h3>
         </div>
       </div>
       <SvgPencil></SvgPencil>
