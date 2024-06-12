@@ -1,0 +1,62 @@
+.page_users_list {
+  padding-top: 7.813vw;
+}
+
+.users_list {
+  padding-top: 5.938vw;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5.469vw;
+  justify-content: space-between;
+}
+
+.add_user_users_list {
+  width: 37.031vw;
+  height: 11.302vw;
+  border: 0.052vw rgba(208, 210, 216, 1) solid;
+  border-radius: 0.521vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add_user_users_list_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  gap: 1.771vw;
+
+  & button {
+    width: 2.604vw;
+    height: 2.604vw;
+    background-color: rgba(71, 166, 124, 1);
+    border-radius: 50%;
+
+    & p {
+      font-size: 1.875vw;
+      line-height: 2.285vw;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 1);
+    }
+  }
+
+  & h3 {
+    color: rgba(0, 0, 0, 1);
+    font-size: 1.25vw;
+    font-weight: 400;
+    z-index: 1;
+    line-height: 1.524vw;
+
+    &::before {
+      content: attr(data-text);
+      position: absolute;
+      top: 30;
+      font-weight: 900;
+      left: 20;
+      font-size: 1.25vw;
+      z-index: -1;
+      color: rgba(71, 166, 124, 1);
+    }
+  }
+}
