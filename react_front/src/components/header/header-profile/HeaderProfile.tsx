@@ -21,6 +21,12 @@ const HeaderProfile = function () {
     }
   };
 
+  const logOut = () => {
+    closeMenu()
+    localStorage.clear()
+    window.location.reload()
+  }
+
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -40,7 +46,7 @@ const HeaderProfile = function () {
             <Link onClick={closeMenu}>
               <p>Настройки</p>
             </Link>
-            <Link onClick={closeMenu}>
+            <Link onClick={logOut}>
               <p>Выйти</p>
             </Link>
           </div>

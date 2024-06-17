@@ -18,9 +18,9 @@ const Header : FC<HeaderProps> =  ({user, getData}) => {
   return (
     <>
       <div className="header">
-        {localStorage.getItem("token") && localStorage.getItem("id") ? (
+        {localStorage.getItem("token") && localStorage.getItem("groups") != 'Администраторы' && localStorage.getItem("id") ? (
           <RegHeader />
-        ) : user.reg && user.role === 2 ? (
+        ) : localStorage.getItem("token") && localStorage.getItem("id") && localStorage.getItem("groups") == 'Администраторы' ? (
           <AdminHeader />
         ) : (
 
