@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 17.x ]
+        node-version: [ 18.x ]
 
     steps:
       - uses: actions/checkout@v2
@@ -41,6 +41,7 @@ jobs:
             script: |
               cd calendar/Event-Tech-Solutions-Front
               git checkout start
+              git pull
               cd react_front
               npm install
               npm start
