@@ -22,7 +22,7 @@ jobs:
 
         run: cd react_front && npm install
       - name: build production project
-        run: npm start
+        run: cd react_front && npm start
       - name: Upload a Multistarter Artifact
         uses: actions/upload-artifact@v2.1.4
         with:
