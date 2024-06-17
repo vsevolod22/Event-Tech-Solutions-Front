@@ -24,20 +24,20 @@ jobs:
 
 
       - name: Clean Deploy Dir
-        uses: D3rHase/ssh-command-action@v0.2.2
+        uses: appleboy/ssh-action@master
         with:
           host: ${{secrets.HOST}}
           username: ${{secrets.USER}}
-          private_key: ${{secrets.RUNNER_KEY}}
+          key: ${{secrets.RUNNER_KEY}}
 
           command: |
             cd calendar | rm -r Event-Tech-Solutions-Front
       - name: Deploy to server via SSH
-        uses: D3rHase/ssh-command-action@v0.2.2
+        uses: appleboy/ssh-action@master
         with:
             host: ${{ secrets.HOST }} # Хост сервера
             username: ${{ secrets.USER }} # Имя пользователя
-            private_key: ${{ secrets.RUNNER_KEY }} # Приватный ключ SSH
+            key: ${{ secrets.RUNNER_KEY }} # Приватный ключ SSH
             script: |
               cd calendar/Event-Tech-Solutions-Front
               git checkout start
