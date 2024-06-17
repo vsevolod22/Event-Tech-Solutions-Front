@@ -46,6 +46,7 @@ const Login : FC<LoginProps> = function ({ visible, setVisible, getData }) {
         // Выводим ответ сервера
         localStorage.setItem("token", response.access);
         localStorage.setItem("id", response.user.id);
+        localStorage.setItem("groups", response.user.groups[0].name);
         console.log(response)
       }
 
