@@ -39,6 +39,8 @@ jobs:
             username: ${{ secrets.USER }} # Имя пользователя
             key: ${{ secrets.RUNNER_KEY }} # Приватный ключ SSH
             script: |
+              export NVM_DIR=~/.nvm
+              source ~/.nvm/nvm.sh
               cd calendar/Event-Tech-Solutions-Front
               git checkout start
               git pull
