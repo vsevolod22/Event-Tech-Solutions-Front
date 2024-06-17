@@ -9,8 +9,8 @@ import CreateEvent from "./pages/CreateEvent.tsx";
 
 function App() {
   const [user, setUser] = useState({
-    reg: 2,
-    role: 2,
+    reg: 1,
+    role: 1,
   });
   return (
     <BrowserRouter>
