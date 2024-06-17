@@ -49,7 +49,6 @@ export interface ILogin {
 
 
 export interface AllUserInfo {
-    role: string;
     id: string;
     username: string;
     first_name: string;
@@ -60,7 +59,9 @@ export interface AllUserInfo {
     telegram: string | null;
     mail: string | null;
     phone_number: string;
-    groups: string[];
+    group: {name: string; id: number;};
+    groups: AllUserInfo["group"][];
+
 
 }
 
