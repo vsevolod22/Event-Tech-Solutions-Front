@@ -68,7 +68,7 @@ const Event : FC<EventProps> = ({ user }) => {
       <Specialist meet={meet} />
 
       <InputComment comments={comments} />
-      <h1>Ещё меропрития</h1>
+      <h1 style={{padding: "0 10.417vw", marginBottom: "3.646vw", color: "rgba(0, 0, 0, 1)", lineHeight: "3.555vw", fontSize: "2.917vw", fontWeight: "400"}}>Ещё меропрития</h1>
       <Events />
     </>
   );

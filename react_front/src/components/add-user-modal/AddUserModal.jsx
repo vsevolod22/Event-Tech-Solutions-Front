@@ -1,15 +1,16 @@
 import React from "react";
 import "./addUserModal.css";
 
-const AddUserModal = function () {
+const AddUserModal = function ({ onClose }) {
+  const handleAddUser = () => {
+    onClose();
+  };
   return (
-    <form className="add_user">{/* onSubmit={handleSubmitUser}>*/}
+    <form className="add_user">
+      {/* onSubmit={handleSubmitUser}>*/}
       <div className="header_add_user">
         <p>Добавление пользователя</p>
-        <div
-          onClick={() => console.log("closed window")}
-          className="svg_black_cross"
-        >
+        <div className="svg_black_cross" onClick={handleAddUser}>
           <svg
             width="2.396vw"
             height="2.448vw"
@@ -95,13 +96,10 @@ const AddUserModal = function () {
         </div>
       </div>
       <div className="add_user_btns">
-        <button type="submit" className="btn_add_user">
+        <button type="submit" className="btn_add_user" onClick={handleAddUser}>
           Добавить
         </button>
-        <button
-          onClick={() => console.log("cancel")}
-          className="btn_cancel_add_user"
-        >
+        <button onClick={handleAddUser} className="btn_cancel_add_user">
           Отменить
         </button>
       </div>

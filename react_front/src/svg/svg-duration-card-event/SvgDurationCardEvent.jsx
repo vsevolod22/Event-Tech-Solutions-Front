@@ -5,8 +5,8 @@ const SvgDurationCardEvent = function () {
   return (
     <div className="svg_duration_card_event">
       <svg
-        width="12"
-        height="16"
+        width="0.625vw"
+        height="0.833vw"
         viewBox="0 0 12 16"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
