@@ -98,30 +98,15 @@
   align-items: center;
 }
 
-.date_of_conduct {
+.date_of_conduct, .duration_of_conduct, .time_of_conduct {
+  padding-left: 1.042vw;
+  padding-right: 0.542vw;
   width: 8.698vw;
   height: 2.083vw;
   border: 0.052vw solid rgba(208, 210, 216, 1);
   border-radius: 0.521vw;
-  display: flex;
   align-items: center;
 
-  font-size: 0.833vw;
-}
-
-.time_of_conduct {
-  width: 8.698vw;
-  height: 2.083vw;
-  border: 0.052vw solid rgba(208, 210, 216, 1);
-  border-radius: 0.521vw;
-  font-size: 0.833vw;
-}
-
-.duration_of_conduct {
-  width: 8.698vw;
-  height: 2.083vw;
-  border: 0.052vw solid rgba(208, 210, 216, 1);
-  border-radius: 0.521vw;
   font-size: 0.833vw;
 }
 

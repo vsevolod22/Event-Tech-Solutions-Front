@@ -5,6 +5,7 @@ import SvgOnlineOffline from "../svg/svg-online-offline/SvgOnlineOffline";
 import SvgClock from "../svg/svg-clock/SvgCLock";
 import { IPostUser } from "../types/types.tsx";
 import { HttpApiMethods } from "../components/utils/FetchUtils.tsx";
+import UserUsersList from "../components/user-users-list/UserUsersList.tsx";
 const httpApiMethods = new HttpApiMethods();
 interface CreateEventProps {
   user: {
@@ -104,6 +105,11 @@ const CreateEvent: FC<CreateEventProps> = ({ user }) => {
                   placeholder="Дата проведения"
                   className="date_of_conduct"
                 ></input>
+                <input
+                  type="date"
+                  placeholder="Дата окончания"
+                  className="date_of_conduct"
+                ></input>
                 <input type="time" className="time_of_conduct"></input>
                 <input type="time" className="duration_of_conduct"></input>
               </div>
@@ -135,7 +141,22 @@ const CreateEvent: FC<CreateEventProps> = ({ user }) => {
           <textarea placeholder="Написать описание мероприятия"></textarea>
         </section>
 
-        <section className="specialist_section_create_event">
+        <section>
+          {" "}
+          <div className="users_list">
+            {UsersList &&
+              UsersList.map((user) => (
+                <div
+                  onClick={() =>
+                    console.log("take user.id for choose specialist")
+                  }
+                >
+                  <UserUsersList user={user} key={user.id} />
+                </div>
+              ))}
+          </div>
+        </section>
+        {/* <section className="specialist_section_create_event">
           <h1>Специалист</h1>
           <div className="add_specialist_data">
             <div className="add_specialist_logo"></div>
@@ -173,7 +194,7 @@ const CreateEvent: FC<CreateEventProps> = ({ user }) => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section className="btn_section_create_event">
           <button type="submit" className="btn_post_event">
