@@ -7,6 +7,7 @@ import InputFindEvent from "../components/UI/input-find-event/InputFindEvent";
 import { useParams } from "react-router-dom";
 import { IUser } from "../types/types.tsx";
 import AddUserModal from "../components/add-user-modal/AddUserModal.jsx";
+
 const httpApiMethods = new HttpApiMethods();
 
 interface UserListProps {
@@ -20,9 +21,12 @@ const UsersList: FC<UserListProps> = function ({ user }) {
   const { id } = useParams();
   const [modal, setModal] = useState(0);
   const [UsersList, setUsersList] = React.useState<IUser[] | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const getValueModal = (data: number) => {
     setModal(data);
   };
+
   useEffect(() => {
     if (id) {
       const getUsers = async (id: string) => {
@@ -34,10 +38,40 @@ const UsersList: FC<UserListProps> = function ({ user }) {
       getUsers(id);
     }
   }, [id]);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const modal = document.querySelector(".modal");
+      if (modal && !modal.contains(event.target as Node)) {
+        setIsModalOpen(false);
+      }
+    };
+
+    if (isModalOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isModalOpen]);
+
   return (
     <>
-      <Header getData={getValueModal} user={user} />
-      <div className="container page_users_list">
+      <Header getData={getValueModal} user={user} isBlurred={isModalOpen} />
+      <div
+        className={`container page_users_list ${isModalOpen ? "blurred" : ""}`}
+      >
         <div className="simple_filter">
           <InputFindEvent />
           <select name="type_even_selectt" id="" className="type_event_select">
@@ -47,7 +81,10 @@ const UsersList: FC<UserListProps> = function ({ user }) {
         <div className="users_list">
           <div className="add_user_users_list">
             <div className="add_user_users_list_content">
-              <button className="add_user_users_list_btn">
+              <button
+                className="add_user_users_list_btn"
+                onClick={handleOpenModal}
+              >
                 <p>+</p>
               </button>
               <h3 data-text="Добавить пользователя">Добавить пользователя</h3>
@@ -59,7 +96,14 @@ const UsersList: FC<UserListProps> = function ({ user }) {
             ))}
         </div>
       </div>
-      <AddUserModal />
+      {isModalOpen && (
+        <>
+          <div className="modal-overlay"></div>
+          <div className="modal">
+            <AddUserModal onClose={handleCloseModal} />
+          </div>
+        </>
+      )}
     </>
   );
 };

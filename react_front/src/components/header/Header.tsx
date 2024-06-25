@@ -14,10 +14,10 @@ interface HeaderProps {
 
 }
 
-const Header : FC<HeaderProps> =  ({user, getData}) => {
+const Header : FC<HeaderProps> =  ({user, getData, isBlurred}) => {
   return (
     <>
-      <div className="header">
+      <div className={isBlurred ? "header blurred" : "header"}>
         {localStorage.getItem("token") && localStorage.getItem("groups") != 'Администраторы' && localStorage.getItem("id") ? (
           <RegHeader />
         ) : localStorage.getItem("token") && localStorage.getItem("id") && localStorage.getItem("groups") == 'Администраторы' ? (
