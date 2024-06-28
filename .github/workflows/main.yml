@@ -23,15 +23,6 @@ jobs:
         run: cd react_front && npm install
 
 
-#      - name: Clean Deploy Dir
-#        uses: appleboy/ssh-action@master
-#        with:
-#          host: ${{secrets.HOST}}
-#          username: ${{secrets.USER}}
-#          key: ${{secrets.RUNNER_KEY}}
-#
-#          command: |
-#            cd calendar | rm -r Event-Tech-Solutions-Front
       - name: Deploy to server via SSH
         uses: appleboy/ssh-action@master
         with:

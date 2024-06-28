@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import axios, {AxiosResponse} from "axios"
-import { useState } from "react"
+import axios from "axios"
+
 
 import './style.css'
-import {AllMeetings, AllUserInfo, IAuth, ILogin, IMeet, IPostMeet, IPostUser, IUser} from "../../types/types";
+import { AllUserInfo, IAuth, IComment, ILogin, IMeet, IPostMeet, IPostUser, IUser} from "../../types/types";
 
 
 
@@ -107,6 +107,17 @@ export class HttpApiMethods {
       console.error(error);
       return null
    }
+  }
+  PostComment = async (data : string, id: string | number) : Promise<IComment | null> => {
+      let innerUrl = this.APIURL + `/events/event/${id}/comments/`
+      try {
+          const response = await axios.postForm(innerUrl, data);
+          // console.log(response.data);
+          return response.data; // Возвращаем данные из ответа
+      } catch (error) {
+          console.error(error);
+          return null
+      }
   }
   PostUser = async (data : IPostUser) : Promise<AllUserInfo | null> => {
 
