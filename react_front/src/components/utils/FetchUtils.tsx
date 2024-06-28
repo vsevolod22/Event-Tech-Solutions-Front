@@ -112,9 +112,8 @@ export class HttpApiMethods {
       let innerUrl = this.APIURL + `/events/event/${id}/comments/`
 
       try {
-          const response = await axios.postForm(innerUrl, data,{
+          const response = await axios.post(innerUrl, data,{
               headers: {
-                  'Content-Type': 'application/json',
                   'Authorization': `Bearer ${this.API_KEY}`
               }
           });
