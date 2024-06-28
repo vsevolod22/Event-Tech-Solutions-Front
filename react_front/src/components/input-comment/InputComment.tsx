@@ -2,6 +2,7 @@ import React, {FC, useEffect, useState} from "react";
 import "./inputComment.css";
 import {IComment} from "../../types/types.tsx";
 import {HttpApiMethods} from "../utils/FetchUtils.tsx";
+
 interface InputCommentProps {
 
   id: string | undefined
@@ -40,8 +41,9 @@ const InputComment : FC<InputCommentProps> =  ({id}) => {
       getComments(id);
     }
 
-  }, [comments, newComment ])
-  const handleComment = async () => {
+  }, [newComment, id])
+  const handleComment = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); // Предотвращаем перезагрузку страницы
     console.log(id)
     if (id) {
       try {
