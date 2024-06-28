@@ -42,6 +42,7 @@ const InputComment : FC<InputCommentProps> =  ({id}) => {
 
   }, [comments, newComment ])
   const handleComment = async () => {
+    console.log(id)
     if (id) {
       try {
         const response = await httpApiMethods.PostComment(textAreaValue, id)
@@ -59,24 +60,24 @@ const InputComment : FC<InputCommentProps> =  ({id}) => {
   }
   return (
     <section className="inputCommMargin">
-      <div className="input_comm_block container">
+      <form onSubmit={handleComment} className="input_comm_block container">
         <h1>Комментарии</h1>
         <p>Количество комментариев: {comments && comments.length}</p>
         <div className="comment">
           <div className="logo_profile"></div>
           <textarea
             className="area_comment"
-            placeholder={`Ваше слово, `}
+            placeholder={`Оставьте комментарий`}
             value={textAreaValue} // Установите значение как состояние
             onChange={(e) => setTextAreaValue(e.target.value)}
           ></textarea>
         </div>
         <div className="button_post">
-          <button onClick={handleComment}>
+          <button type="submit">
             <p>отправить</p>
           </button>
         </div>
-      </div>
+      </form>
       <div className="container comment_list">
        
        {comments && comments.map((comment) => (
