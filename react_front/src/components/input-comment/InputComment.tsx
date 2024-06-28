@@ -72,7 +72,7 @@ const InputComment : FC<InputCommentProps> =  ({id}) => {
           ></textarea>
         </div>
         <div className="button_post">
-          <button onSubmit={handleComment}>
+          <button onClick={handleComment}>
             <p>отправить</p>
           </button>
         </div>
