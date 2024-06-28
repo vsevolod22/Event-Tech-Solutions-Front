@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 
 import { HttpApiMethods } from '../components/utils/FetchUtils.tsx';
 
-
 import Specialist from "../components/specialist/Specialist";
 import AboutEvent from "../components/about-event/AboutEvent";
 import InputComment from "../components/input-comment/InputComment";
@@ -59,8 +58,9 @@ const Event : FC<EventProps> = ({ user }) => {
       <AboutEvent meet={meet} />
       <Specialist meet={meet} />
 
-      <InputComment id={id}/>
-      <h1>Ещё меропрития</h1>
+
+      <InputComment id={id} />
+      <h1 style={{padding: "0 10.417vw", marginBottom: "3.646vw", color: "rgba(0, 0, 0, 1)", lineHeight: "3.555vw", fontSize: "2.917vw", fontWeight: "400"}}>Ещё меропрития</h1>
       <Events />
     </>
   );

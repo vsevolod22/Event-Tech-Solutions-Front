@@ -10,13 +10,14 @@
 .image_content {
   padding: 0.781vw 0.469vw 0 0;
   width: 17.865vw;
-  height: 1.146vw;
-  /* background: url(); */
-
+  height: 17.708vw;
   display: flex;
   flex-flow: column;
   align-items: flex-end;
   gap: 13.385vw;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
 }
 
 .status_card_event_green {
