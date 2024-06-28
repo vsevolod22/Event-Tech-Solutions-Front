@@ -110,8 +110,14 @@ export class HttpApiMethods {
   }
   PostComment = async (data : string, id: string | number) : Promise<IComment | null> => {
       let innerUrl = this.APIURL + `/events/event/${id}/comments/`
+
       try {
-          const response = await axios.postForm(innerUrl, data);
+          const response = await axios.postForm(innerUrl, data,{
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${this.API_KEY}`
+              }
+          });
           // console.log(response.data);
           return response.data; // Возвращаем данные из ответа
       } catch (error) {
