@@ -108,7 +108,7 @@ export class HttpApiMethods {
       return null
    }
   }
-  PostComment = async (data : string, id: string | number) : Promise<IComment | null> => {
+  PostComment = async (data : {comment: string}, id: string | number) : Promise<IComment | null> => {
       let innerUrl = this.APIURL + `/events/event/${id}/comments/`
 
       try {

@@ -46,8 +46,11 @@ const InputComment : FC<InputCommentProps> =  ({id}) => {
     event.preventDefault(); // Предотвращаем перезагрузку страницы
     console.log(id)
     if (id) {
+      const data = {
+        comment: textAreaValue
+      }
       try {
-        const response = await httpApiMethods.PostComment(textAreaValue, id)
+        const response = await httpApiMethods.PostComment(data, id)
         console.log(response);
         if (response) {
           setNewComment(response)
