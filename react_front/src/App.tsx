@@ -6,6 +6,7 @@ import Event from "./pages/Event.tsx";
 import Profile from "./pages/Profile.tsx";
 import UsersList from "./pages/UsersList.tsx";
 import CreateEvent from "./pages/CreateEvent.tsx";
+import AllEvents from "./pages/AllEvents.jsx";
 
 function App() {
   const [user, setUser] = useState({
@@ -26,6 +27,7 @@ function App() {
           path="/users-list/meet/:id"
           element={<UsersList user={user} />}
         ></Route>
+        <Route path="/all-events" element={<AllEvents />}></Route>
       </Routes>
     </BrowserRouter>
   );

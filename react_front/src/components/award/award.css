@@ -1,0 +1,34 @@
+.award {
+  width: 13.281vw;
+  height: 12.344vw;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.award__img {
+  width: 8.542vw;
+  height: 8.542vw;
+  border-radius: 50%;
+  margin-bottom: 1.563vw;
+
+  object-fit: cover;
+}
+
+.award__exp {
+  width: 10.938vw;
+  height: 0.26vw;
+  background-color: rgba(208, 210, 216, 1);
+  margin-bottom: 1.094vw;
+}
+
+.award__exp_get {
+  width: 50%;
+  background-color: green;
+}
+
+.award__title h2 {
+  font-weight: 500;
+  font-size: 0.99vw;
+  line-height: 1.206vw;
+}

@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "./yourChoice.css";
+import SimpleFilter from "../filters/simple-filter/SimpleFilter";
+import Events from "../events/Events";
+import Awards from "../awards/Awards";
+import Hardfilter from "../filters/hard-filter/HardFilter";
 
 const YourChoice = function () {
   const [firstBlockClicked, setFirstBlockClicked] = useState(true); // Состояние для отслеживания нажатия на первый блок
@@ -17,24 +21,38 @@ const YourChoice = function () {
     setFirstBlockClicked(false); // Сбрасываем состояние нажатия на первый блок
   };
   return (
-    <div className="choice">
-      <div onClick={handleFirstBlockClick} className="your_events_rewards">
-        <p>Ваши меропрития</p>
-        <div
-          className={`${
-            firstBlockClicked ? "underline_selected" : "underline_default"
-          }`}
-        ></div>
+    <>
+      <div className="choice">
+        <div onClick={handleFirstBlockClick} className="your_events_rewards">
+          <p>Ваши мероприятия</p>
+          <div
+            className={`${
+              firstBlockClicked ? "underline_selected" : "underline_default"
+            }`}
+          ></div>
+
+          {/* <SimpleFilter />
+      <Events /> */}
+        </div>
+        <div onClick={handleSecondBlockClick} className="your_events_rewards">
+          <p>Ваши достижения</p>
+          <div
+            className={`${
+              secondBlockClicked ? "underline_selected" : "underline_default"
+            }`}
+          ></div>
+        </div>
       </div>
-      <div onClick={handleSecondBlockClick} className="your_events_rewards">
-        <p>Ваши достижения</p>
-        <div
-          className={`${
-            secondBlockClicked ? "underline_selected" : "underline_default"
-          }`}
-        ></div>
-      </div>
-    </div>
+      {!firstBlockClicked ? (
+        <Awards />
+      ) : (
+        <>
+          {" "}
+          <Hardfilter />
+          <Events />
+        </>
+      )}
+    </>
   );
 };
 

@@ -8,5 +8,11 @@
 }
 
 .blurred {
-  filter: blur(0.260vw);
+  filter: blur(0.26vw);
+}
+
+@media (max-width: 430px) {
+  .header {
+    height: 12.5vw;
+  }
 }

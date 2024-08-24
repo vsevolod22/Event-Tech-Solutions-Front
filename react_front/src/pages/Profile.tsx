@@ -25,9 +25,7 @@ const Profile: FC<ProfileProps> =  ({user}) => {
       </section>
       <section className="container second">
         <YourChoice />
-        <SimpleFilter />
       </section>
-      <YourEvent />
     </>
   );
 };
