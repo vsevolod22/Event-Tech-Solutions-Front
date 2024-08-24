@@ -1,0 +1,15 @@
+.awards {
+    display: flex;
+    flex-direction: column;
+    gap: 2.188vw;
+}
+.awards h2 {
+  font-weight: 600;
+  font-size: 2.083vw;
+  line-height: 2.54vw;
+}
+.awards__list {
+  display: flex;
+  gap: 1.979vw;
+  flex-flow: row wrap;
+}

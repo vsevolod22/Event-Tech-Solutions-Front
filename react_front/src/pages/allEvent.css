@@ -1,0 +1,22 @@
+.all-events {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.all-events__create-button {
+  margin-bottom: 5.625vw;
+  width: 38.281vw;
+  height: 6.823vw;
+  background-color: rgba(71, 166, 124, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.all-events__list {
+  display: flex;
+  gap: 2.27vw;
+  flex-flow: row wrap;
+  width: 100%;
+}

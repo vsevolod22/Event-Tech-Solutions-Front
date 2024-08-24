@@ -1,5 +1,6 @@
 import React from "react";
 import "./adminHeader.css";
+import { Link } from "react-router-dom";
 import Logo from "../logo/Logo";
 import HeaderProfile from "../header-profile/HeaderProfile";
 
@@ -8,8 +9,10 @@ const AdminHeader = function () {
     <>
       <Logo />
       <div className="privilege_navbar">
-        <ul> 
-          <li>Мероприятия</li>
+        <ul>
+          <Link to="/all-events">
+            <li>Мероприятия</li>
+          </Link>
           <li>Пользователи</li>
           <li>Статистика</li>
         </ul>
