@@ -125,3 +125,9 @@ export interface IMeet {
   is_upcoming: boolean;
   is_online: boolean;
 }
+export interface INotification {
+  state: number;
+  time: TDateISO;
+  event: IMeet;
+  description: string;
+}

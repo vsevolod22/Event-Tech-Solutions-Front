@@ -11,6 +11,7 @@ import {
   IPostMeet,
   IPostUser,
   IUser,
+  INotification,
 } from "../../types/types";
 
 export class HttpApiMethods {
@@ -176,6 +177,22 @@ export class HttpApiMethods {
       return response.data; // Возвращаем данные из ответа
     } catch (error) {
       console.error(error);
+    }
+  };
+  GetNotifications = async (): Promise<INotification | null> => {
+    let innerUrl = this.APIURL + `/notifications/notification/`;
+
+    try {
+      const response = await axios.get(innerUrl, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.API_KEY}`,
+        },
+      });
+      return response.data; // Возвращаем данные из ответа
+    } catch (error) {
+      console.error(error);
+      return null;
     }
   };
 }
