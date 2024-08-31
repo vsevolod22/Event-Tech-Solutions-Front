@@ -16,7 +16,7 @@ import {
 export class HttpApiMethods {
   // Конструктор класса, где вы устанавливаете значение токена
 
-  // URL`s
+  // URL`
   APIURL = "http://5.42.82.220:8000/api";
   get API_KEY() {
     return localStorage.getItem("token");
