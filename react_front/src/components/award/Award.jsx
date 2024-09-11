@@ -4,7 +4,10 @@ import "../award/award.css";
 const Award = () => {
   return (
     <div className="award">
-      <div className="award__img" style={{ background: "" }}></div>
+      <div
+        className="award__img"
+        // style={{ background: 'url("../../images/logo.png")' }}
+      ></div>
       <div className="award__exp">
         <div className="award__exp_get"></div>
       </div>

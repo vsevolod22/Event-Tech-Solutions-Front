@@ -7,12 +7,14 @@
 }
 
 .award__img {
-  width: 8.542vw;
-  height: 8.542vw;
+  min-width: 8.542vw;
+  min-height: 8.542vw;
   border-radius: 50%;
   margin-bottom: 1.563vw;
-
   object-fit: cover;
+  background: url("../../images/award-gold-run.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .award__exp {

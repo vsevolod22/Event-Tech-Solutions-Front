@@ -7,6 +7,7 @@ import { AllMeetings, IMeet } from "../../types/types.tsx";
 const httpApiMethods = new HttpApiMethods();
 const Events = function () {
   const [allMeets, setAllMeets] = useState<IMeet[] | null>(null);
+  const [showMore, setShowMore] = useState(false); // Состояние для показа всех элементов
   useEffect(() => {
     const getAllMeetings = async () => {
       const AllMeets = await httpApiMethods.GetAllMeetings();
@@ -16,107 +17,29 @@ const Events = function () {
     getAllMeetings();
   }, []);
 
+  const renderCards = () => {
+    if (showMore) {
+      return allMeets.map((card) => <Card dataCard={card} key={card.id} />);
+    } else {
+      // return allMeets.slice(0, 6).map((card) => <Card dataCard={card} key={card.id} />);
+      return 0
+    }
+  };
+
+  const handleShowMore = () => {
+    setShowMore(!showMore);
+  };
+
+  // МАКСИМУМ ПОКАЗЫВАТЬ 6 МЕРОПРИЯТИЙ, ПОСЛЕ НАЖАТИЯ на показать все показывать все
   return (
     <div className="events">
-      <div className="cards">
-        <div className="card">
-          <div className="image_content" style={{ background: `green` }}>
-            <div className="status_card_event_green">Предстоящее</div>
-            <div className="duration_card_event">
-              <div className="text_duration_card_event"></div>
-            </div>
-          </div>
-          <div className="description_content">
-            <div className="description_content_statuses">
-              <div className="type_status"></div>
-              <div className="reg_event_green">Зарегистрирован</div>
-            </div>
-
-            <div className="description_content_text"></div>
-            <div className="time_event"></div>
-            <div className="time_event"></div>
-          </div>
-        </div>
-        <div className="card">
-          <div className="image_content" style={{ background: `green` }}>
-            <div className="status_card_event_green">Предстоящее</div>
-            <div className="duration_card_event">
-              <div className="text_duration_card_event"></div>
-            </div>
-          </div>
-          <div className="description_content">
-            <div className="description_content_statuses">
-              <div className="type_status"></div>
-              <div className="reg_event_green">Зарегистрирован</div>
-            </div>
-
-            <div className="description_content_text"></div>
-            <div className="time_event"></div>
-            <div className="time_event"></div>
-          </div>
-        </div>
-        <div className="card">
-          <div className="image_content" style={{ background: `green` }}>
-            <div className="status_card_event_green">Предстоящее</div>
-            <div className="duration_card_event">
-              <div className="text_duration_card_event"></div>
-            </div>
-          </div>
-          <div className="description_content">
-            <div className="description_content_statuses">
-              <div className="type_status"></div>
-              <div className="reg_event_green">Зарегистрирован</div>
-            </div>
-
-            <div className="description_content_text"></div>
-            <div className="time_event"></div>
-            <div className="time_event"></div>
-          </div>
-        </div>
-        <div className="card">
-          <div className="image_content" style={{ background: `green` }}>
-            <div className="status_card_event_green">Предстоящее</div>
-            <div className="duration_card_event">
-              <div className="text_duration_card_event"></div>
-            </div>
-          </div>
-          <div className="description_content">
-            <div className="description_content_statuses">
-              <div className="type_status"></div>
-              <div className="reg_event_green">Зарегистрирован</div>
-            </div>
-
-            <div className="description_content_text"></div>
-            <div className="time_event"></div>
-            <div className="time_event"></div>
-          </div>
-        </div>
-        <div className="card">
-          <div className="image_content" style={{ background: `green` }}>
-            <div className="status_card_event_green">Предстоящее</div>
-            <div className="duration_card_event">
-              <div className="text_duration_card_event"></div>
-            </div>
-          </div>
-          <div className="description_content">
-            <div className="description_content_statuses">
-              <div className="type_status"></div>
-              <div className="reg_event_green">Зарегистрирован</div>
-            </div>
-
-            <div className="description_content_text"></div>
-            <div className="time_event"></div>
-            <div className="time_event"></div>
-          </div>
-        </div>
-
-        {allMeets &&
-          allMeets.map((card) => <Card dataCard={card} key={card.id} />)}
-      </div>
-        <button className="events__all">
-          <p>Все мероприятия</p>
-        </button>
+    <div className="cards">
+      {renderCards()} {/* Вызываем функцию для отрисовки карточек */}
     </div>
+    <button className="events__all" onClick={handleShowMore}>
+      <p>Все мероприятия</p>
+    </button>
+  </div>
   );
 };
 

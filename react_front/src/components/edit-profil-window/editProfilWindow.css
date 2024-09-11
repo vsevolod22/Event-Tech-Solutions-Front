@@ -1,0 +1,106 @@
+.modal-edit-profil-window {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  background-color: rgb(0, 0,0, 0.45);
+}
+
+.modal-edit-profil-window__active {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
+.edit-profil-window {
+  background: white;
+  width: 43.75vw;
+  height: 29.792vw;
+  border-radius: 1.563vw;
+  padding: 1.875vw 1.563vw;
+}
+
+.edit-profil-window__title h1 {
+  font-weight: 400;
+  font-size: 2.917vw;
+  line-height: 3.555vw;
+  margin-bottom: 3.281vw;
+}
+
+.edit-profil-window__form {
+  display: flex;
+  gap: 2.638vw;
+}
+
+.edit-profil-window__logo img {
+  border-radius: 50%;
+  width: 11.185vw;
+  aspect-ratio: 1;
+  background-color: gray;
+  object-fit: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.edit-profil-window__logo_add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(136, 136, 136, 1);
+  font-size: 1.875vw;
+  font-weight: 400;
+  line-height: 2.285vw;
+  background-color: rgba(208, 210, 216, 1);
+  border-radius: 50%;
+  position: absolute;
+  left: 16.3vw;
+  top: 64.3vw;
+  width: 2.344vw;
+  aspect-ratio: 1;
+}
+
+.edit-profil-window__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.921vw;
+}
+
+.edit-profil-window__inputs_input {
+  font-weight: 400;
+  font-size: 1.667vw;
+  line-height: 2.032vw;
+  border: solid 0.052vw rgba(208, 210, 216, 1);
+  border-radius: 0.521vw;
+  width: 25vw;
+  height: 2.604vw;
+  display: flex;
+  align-items: center;
+  padding-left: 1vw;
+}
+
+.edit-profil-window__inputs_input::placeholder {
+  font-weight: 400;
+  font-size: 1.667vw;
+  line-height: 2.032vw;
+  text-align: center;
+  color: rgba(136, 136, 136, 1);
+}
+
+.edit-profil-window__inputs_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 0.052vw black;
+  border-radius: 0.521vw;
+  background-color: rgba(71, 166, 124, 1);
+  width: 25vw;
+  height: 2.604vw;
+  font-weight: 400;
+  font-size: 1.667vw;
+  line-height: 2.032vw;
+  color: black;
+}

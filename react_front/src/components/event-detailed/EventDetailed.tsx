@@ -26,78 +26,91 @@ const EventDetailed: FC<EventDetailedProps> = ({ meet }) => {
   };
 
   return (
-    <form className="event_detailed container">
-      <div className="first_event_detailed">
-        <h1>
-          {meet && meet.name ? (
-            meet.name
-          ) : (
-            <Skeleton variant="text" sx={{ fontSize: "1.667vw" }} />
-          )}{" "}
-        </h1>
-        <div className="type_event">
-          {meet && meet.type.name ? (
-            meet.type.name
-          ) : (
-            <Skeleton variant="rounded" width="5.938vw" height="1.979vw" />
-          )}
-        </div>
-        <div className="online_offline">
-          <SvgOnlineOffline />
-          <p>Онлайн</p>
-        </div>
-        <div className="count_month_year_time">
-          <SvgClock />
-          <p>
-            {meet && meet.time_start ? (
-              formatDate(meet.time_start)
+    <>
+    {/* Проверка на роль */}
+      <div className="event-detailed__admin container">
+        <button className="event-detailed__admin_btn-edit">
+          Редактировать мероприятие
+        </button>
+      </div>
+      {/*  */}
+      <form className="event_detailed container">
+        <div className="first_event_detailed">
+          <h1>
+            {meet && meet.name ? (
+              meet.name
             ) : (
               <Skeleton variant="text" sx={{ fontSize: "1.667vw" }} />
-            )}
-          </p>
-        </div>
-        <div className="event_duration">
-          <SvgDuration />
-          <p>
-            {meet && meet.duration.hours ? (
-              meet.duration.hours
-            ) : (
-              <Skeleton variant="text" sx={{ fontSize: "0.833vw" }} />
             )}{" "}
-          </p>
-          <p>часа(-ов)</p>
-        </div>
-        <button type="submit" className="sign_up_event_btn">
-          ЗАПИСАТЬСЯ НА МЕРОПРИЯТИЕ
-        </button>
-        <button type="submit" className="link_event">
-          Ссылка на мероприятие
-        </button>
-        <button type="submit" className="download_video_event">
-          Скачать видео
-        </button>
-
-        {meet ? (
-          <div
-            onClick={() => navigate_users_list(`/users-list/meet/${meet.id}`)}
-            className="list_users_event"
-          >
-            Список пользователей
+          </h1>
+          <div className="type_event">
+            {meet && meet.type.name ? (
+              meet.type.name
+            ) : (
+              <Skeleton variant="rounded" width="5.938vw" height="1.979vw" />
+            )}
           </div>
-        ) : (
-          <div className="list_users_event">Список пользователей</div>
-        )}
-      </div>
-      <div className="second_event_detailed">
-        {meet && meet.image ? (
-          <img className="preview_img" src={meet.image} alt="previewIMG"></img>
-        ) : (
-          <div className="preview_img"></div>
-        )}
-        <div className="questions"></div>{" "}
-        {/*component with question compoennt*/}
-      </div>
-    </form>
+          <div className="online_offline">
+            <SvgOnlineOffline />
+            <p>Онлайн</p>
+          </div>
+          <div className="count_month_year_time">
+            <SvgClock />
+            <p>
+              {meet && meet.time_start ? (
+                formatDate(meet.time_start)
+              ) : (
+                <Skeleton variant="text" sx={{ fontSize: "1.667vw" }} />
+              )}
+            </p>
+          </div>
+          <div className="event_duration">
+            <SvgDuration />
+            <p>
+              {meet && meet.duration.hours ? (
+                meet.duration.hours
+              ) : (
+                <Skeleton variant="text" sx={{ fontSize: "0.833vw" }} />
+              )}{" "}
+            </p>
+            <p>часа(-ов)</p>
+          </div>
+          <button type="submit" className="sign_up_event_btn">
+            ЗАПИСАТЬСЯ НА МЕРОПРИЯТИЕ
+          </button>
+          <button type="submit" className="link_event">
+            Ссылка на мероприятие
+          </button>
+          <button type="submit" className="download_video_event">
+            Скачать видео
+          </button>
+
+          {meet ? (
+            <div
+              onClick={() => navigate_users_list(`/users-list/meet/${meet.id}`)}
+              className="list_users_event"
+            >
+              Список пользователей
+            </div>
+          ) : (
+            <div className="list_users_event">Список пользователей</div>
+          )}
+        </div>
+        <div className="second_event_detailed">
+          {meet && meet.image ? (
+            <img
+              className="preview_img"
+              src={meet.image}
+              alt="previewIMG"
+            ></img>
+          ) : (
+            <div className="preview_img"></div>
+          )}
+          <div className="questions"></div>{" "}
+          {/*component with question compoennt*/}
+        </div>
+      </form>
+    </>
   );
 };
 
