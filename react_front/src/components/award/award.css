@@ -1,6 +1,5 @@
 .award {
   width: 13.281vw;
-  height: 12.344vw;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -18,13 +17,16 @@
 }
 
 .award__exp {
+  position: relative;
   width: 10.938vw;
   height: 0.26vw;
-  background-color: rgba(208, 210, 216, 1);
+  background-color: #d0d2d8;
   margin-bottom: 1.094vw;
 }
 
 .award__exp_get {
+  position: absolute;
+  height: 100%;
   width: 50%;
   background-color: green;
 }
