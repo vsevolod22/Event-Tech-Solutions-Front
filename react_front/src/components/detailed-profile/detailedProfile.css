@@ -13,6 +13,17 @@
   justify-content: space-between;
 }
 
+.photo_card img {
+  width: 11.042vw;
+  height: 11.042vw;
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: cover;
+  background-position: center;
+  /* background-image: url("../../images/logo.png"); */
+  background-repeat: no-repeat;
+}
+
 .human_logo {
   width: 11.042vw;
   height: 11.042vw;
@@ -30,32 +41,24 @@
   display: flex;
   flex-flow: column;
   justify-content: space-between;
+}
 
-  & h1 {
-    color: #000000;
-    font-weight: 700;
-    font-size: 1.875vw;
-    line-height: 2.285vw;
-  }
+.human_data h1::first-letter {
+  color: #47a67c;
+}
 
-  & h1::first-letter {
-    color: #47a67c;
-  }
+.human_data h2 {
+  font-weight: 400;
 
-  & h2 {
-    font-weight: 400;
-
-    font-size: 1.667vw;
-    line-height: 2.032vw;
-    color: black;
-  }
-
-  & p {
-    font-weight: 400;
-    font-size: 1.042vw;
-    line-height: 1.27vw;
-    color: black;
-  }
+  font-size: 1.667vw;
+  line-height: 2.032vw;
+  color: black;
+}
+.human_data p {
+  font-weight: 400;
+  font-size: 1.042vw;
+  line-height: 1.27vw;
+  color: black;
 }
 
 .exp {
@@ -63,14 +66,23 @@
   align-items: center;
   font-size: 1.146vw;
   line-height: 1.397vw;
+}
+.exp p {
+  color: rgba(71, 166, 124, 1);
+  font-weight: 400;
+}
 
-  & p {
-    color: rgba(71, 166, 124, 1);
-    font-weight: 400;
-  }
+.exp h3 {
+  font-weight: 900;
+  color: rgba(0, 0, 0, 1);
+}
+.human_data h1 {
+  color: #000000;
+  font-weight: 700;
+  font-size: 1.875vw;
+  line-height: 2.285vw;
+}
 
-  & h3 {
-    font-weight: 900;
-    color: rgba(0, 0, 0, 1);
-  }
+.edit-pencil {
+  align-self: flex-start;
 }

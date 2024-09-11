@@ -1,8 +1,28 @@
 .event_detailed {
+  position: relative;
   display: flex;
   width: 100vw;
   justify-content: space-between;
   margin: 7.813vw 0 4.063vw 0;
+}
+
+.event-detailed__admin {
+  display: flex;
+  justify-content: end;
+  margin: 5.208vw 0;
+}
+.event-detailed__admin_btn-edit {
+  width: 24.635vw;
+  height: 5.104vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(71, 166, 124, 1);
+  border-radius: 0.521vw;
+
+  font-weight: 400;
+  font-size: 1.334vw;
+  line-height: 1.626vw;
 }
 
 .first_event_detailed {

@@ -6,6 +6,7 @@ import SvgClock from "../svg/svg-clock/SvgCLock";
 import { IPostUser } from "../types/types.tsx";
 import { HttpApiMethods } from "../components/utils/FetchUtils.tsx";
 import UserUsersList from "../components/user-users-list/UserUsersList.tsx";
+import InputFindEvent from "../components/UI/input-find-event/InputFindEvent.tsx";
 const httpApiMethods = new HttpApiMethods();
 interface CreateEventProps {
   user: {
@@ -15,6 +16,7 @@ interface CreateEventProps {
 }
 
 const CreateEvent: FC<CreateEventProps> = ({ user }) => {
+  const [UsersList, setUsersList] = React.useState<IUser[] | null>(null);
   const [modal, setModal] = useState(0);
   const getValueModal = (data: number) => {
     setModal(data);
@@ -141,8 +143,18 @@ const CreateEvent: FC<CreateEventProps> = ({ user }) => {
           <textarea placeholder="Написать описание мероприятия"></textarea>
         </section>
 
-        <section>
-          {" "}
+        <section className="specialist_section_create_event">
+          <h1>Специалист</h1>{" "}
+          <div className="simple_filter">
+            <InputFindEvent />
+            <select
+              name="type_even_selectt"
+              id=""
+              className="type_event_select"
+            >
+              <option value="">роль пользователя</option>
+            </select>
+          </div>
           <div className="users_list">
             {UsersList &&
               UsersList.map((user) => (

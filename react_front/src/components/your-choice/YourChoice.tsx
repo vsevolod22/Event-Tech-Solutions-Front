@@ -30,9 +30,6 @@ const YourChoice = function () {
               firstBlockClicked ? "underline_selected" : "underline_default"
             }`}
           ></div>
-
-          {/* <SimpleFilter />
-      <Events /> */}
         </div>
         <div onClick={handleSecondBlockClick} className="your_events_rewards">
           <p>Ваши достижения</p>
@@ -47,8 +44,6 @@ const YourChoice = function () {
         <Awards />
       ) : (
         <>
-          {" "}
-          <Hardfilter />
           <Events />
         </>
       )}

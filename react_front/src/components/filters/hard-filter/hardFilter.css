@@ -26,19 +26,3 @@ select {
   color: rgba(0, 0, 0, 1);
 }
 
-@media (max-width: 430px) {
-  select {
-    width: 14vw;
-    height: 3.6vw;
-    padding: 0 1.16vw 0 1.7vw;
-    border-radius: 1.042vw;
-  }
-  .count_select {
-    gap: 1.6vw;
-  }
-
-  .count_select p {
-    font-size: 1.6vw;
-    line-height: 1.6vw;
-  }
-}

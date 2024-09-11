@@ -1,6 +1,6 @@
-import { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState, useRef } from "react";
 import "./detailedProfile.css";
-
+import EditProfilWindow from "../edit-profil-window/EditProfilWindow.jsx";
 import { HttpApiMethods } from "../utils/FetchUtils.tsx";
 import Skeleton from "@mui/material/Skeleton";
 import { useParams } from "react-router-dom";
@@ -13,6 +13,7 @@ const DetailedProfile: FC = function () {
   const [user, setUser] = useState<AllUserInfo | null>(null);
   const { id: routeId } = useParams<{ id: string }>();
   const id = routeId || localStorage.getItem("id");
+
   useEffect(() => {
     console.log(id);
     const getMeet = async (id: string) => {
@@ -24,8 +25,10 @@ const DetailedProfile: FC = function () {
       getMeet(id);
     }
   }, [id]);
+
   return (
     <div className="human_frame">
+      <EditProfilWindow />
       <div className="photo_card">
         {user && user.avatar ? (
           <img src={user.avatar} alt="avatar"></img>
@@ -72,11 +75,15 @@ const DetailedProfile: FC = function () {
           )}
         </p>
         <div className="exp">
-          <pre><p>Количество баллов:  </p></pre>
+          <pre>
+            <p>Количество баллов: </p>
+          </pre>
           <h3>56</h3>
         </div>
       </div>
-      <SvgPencil></SvgPencil>
+      <button className="edit-pencil">
+        <SvgPencil />
+      </button>
     </div>
   );
 };
