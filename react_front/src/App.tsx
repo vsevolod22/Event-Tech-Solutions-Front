@@ -10,8 +10,8 @@ import AllEvents from "./pages/AllEvents.jsx";
 
 function App() {
   const [user, setUser] = useState({
-    reg: 2,
-    role: 2,
+    reg: 1,
+    role: 1,
   });
   return (
     <BrowserRouter>

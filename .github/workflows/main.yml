@@ -1,0 +1,41 @@
+name: linting, testing, building
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
+  push:
+    branches: [ start ]
+  pull_request:
+    branches: [ start ]
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Staring Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install modules
+
+        run: cd react_front && npm install
+
+
+      - name: Deploy to server via SSH
+        uses: appleboy/ssh-action@master
+        with:
+            host: ${{ secrets.HOST }} # Хост сервера
+            username: ${{ secrets.USER }} # Имя пользователя
+            key: ${{ secrets.RUNNER_KEY }} # Приватный ключ SSH
+            script: |
+              export NVM_DIR=~/.nvm
+              source ~/.nvm/nvm.sh
+              cd calendar/Event-Tech-Solutions-Front
+              git checkout start
+              git pull
+              cd react_front
+              npm install
+              npm start
+

@@ -4,18 +4,19 @@ import { Link } from "react-router-dom";
 import Card from "../card/Card.tsx";
 import { HttpApiMethods } from "../utils/FetchUtils.tsx";
 import { AllMeetings, IMeet } from "../../types/types.tsx";
-const httpApiMethods = new HttpApiMethods();
 const Events = function () {
   const [allMeets, setAllMeets] = useState<IMeet[] | null>(null);
   const [showMore, setShowMore] = useState(false); // Состояние для показа всех элементов
+
   useEffect(() => {
     const getAllMeetings = async () => {
+      const httpApiMethods = new HttpApiMethods();
       const AllMeets = await httpApiMethods.GetAllMeetings();
       console.log(AllMeets);
       setAllMeets(AllMeets);
     };
     getAllMeetings();
-  }, []);
+  }, [localStorage.getItem("token")]);
 
   const renderCards = () => {
     if (showMore) {
