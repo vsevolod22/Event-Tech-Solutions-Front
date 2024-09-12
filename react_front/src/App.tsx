@@ -7,6 +7,7 @@ import Profile from "./pages/Profile.tsx";
 import UsersList from "./pages/UsersList.tsx";
 import CreateEvent from "./pages/CreateEvent.tsx";
 import AllEvents from "./pages/AllEvents.jsx";
+import CheckUsers from "./pages/CheckUsers.jsx";
 
 function App() {
   const [user, setUser] = useState({
@@ -28,6 +29,7 @@ function App() {
           element={<UsersList user={user} />}
         ></Route>
         <Route path="/all-events" element={<AllEvents />}></Route>
+        <Route path="/users-list/confirm/:id" element={<CheckUsers />}></Route>
       </Routes>
     </BrowserRouter>
   );
