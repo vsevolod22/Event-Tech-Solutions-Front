@@ -5,21 +5,22 @@
   bottom: 0;
   left: 0;
   display: none;
-  background: rgb(0, 0,0, 0.45);
+  background: rgb(0, 0, 0, 0.45);
+  z-index: 1000;
 }
 
 .login_window_active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
 }
 
 .content_login_window {
-    background: white;
-    width: 67.188vw;
-    border: 0.26vw solid rgba(96, 116, 175, 1);
-    height: 40.156vw;
+  background: white;
+  width: 67.188vw;
+  border: 0.26vw solid rgba(96, 116, 175, 1);
+  height: 40.156vw;
 }
 
 .header_login_window {
@@ -46,14 +47,13 @@
 .login_password_name {
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   padding-left: 4.427vw;
   width: 53.281vw;
 }
 
-
 .login_password_name input {
-  width: 39.323vw ;
+  width: 39.323vw;
   height: 4.479vw;
   line-height: 2.222vw;
   font-weight: 600;
@@ -74,16 +74,16 @@
 }
 
 .btn_login {
-    width: 15.625vw;
-    height: 2.813vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(71, 166, 124, 1);
-    font-size: 1.823vw;
-    line-height: 2.222vw;
-    font-weight: 600;
-    border: solid 0.156vw rgba(71, 166, 124, 1);
-    border-radius: 5.208vw;
-    margin: 0 25.781vw;
+  width: 15.625vw;
+  height: 2.813vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(71, 166, 124, 1);
+  font-size: 1.823vw;
+  line-height: 2.222vw;
+  font-weight: 600;
+  border: solid 0.156vw rgba(71, 166, 124, 1);
+  border-radius: 5.208vw;
+  margin: 0 25.781vw;
 }

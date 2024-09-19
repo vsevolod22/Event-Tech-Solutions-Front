@@ -1,17 +1,25 @@
 import React, { useState } from "react";
 import "./checkUsers.css";
 import Header from "../components/header/Header";
+import Login from "../components/login-window/Login";
 
 const CheckUsers = () => {
+  const [modal, setModal] = useState(0);
+  const getValueModal = (data: number) => {
+    setModal(data);
+  };
   return (
     <>
-      <Header />
+      <Header getData={getValueModal} />
+      <Login getData={getValueModal} visible={modal} setVisible={setModal} />
       <div className="check-users container">
         <div className="check-users__header">
           <div className="check-users__finder">
             <input placeholder="Найти пользователя" />
             <select>
-              <option defaultChecked value="">роль пользователя</option>
+              <option defaultChecked value="">
+                роль пользователя
+              </option>
             </select>
           </div>
           <div className="check-users__visited_title">

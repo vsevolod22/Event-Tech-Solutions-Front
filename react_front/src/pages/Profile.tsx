@@ -19,6 +19,7 @@ import { useParams } from "react-router-dom";
 import { AllUserInfo } from "../types/types";
 import SvgReward from "../svg/svg-reward/SvgReward.jsx";
 import SvgPencil from "../svg/svg-pencil/SvgPencil.jsx";
+import Login from "../components/login-window/Login.tsx";
 const httpApiMethods = new HttpApiMethods();
 
 interface ProfileProps {
@@ -67,11 +68,12 @@ const Profile: FC<ProfileProps> = () => {
     if (id) {
       getMeet(id);
     }
-  }, [id]);
+  }, [id, localStorage.getItem("token")]);
   return (
     <>
       {modalVisible && <EditProfilWindow />}
-      <Header getData={getValueModal} user={user} />
+      <Header getData={getValueModal} />
+      <Login getData={getValueModal} visible={modal} setVisible={setModal} />
       <section className="container first">
         <div className="human_frame">
           <div className="photo_card">

@@ -6,8 +6,8 @@ import Event from "./pages/Event.tsx";
 import Profile from "./pages/Profile.tsx";
 import UsersList from "./pages/UsersList.tsx";
 import CreateEvent from "./pages/CreateEvent.tsx";
-import AllEvents from "./pages/AllEvents.jsx";
-import CheckUsers from "./pages/CheckUsers.jsx";
+import AllEvents from "./pages/AllEvents.tsx";
+import CheckUsers from "./pages/CheckUsers.tsx";
 
 function App() {
   const [user, setUser] = useState({
