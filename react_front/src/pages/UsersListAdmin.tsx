@@ -5,7 +5,7 @@ import "./usersListAdmin.css";
 import UserUsersList from "../components/user-users-list/UserUsersList.tsx";
 import InputFindEvent from "../components/UI/input-find-event/InputFindEvent.tsx";
 import { useParams } from "react-router-dom";
-import { IUser } from "../types/types.tsx";
+import { IUsers } from "../types/types.tsx";
 import AddUserModal from "../components/add-user-modal/AddUserModal.jsx";
 
 const httpApiMethods = new HttpApiMethods();
@@ -20,7 +20,7 @@ interface UserListProps {
 const UsersList: FC<UserListProps> = function ({ user }) {
   const { id } = useParams();
   const [modal, setModal] = useState(0);
-  const [UsersList, setUsersList] = React.useState<IUser[] | null>(null);
+  const [UsersList, setUsersList] = React.useState<IUsers[] | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const getValueModal = (data: number) => {
@@ -92,7 +92,7 @@ const UsersList: FC<UserListProps> = function ({ user }) {
           </div>
           {UsersList &&
             UsersList.map((user) => (
-              <UserUsersList user={user} key={user.id} />
+              <UserUsersList users={user} key={user.id} />
             ))}
         </div>
       </div>

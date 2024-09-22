@@ -8,11 +8,12 @@ import UsersList from "./pages/UsersList.jsx";
 import CreateEvent from "./pages/CreateEvent.tsx";
 import AllEvents from "./pages/AllEvents.jsx";
 import UsersListAdmin from "./pages/UsersListAdmin.tsx";
+import CheckUsers from "./pages/CheckUsers.jsx";
 
 function App() {
   const [user, setUser] = useState({
-    reg: 2,
-    role: 2,
+    reg: 1,
+    role: 1,
   });
   return (
     <BrowserRouter>
@@ -30,6 +31,7 @@ function App() {
         ></Route>
         <Route path="/users-list/add" element={<UsersListAdmin />}></Route>
         <Route path="/all-events" element={<AllEvents />}></Route>
+        <Route path="/users-list/confirm/:id" element={<CheckUsers />}></Route>
       </Routes>
     </BrowserRouter>
   );

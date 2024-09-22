@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import "./eventDetailed.css";
 import { useNavigate } from "react-router-dom";
 import SvgOnlineOffline from "../../svg/svg-online-offline/SvgOnlineOffline";
@@ -6,13 +6,16 @@ import SvgClock from "../../svg/svg-clock/SvgCLock";
 import SvgDuration from "../../svg/svg-duration/SvgDuration";
 import Skeleton from "@mui/material/Skeleton";
 import { IMeet } from "../../types/types.tsx";
+import { HttpApiMethods } from "../utils/FetchUtils.tsx";
 
 interface EventDetailedProps {
   meet: IMeet | null;
 }
-
+const httpApiMethods = new HttpApiMethods();
 const EventDetailed: FC<EventDetailedProps> = ({ meet }) => {
   const navigate_users_list = useNavigate();
+  const [meetId, setMeetId] = useState<string | undefined>(meet?.id);
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     const options: Intl.DateTimeFormatOptions = {
@@ -23,6 +26,24 @@ const EventDetailed: FC<EventDetailedProps> = ({ meet }) => {
       minute: "2-digit",
     };
     return date.toLocaleString("ru-RU", options); // Можно использовать locale-specific formatting
+  };
+
+  useEffect(() => {
+    setMeetId(meet?.id);
+  }, [meet]);
+  const MeetReg = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setMeetId(meet?.id);
+    if (meetId) {
+      try {
+        const AllMeets = await httpApiMethods.PostUserMeetReg(meetId);
+        console.log("Регистрация успешна:", AllMeets);
+      } catch (error) {
+        console.error("Ошибка при регистрации на мероприятие:", error);
+      }
+    } else {
+      console.error("ID мероприятия не найден");
+    }
   };
 
   return (

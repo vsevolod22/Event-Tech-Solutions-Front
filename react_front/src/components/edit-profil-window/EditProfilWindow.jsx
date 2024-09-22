@@ -1,17 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./editProfilWindow.css";
 
-const EditProfilWindow = ({ visible, setVisible }) => {
-  let visibleClassName = "modal-edit-profil-window";
-  if (visible) {
-    visibleClassName = "modal-edit-profile-window__active"
-  }
+const EditProfilWindow = ({ }) => {
+  // let visibleClassName = "modal-edit-profil-window";
+  // if (visible) {
+  //   visibleClassName = "modal-edit-profile-window__active"
+  // }
 
-  const handleSumbit = () => {
-    setVisible(0)
-  }
+  // const handleSumbit = () => {
+    // setVisible(0)
+  // }
   return (
-    <div className={visibleClassName}>
+    <div className="modal-overlay">
       <div className="edit-profil-window">
         <div className="edit-profil-window__title">
           <h1>Редактирование профиля</h1>

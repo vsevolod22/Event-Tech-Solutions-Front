@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 const AllEvents = () => {
   return (
     <>
-      {" "}
       <Header />
       {/* data for header */}
       <div className="all-events container">
@@ -21,6 +20,8 @@ const AllEvents = () => {
         <Hardfilter />
         <div className="all-events__list">
           {/* {allMeets &&
+
+
     allMeets.map((card) => <Card dataCard={card} key={card.id} />)} */}
         </div>
       </div>

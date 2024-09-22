@@ -21,33 +21,7 @@ const YourChoice = function () {
     setFirstBlockClicked(false); // Сбрасываем состояние нажатия на первый блок
   };
   return (
-    <>
-      <div className="choice">
-        <div onClick={handleFirstBlockClick} className="your_events_rewards">
-          <p>Ваши мероприятия</p>
-          <div
-            className={`${
-              firstBlockClicked ? "underline_selected" : "underline_default"
-            }`}
-          ></div>
-        </div>
-        <div onClick={handleSecondBlockClick} className="your_events_rewards">
-          <p>Ваши достижения</p>
-          <div
-            className={`${
-              secondBlockClicked ? "underline_selected" : "underline_default"
-            }`}
-          ></div>
-        </div>
-      </div>
-      {!firstBlockClicked ? (
-        <Awards />
-      ) : (
-        <>
-          <Events />
-        </>
-      )}
-    </>
+    <></>
   );
 };
 
