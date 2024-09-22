@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useState } from "react";
-import Header from "../components/header/Header";
+import Header from "../components/header/Header.tsx";
 import { HttpApiMethods } from "../components/utils/FetchUtils.tsx";
-import "./usersList.css";
-import UserUsersList from "../components/user-users-list/UserUsersList";
-import InputFindEvent from "../components/UI/input-find-event/InputFindEvent";
+import "./usersListAdmin.css";
+import UserUsersList from "../components/user-users-list/UserUsersList.tsx";
+import InputFindEvent from "../components/UI/input-find-event/InputFindEvent.tsx";
 import { useParams } from "react-router-dom";
 import { IUser } from "../types/types.tsx";
 import AddUserModal from "../components/add-user-modal/AddUserModal.jsx";
