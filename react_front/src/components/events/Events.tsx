@@ -27,8 +27,10 @@ const Events: React.FC<EventsProps> = ({
       setTotalEvents(meets?.length); // Устанавливаем общее количество мероприятий
 
       // Извлекаем уникальные типы из мероприятий и передаем их в SimpleFilter через Main
-      const uniqueTypes = Array.from(new Set(meets.map((meet) => meet.type.id)))
-        .map((typeId) => meets.find((meet) => meet.type.id === typeId)?.type)
+      const uniqueTypes = Array.from(
+        new Set(meets?.map((meet) => meet.type.id))
+      )
+        .map((typeId) => meets?.find((meet) => meet.type.id === typeId)?.type)
         .filter(
           (type): type is { id: number; name: string } => type !== undefined
         );
