@@ -1,7 +1,7 @@
 .card {
   cursor: pointer;
   width: 17.865vw;
-  height: 31.198vw;
+  /* height: 31.198vw; */
   display: flex;
   gap: 0.521vw;
   flex-flow: column;

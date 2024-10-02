@@ -17,7 +17,7 @@ interface UserListProps {
   };
 }
 
-const UsersListAdmin: FC<UserListProps> = function ({ user }) {
+const UsersList: FC<UserListProps> = function ({ user }) {
   const { id } = useParams();
   const [modal, setModal] = useState(0);
   const [UsersList, setUsersList] = React.useState<IUsers[] | null>(null);
@@ -79,17 +79,6 @@ const UsersListAdmin: FC<UserListProps> = function ({ user }) {
           </select>
         </div>
         <div className="users_list">
-          <div className="add_user_users_list">
-            <div className="add_user_users_list_content">
-              <button
-                className="add_user_users_list_btn"
-                onClick={handleOpenModal}
-              >
-                <p>+</p>
-              </button>
-              <h3 data-text="Добавить пользователя">Добавить пользователя</h3>
-            </div>
-          </div>
           {UsersList &&
             UsersList.map((user) => (
               <UserUsersList users={user} key={user.id} />
@@ -108,4 +97,4 @@ const UsersListAdmin: FC<UserListProps> = function ({ user }) {
   );
 };
 
-export default UsersListAdmin;
+export default UsersList;

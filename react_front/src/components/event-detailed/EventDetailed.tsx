@@ -98,7 +98,7 @@ const EventDetailed: FC<EventDetailedProps> = ({ meet }) => {
           </div>
           <button type="submit" className="sign_up_event_btn">
             ЗАПИСАТЬСЯ НА МЕРОПРИЯТИЕ
-          </button>
+          </button>   
           <button type="submit" className="link_event">
             Ссылка на мероприятие
           </button>

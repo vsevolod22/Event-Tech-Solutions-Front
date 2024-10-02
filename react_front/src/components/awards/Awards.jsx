@@ -5,7 +5,7 @@ import "../awards/awards.css";
 
 const Awards = () => {
   return (
-    <div className="awards">
+    <div className="awards container">
       <div className="awards__title">
         <h2>Полученные достижения</h2>
       </div>

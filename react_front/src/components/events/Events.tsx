@@ -7,6 +7,7 @@ import { AllMeetings, IMeet } from "../../types/types.tsx";
 const Events = function () {
   const [allMeets, setAllMeets] = useState<IMeet[] | null>(null);
   const [showMore, setShowMore] = useState(false); // Состояние для показа всех элементов
+  const [btnText, setBtnText] = useState("Все мероприятия");
 
   useEffect(() => {
     const getAllMeetings = async () => {
@@ -22,8 +23,16 @@ const Events = function () {
     if (showMore) {
       return allMeets?.map((card) => <Card dataCard={card} key={card.id} />);
     } else {
-      // return allMeets.slice(0, 6).map((card) => <Card dataCard={card} key={card.id} />);
-      return 0;
+      return allMeets
+        ?.slice(0, 8)
+        .map((card) => <Card dataCard={card} key={card.id} />);
+    }
+  };
+  const renderBtn = () => {
+    if (showMore) {
+      return <p>Скрыть мероприятия</p>;
+    } else {
+      return <p>Все мероприятия</p>;
     }
   };
 
@@ -38,7 +47,7 @@ const Events = function () {
         {renderCards()} {/* Вызываем функцию для отрисовки карточек */}
       </div>
       <button className="events__all" onClick={handleShowMore}>
-        <p>Все мероприятия</p>
+        {renderBtn()}
       </button>
     </div>
   );

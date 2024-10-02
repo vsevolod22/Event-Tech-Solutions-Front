@@ -20,6 +20,7 @@ import { AllUserInfo } from "../types/types";
 import SvgReward from "../svg/svg-reward/SvgReward.jsx";
 import SvgPencil from "../svg/svg-pencil/SvgPencil.jsx";
 import Login from "../components/login-window/Login.tsx";
+import { Padding } from "@mui/icons-material";
 const httpApiMethods = new HttpApiMethods();
 
 interface ProfileProps {
@@ -133,9 +134,9 @@ const Profile: FC<ProfileProps> = () => {
           </button>
         </div>
       </section>
-      <section className="container second">
+      <section className="second">
         <>
-          <div className="choice">
+          <div className="container choice">
             <div
               onClick={handleFirstBlockClick}
               className="your_events_rewards"

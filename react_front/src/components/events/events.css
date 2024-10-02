@@ -69,6 +69,7 @@
 
 .events__all {
   margin: 0 auto;
+  margin-top: 5vw;
   display: flex;
   align-items: center;
   justify-content: center;

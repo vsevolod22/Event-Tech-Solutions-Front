@@ -22,10 +22,10 @@ const HeaderProfile = function () {
   };
 
   const logOut = () => {
-    closeMenu()
-    localStorage.clear()
-    window.location.reload()
-  }
+    closeMenu();
+    localStorage.clear();
+    window.location.reload();
+  };
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -37,14 +37,11 @@ const HeaderProfile = function () {
     <div className="navbar">
       <SvgNotice />
       <div className="profile-menu-container" ref={menuRef}>
-        <button className="profile"  onClick={toggleMenu} ></button>
+        <button className="profile" onClick={toggleMenu}></button>
         {isOpen && (
           <div className="window_profile">
             <Link to={`/profile/${id}`} onClick={closeMenu}>
               <p>Профиль</p>
-            </Link>
-            <Link onClick={closeMenu}>
-              <p>Настройки</p>
             </Link>
             <Link onClick={logOut}>
               <p>Выйти</p>

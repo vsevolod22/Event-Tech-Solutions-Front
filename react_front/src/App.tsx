@@ -1,14 +1,14 @@
-ччimport "./App.css";
+import "./App.css";
 import React, { Component, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Main from "./pages/Main.tsx";
 import Event from "./pages/Event.tsx";
 import Profile from "./pages/Profile.tsx";
-import UsersList from "./pages/UsersList.jsx";
+import UsersList from "./pages/UsersList.tsx";
 import CreateEvent from "./pages/CreateEvent.tsx";
-import AllEvents from "./pages/AllEvents.jsx";
+import AllEvents from "./pages/AllEvents.tsx";
 import UsersListAdmin from "./pages/UsersListAdmin.tsx";
-import CheckUsers from "./pages/CheckUsers.jsx";
+import CheckUsers from "./pages/CheckUsers.tsx";
 
 function App() {
   const [user, setUser] = useState({

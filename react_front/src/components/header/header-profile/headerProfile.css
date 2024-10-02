@@ -20,7 +20,7 @@
 
 .window_profile {
   width: 10.156vw;
-  height: 8.177vw;
+  height: 5.177vw;
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -29,15 +29,14 @@
   border: 0.052vw solid #ccc; /* Граница по умолчанию */
   border-top: none; /* Убираем верхнюю границу */
   border-radius: 0.521vw;
-background-color: white;
+  background-color: white;
   position: absolute;
   top: 125%;
   right: 0;
   z-index: 1000;
-
-  & p {
-    font-size: 1.146vw;
-    font-weight: 400;
-    line-height: 1.397vw;
-  }
+}
+.window_profile p {
+  font-size: 1.146vw;
+  font-weight: 400;
+  line-height: 1.397vw;
 }
