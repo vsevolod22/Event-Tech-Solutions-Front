@@ -20,9 +20,16 @@
   background: white;
   width: 67.188vw;
   border: 0.26vw solid rgba(96, 116, 175, 1);
-  height: 40.156vw;
+  min-height: 40.156vw;
+  padding-bottom: 2.083vw;
 }
-
+.error_message {
+  padding-left: 4.427vw;
+  color: rgb(179, 15, 15);
+  line-height: 2.222vw;
+  font-weight: 600;
+  font-size: 1.823vw;
+}
 .header_login_window {
   display: flex;
   padding: 2.083vw 2.083vw 0 0;

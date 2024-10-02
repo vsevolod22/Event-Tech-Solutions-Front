@@ -23,8 +23,10 @@ const Events: React.FC<EventsProps> = ({
     const fetchEvents = async () => {
       const httpApiMethods = new HttpApiMethods();
       const meets = await httpApiMethods.GetAllMeetings();
-      setAllMeets(meets);
-      setTotalEvents(meets?.length); // Устанавливаем общее количество мероприятий
+      if (meets) {
+        setAllMeets(meets);
+        setTotalEvents(meets.length); // Устанавливаем общее количество мероприятий
+      }
 
       // Извлекаем уникальные типы из мероприятий и передаем их в SimpleFilter через Main
       const uniqueTypes = Array.from(

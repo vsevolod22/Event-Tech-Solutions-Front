@@ -12,9 +12,11 @@ interface EventDetailedProps {
   meet: IMeet | null;
 }
 const httpApiMethods = new HttpApiMethods();
+
 const EventDetailed: FC<EventDetailedProps> = ({ meet }) => {
   const navigate_users_list = useNavigate();
   const [meetId, setMeetId] = useState<string | undefined>(meet?.id);
+  const [message, setMessage] = useState<string | null>(null); // Для отображения сообщения об успехе или ошибке
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -31,30 +33,37 @@ const EventDetailed: FC<EventDetailedProps> = ({ meet }) => {
   useEffect(() => {
     setMeetId(meet?.id);
   }, [meet]);
+
   const MeetReg = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setMeetId(meet?.id);
+
     if (meetId) {
       try {
-        const AllMeets = await httpApiMethods.PostUserMeetReg(meetId);
-        console.log("Регистрация успешна:", AllMeets);
+        const result = await httpApiMethods.PostUserMeetReg(meetId);
+        if (result) {
+          setMessage("Регистрация успешна!"); // Отображаем сообщение об успешной регистрации
+        } else {
+          setMessage("Ошибка при регистрации на мероприятие.");
+        }
       } catch (error) {
+        setMessage("Ошибка при регистрации на мероприятие.");
         console.error("Ошибка при регистрации на мероприятие:", error);
       }
     } else {
-      console.error("ID мероприятия не найден");
+      setMessage("ID мероприятия не найден.");
+      console.error("ID мероприятия не найден.");
     }
   };
 
   return (
     <>
-    {/* Проверка на роль */}
       <div className="event-detailed__admin container">
         <button className="event-detailed__admin_btn-edit">
           Редактировать мероприятие
         </button>
       </div>
-      {/*  */}
+
       <form className="event_detailed container">
         <div className="first_event_detailed">
           <h1>
@@ -96,13 +105,19 @@ const EventDetailed: FC<EventDetailedProps> = ({ meet }) => {
             </p>
             <p>часа(-ов)</p>
           </div>
-          <button type="submit" className="sign_up_event_btn">
+
+          {/* Кнопка регистрации на мероприятие */}
+          <button type="button" className="sign_up_event_btn" onClick={MeetReg}>
             ЗАПИСАТЬСЯ НА МЕРОПРИЯТИЕ
-          </button>   
-          <button type="submit" className="link_event">
+          </button>
+
+          {/* Выводим сообщение об успехе или ошибке */}
+          {message && <p className="registration_message">{message}</p>}
+
+          <button type="button" className="link_event">
             Ссылка на мероприятие
           </button>
-          <button type="submit" className="download_video_event">
+          <button type="button" className="download_video_event">
             Скачать видео
           </button>
 

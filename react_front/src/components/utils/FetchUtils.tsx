@@ -91,18 +91,18 @@ export class HttpApiMethods {
       return null;
     }
   };
-  GetUserAuth = async (data: IAuth): Promise<ILogin | null> => {
+  GetUserAuth = async (data: IAuth): Promise<ILogin | any> => {
     let innerUrl = this.APIURL + `/auth/login/`;
 
     try {
       const response = await axios.postForm(innerUrl, data);
-      // console.log(response.data);
-      return response.data; // Возвращаем данные из ответа
-    } catch (error) {
+      return response.data; // Возвращаем данные из ответа при успехе
+    } catch (error: any) {
       console.error(error);
-      return null;
+      return error.response; // Возвращаем полный объект ошибки для дальнейшей обработки
     }
   };
+
   PostComment = async (
     data: { comment: string },
     id: string | number
@@ -140,6 +140,22 @@ export class HttpApiMethods {
     try {
       const response = await axios.postForm(innerUrl, data);
       // console.log(response.data);
+      return response.data; // Возвращаем данные из ответа
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  };
+  GetAllUsers = async (): Promise<IUser[] | null> => {
+    let innerUrl = this.APIURL + `/users/user/`;
+
+    try {
+      const response = await axios.get(innerUrl, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.API_KEY}`,
+        },
+      });
       return response.data; // Возвращаем данные из ответа
     } catch (error) {
       console.error(error);

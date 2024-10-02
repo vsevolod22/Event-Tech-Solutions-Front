@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import Header from "../components/header/Header";
 import "./createEvent.css";
 import SvgOnlineOffline from "../svg/svg-online-offline/SvgOnlineOffline";
@@ -7,7 +7,9 @@ import { IPostUser, IUser } from "../types/types.tsx";
 import { HttpApiMethods } from "../components/utils/FetchUtils.tsx";
 import UserUsersList from "../components/user-users-list/UserUsersList.tsx";
 import InputFindEvent from "../components/UI/input-find-event/InputFindEvent.tsx";
+
 const httpApiMethods = new HttpApiMethods();
+
 interface CreateEventProps {
   user: {
     role: number;
@@ -16,11 +18,12 @@ interface CreateEventProps {
 }
 
 const CreateEvent: FC<CreateEventProps> = ({ user }) => {
-  const [UsersList, setUsersList] = React.useState<IUser[] | null>(null);
+  const [UsersList, setUsersList] = useState<IUser[] | null>(null);
   const [modal, setModal] = useState(0);
   const getValueModal = (data: number) => {
     setModal(data);
   };
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -32,12 +35,26 @@ const CreateEvent: FC<CreateEventProps> = ({ user }) => {
     phone_number: "",
   });
 
+  // Запрос всех пользователей через useEffect
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const users = await httpApiMethods.GetAllUsers(); // Используем метод для получения всех пользователей
+      if (users) {
+        setUsersList(users); // Устанавливаем список пользователей в state
+      }
+    };
+
+    fetchUsers();
+  }, []); // Зависимость пустая, чтобы запрос был выполнен только при первом рендере
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
   const handleSubmitEvent = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
+
   const handleSubmitUser = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -67,6 +84,7 @@ const CreateEvent: FC<CreateEventProps> = ({ user }) => {
       phone_number: "",
     });
   };
+
   return (
     <>
       <Header getData={getValueModal}></Header>
@@ -163,51 +181,13 @@ const CreateEvent: FC<CreateEventProps> = ({ user }) => {
                   onClick={() =>
                     console.log("take user.id for choose specialist")
                   }
+                  key={user.id}
                 >
-                  <UserUsersList user={user} key={user.id} />
+                  <UserUsersList users={user} />
                 </div>
               ))}
           </div>
         </section>
-        {/* <section className="specialist_section_create_event">
-          <h1>Специалист</h1>
-          <div className="add_specialist_data">
-            <div className="add_specialist_logo"></div>
-
-            <div className="adds_specialist_inputs">
-              <input
-                placeholder="ФИО специалиста"
-                className="add_name_number_mail_specialist"
-              ></input>
-              <textarea
-                placeholder="Описание специалиста"
-                className="add_description_specialist"
-              ></textarea>
-              <input
-                placeholder="+7 (999) 999 - 99 - 99"
-                className="add_name_number_mail_specialist"
-              ></input>
-              <input
-                placeholder="email@example.ru"
-                className="add_name_number_mail_specialist"
-              ></input>
-            </div>
-            <div className="adds_specialist_materials_links">
-              <p>Ссылки на материалы специалиста</p>
-              <div className="circle_links">
-                <div className="add_specialist_material_link">
-                  <p>+</p>
-                </div>
-                <div className="add_specialist_material_link">
-                  <p>+</p>
-                </div>
-                <div className="add_specialist_material_link">
-                  <p>+</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section> */}
 
         <section className="btn_section_create_event">
           <button type="submit" className="btn_post_event">

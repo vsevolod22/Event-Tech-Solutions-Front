@@ -16,7 +16,7 @@ import EditProfilWindow from "../components/edit-profil-window/EditProfilWindow.
 import { HttpApiMethods } from "../components/utils/FetchUtils.tsx";
 import Skeleton from "@mui/material/Skeleton";
 import { useParams } from "react-router-dom";
-import { AllUserInfo } from "../types/types";
+import { AllUserInfo, IType } from "../types/types";
 import SvgReward from "../svg/svg-reward/SvgReward.jsx";
 import SvgPencil from "../svg/svg-pencil/SvgPencil.jsx";
 import Login from "../components/login-window/Login.tsx";
@@ -38,7 +38,14 @@ const Profile: FC<ProfileProps> = () => {
   const [firstBlockClicked, setFirstBlockClicked] = useState(true); // Состояние для отслеживания нажатия на первый блок
   const [secondBlockClicked, setSecondBlockClicked] = useState(false); // Состояние для отслеживания нажатия на второй блок
   const [modalVisible, setModalVisible] = useState(false);
-
+  const [filters, setFilters] = useState<{ type: string; isUpcoming: boolean }>(
+    {
+      type: "",
+      isUpcoming: true,
+    }
+  );
+  const [eventTypes, setEventTypes] = useState<IType[]>([]);
+  const [totalEvents, setTotalEvents] = useState<number>(0); // Добавлен стейт для общего количества мероприятий
   const handleOpenModal = () => {
     setModalVisible(true);
   };
@@ -163,10 +170,14 @@ const Profile: FC<ProfileProps> = () => {
             </div>
           </div>
           {!firstBlockClicked ? (
-            <Awards />
+            <Awards id={user?.id} />
           ) : (
             <>
-              <Events />
+              <Events
+                filters={filters}
+                onTypesExtracted={setEventTypes}
+                setTotalEvents={setTotalEvents}
+              />
             </>
           )}
         </>{" "}

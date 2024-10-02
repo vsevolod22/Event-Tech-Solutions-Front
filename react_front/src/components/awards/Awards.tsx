@@ -1,9 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 import Award from "../award/Award";
 
 import "../awards/awards.css";
-
-const Awards = () => {
+interface AwardsProps {
+  id: number;
+}
+const Awards: FC<AwardsProps> = (id) => {
   return (
     <div className="awards container">
       <div className="awards__title">

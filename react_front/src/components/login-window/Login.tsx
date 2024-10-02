@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import "./login.css";
 import SvgCross from "../../svg/svg-cross/SvgCross";
 import { HttpApiMethods } from "../utils/FetchUtils.tsx";
@@ -12,10 +12,13 @@ interface LoginProps {
 }
 
 const Login: FC<LoginProps> = function ({ visible, setVisible, getData }) {
+  const [errorMessage, setErrorMessage] = useState<string | null>(null); // Состояние для сообщения об ошибке
+
   let visibleClassName = "login_window";
   if (visible) {
     visibleClassName += " login_window_active";
   }
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Предотвращаем стандартное поведение формы
 
@@ -39,21 +42,23 @@ const Login: FC<LoginProps> = function ({ visible, setVisible, getData }) {
     };
 
     // Вызываем функцию GetUserAuth с данными
-    try {
-      const response = await httpApiMethods.GetUserAuth(data);
-      console.log(response);
-      if (response && response.access) {
-        // Выводим ответ сервера
-        localStorage.setItem("token", response.access);
-        localStorage.setItem("id", response.user.id);
-        localStorage.setItem("groups", response.user.groups[0].name);
-        console.log(response);
-      }
-    } catch (error) {
-      console.error(error);
-    }
+    const response = await httpApiMethods.GetUserAuth(data);
 
-    setVisible(0);
+    if (response && response.access) {
+      // Если авторизация успешна, сохраняем данные
+      localStorage.setItem("token", response.access);
+      localStorage.setItem("id", response.user.id);
+      localStorage.setItem("groups", response.user.groups[0].name);
+      console.log(response);
+      setErrorMessage(null); // Сбрасываем ошибку при успешном входе
+      setVisible(0); // Закрываем модалку только при успешном входе
+    } else if (response && response.status === 400) {
+      // Если статус 400, показываем сообщение о неправильных данных
+      setErrorMessage("Неверный логин или пароль.");
+    } else {
+      // Все остальные ошибки
+      setErrorMessage("Произошла ошибка при входе.");
+    }
   };
 
   return (
@@ -64,6 +69,9 @@ const Login: FC<LoginProps> = function ({ visible, setVisible, getData }) {
         </div>
         <form className="login_form" onSubmit={handleSubmit}>
           <h1>Вход в аккаунт</h1>
+
+          {/* Выводим сообщение об ошибке, если оно есть */}
+
           <div className="login_password_name">
             <p>Логин</p>
             <input className="login_form_input" type="text" name="username" />
@@ -72,14 +80,16 @@ const Login: FC<LoginProps> = function ({ visible, setVisible, getData }) {
             <p>Пароль</p>
             <input
               className="login_form_input"
-              type="current-password"
+              type="password"
               name="password"
             />
           </div>
+          {errorMessage && <p className="error_message">{errorMessage}</p>}
           <button className="btn_login">Войти</button>
         </form>
       </div>
     </div>
   );
 };
+
 export default Login;

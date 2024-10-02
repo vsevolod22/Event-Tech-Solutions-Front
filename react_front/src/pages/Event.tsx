@@ -11,7 +11,7 @@ import InputComment from "../components/input-comment/InputComment";
 import EventDetailed from "../components/event-detailed/EventDetailed";
 import Login from "../components/login-window/Login";
 import Events from "../components/events/Events";
-import { IMeet } from "../types/types.tsx";
+import { IMeet, IType } from "../types/types.tsx";
 const httpApiMethods = new HttpApiMethods();
 
 interface EventProps {
@@ -28,7 +28,14 @@ const Event: FC<EventProps> = ({ user }) => {
     setModal(data);
   };
   const [meet, setMeet] = useState<IMeet | null>(null);
-
+  const [filters, setFilters] = useState<{ type: string; isUpcoming: boolean }>(
+    {
+      type: "",
+      isUpcoming: true,
+    }
+  );
+  const [eventTypes, setEventTypes] = useState<IType[]>([]);
+  const [totalEvents, setTotalEvents] = useState<number>(0); // Добавлен стейт для общего количества мероприятий
   useEffect(() => {
     if (id) {
       const getMeet = async (id: string) => {
@@ -66,7 +73,11 @@ const Event: FC<EventProps> = ({ user }) => {
       >
         Ещё меропрития
       </h1>
-      <Events />
+      <Events
+        filters={filters}
+        onTypesExtracted={setEventTypes}
+        setTotalEvents={setTotalEvents}
+      />
     </>
   );
 };
