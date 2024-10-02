@@ -22,8 +22,9 @@ const Events = function () {
     if (showMore) {
       return allMeets?.map((card) => <Card dataCard={card} key={card.id} />);
     } else {
-      // return allMeets.slice(0, 6).map((card) => <Card dataCard={card} key={card.id} />);
-      return 0;
+      return allMeets
+        ?.slice(0, 6)
+        .map((card) => <Card dataCard={card} key={card.id} />);
     }
   };
 
