@@ -2,7 +2,8 @@ import React from "react";
 import "./usersList.css";
 import InputFindEvent from "../components/UI/input-find-event/InputFindEvent.tsx";
 import UserUsersList from "../components/user-users-list/UserUsersList.tsx";
-const UsersList = () => {
+const UsersList = (user) => {
+  console.log(user);
   return (
     <>
       <div className="simple_filter">
@@ -12,8 +13,8 @@ const UsersList = () => {
         </select>
       </div>
       <div className="users_list">
-        {UsersList &&
-          UsersList.map((user) => (
+        {user &&
+          user.map((user) => (
             <div
               onClick={() => console.log("take user.id for choose specialist")}
             >

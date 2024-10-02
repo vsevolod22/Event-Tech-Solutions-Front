@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Main from "./pages/Main.tsx";
 import Event from "./pages/Event.tsx";
 import Profile from "./pages/Profile.tsx";
-import UsersList from "./pages/UsersList.jsx";
+import UsersList from "./pages/UsersList.tsx";
 import CreateEvent from "./pages/CreateEvent.tsx";
 import AllEvents from "./pages/AllEvents.tsx";
 import UsersListAdmin from "./pages/UsersListAdmin.tsx";
@@ -29,7 +29,10 @@ function App() {
           path="/users-list/meet/:id"
           element={<UsersList user={user} />}
         ></Route>
-        <Route path="/users-list/add" element={<UsersListAdmin />}></Route>
+        <Route
+          path="/users-list/add"
+          element={<UsersListAdmin user={user} />}
+        ></Route>
         <Route path="/all-events" element={<AllEvents />}></Route>
         <Route path="/users-list/confirm/:id" element={<CheckUsers />}></Route>
       </Routes>

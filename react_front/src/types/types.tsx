@@ -131,3 +131,7 @@ export interface INotification {
   event: IMeet;
   description: string;
 }
+export interface IType {
+  id: number;
+  name: string;
+}
