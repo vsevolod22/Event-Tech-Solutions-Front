@@ -3,7 +3,7 @@ import Header from "../components/header/Header";
 import "./createEvent.css";
 import SvgOnlineOffline from "../svg/svg-online-offline/SvgOnlineOffline";
 import SvgClock from "../svg/svg-clock/SvgCLock";
-import { IPostUser } from "../types/types.tsx";
+import { IPostUser, IUser } from "../types/types.tsx";
 import { HttpApiMethods } from "../components/utils/FetchUtils.tsx";
 import UserUsersList from "../components/user-users-list/UserUsersList.tsx";
 import InputFindEvent from "../components/UI/input-find-event/InputFindEvent.tsx";
@@ -68,7 +68,7 @@ const CreateEvent: FC<CreateEventProps> = ({ user }) => {
   };
   return (
     <>
-      <Header getData={getValueModal} user={user}></Header>
+      <Header getData={getValueModal}></Header>
       <form className="create_event container" onSubmit={handleSubmitEvent}>
         <section className="main_section_create_event">
           <div className="main_section_create_event_column">

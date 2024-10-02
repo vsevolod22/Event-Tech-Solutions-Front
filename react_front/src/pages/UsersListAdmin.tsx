@@ -37,7 +37,7 @@ const UsersList: FC<UserListProps> = function ({ user }) {
 
       getUsers(id);
     }
-  }, [id]);
+  }, [id, localStorage.getItem("token")]);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -68,7 +68,7 @@ const UsersList: FC<UserListProps> = function ({ user }) {
 
   return (
     <>
-      <Header getData={getValueModal} user={user} isBlurred={isModalOpen} />
+      <Header getData={getValueModal} isBlurred={isModalOpen} />
       <div
         className={`container page_users_list ${isModalOpen ? "blurred" : ""}`}
       >

@@ -1,68 +1,57 @@
-import React, {FC, useEffect, useState} from "react";
+import React, { FC, useEffect, useState } from "react";
 import "./inputComment.css";
-import {IComment} from "../../types/types.tsx";
-import {HttpApiMethods} from "../utils/FetchUtils.tsx";
+import { IComment } from "../../types/types.tsx";
+import { HttpApiMethods } from "../utils/FetchUtils.tsx";
 
 interface InputCommentProps {
-
-  id: string | undefined
+  id: string | undefined;
 }
 
-
-
-const InputComment : FC<InputCommentProps> =  ({id}) => {
-  const httpApiMethods = new HttpApiMethods()
-  const [textAreaValue, setTextAreaValue] = useState('');
+const InputComment: FC<InputCommentProps> = ({ id }) => {
+  const httpApiMethods = new HttpApiMethods();
+  const [textAreaValue, setTextAreaValue] = useState("");
   const [comments, setComments] = useState<IComment[] | null>(null);
   const [newComment, setNewComment] = useState<IComment | null>(null);
-  const formatDate = (dateString : string) => {
+  const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    const options : Intl.DateTimeFormatOptions = {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
     };
-    return date.toLocaleString('ru-RU', options); // Можно использовать locale-specific formatting
+    return date.toLocaleString("ru-RU", options); // Можно использовать locale-specific formatting
   };
   useEffect(() => {
     if (id) {
-      const getComments = async (id : string) => {
-
-        const newComments = await httpApiMethods.GetCommentsByMeet(id)
+      const getComments = async (id: string) => {
+        const newComments = await httpApiMethods.GetCommentsByMeet(id);
         console.log(newComments);
         setComments(newComments);
-
-
-
       };
       getComments(id);
     }
-
-  }, [newComment, id])
+  }, [newComment, id]);
   const handleComment = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Предотвращаем перезагрузку страницы
-    console.log(id)
+    console.log(id);
     if (id) {
       const data = {
-        comment: textAreaValue
-      }
+        comment: textAreaValue,
+      };
       try {
-        const response = await httpApiMethods.PostComment(data, id)
+        const response = await httpApiMethods.PostComment(data, id);
         console.log(response);
         if (response) {
-          setNewComment(response)
+          setNewComment(response);
+          setTextAreaValue(""); // Очищаем textarea после успешной отправки
         }
-
-
       } catch (error) {
         console.error(error);
       }
     }
-
-  }
+  };
   return (
     <section className="inputCommMargin">
       <form onSubmit={handleComment} className="input_comm_block container">
@@ -84,32 +73,29 @@ const InputComment : FC<InputCommentProps> =  ({id}) => {
         </div>
       </form>
       <div className="container comment_list">
-       
-       {comments && comments.map((comment) => (
-          <div key={comment.id} className="comment_block">
-          <div className="logo_profile"></div>
-            <div className="data_comment">
-              <div className="name_date">
-                <div className="name">
-                  <p>{comment.user.last_name} {comment.user.first_name}</p>
+        {comments &&
+          comments.map((comment) => (
+            <div key={comment.id} className="comment_block">
+              <div className="logo_profile"></div>
+              <div className="data_comment">
+                <div className="name_date">
+                  <div className="name">
+                    <p>
+                      {comment.user.last_name} {comment.user.first_name}
+                    </p>
+                  </div>
+                  <div className="date">
+                    <p>{formatDate(comment.created_at)}</p>
+                  </div>
                 </div>
-                <div className="date">
-                  <p>{formatDate(comment.created_at)}</p>
+                <div className="comm">
+                  <p>{comment.comment}</p>
                 </div>
-              </div>
-              <div className="comm">
-                <p>
-                 {comment.comment}
-                </p>
               </div>
             </div>
-        </div>
-       ))}
-        
+          ))}
       </div>
     </section>
-   
-    
   );
 };
 

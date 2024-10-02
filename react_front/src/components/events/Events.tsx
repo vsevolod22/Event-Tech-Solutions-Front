@@ -20,10 +20,10 @@ const Events = function () {
 
   const renderCards = () => {
     if (showMore) {
-      return allMeets.map((card) => <Card dataCard={card} key={card.id} />);
+      return allMeets?.map((card) => <Card dataCard={card} key={card.id} />);
     } else {
       // return allMeets.slice(0, 6).map((card) => <Card dataCard={card} key={card.id} />);
-      return 0
+      return 0;
     }
   };
 
@@ -34,13 +34,13 @@ const Events = function () {
   // МАКСИМУМ ПОКАЗЫВАТЬ 6 МЕРОПРИЯТИЙ, ПОСЛЕ НАЖАТИЯ на показать все показывать все
   return (
     <div className="events">
-    <div className="cards">
-      {renderCards()} {/* Вызываем функцию для отрисовки карточек */}
+      <div className="cards">
+        {renderCards()} {/* Вызываем функцию для отрисовки карточек */}
+      </div>
+      <button className="events__all" onClick={handleShowMore}>
+        <p>Все мероприятия</p>
+      </button>
     </div>
-    <button className="events__all" onClick={handleShowMore}>
-      <p>Все мероприятия</p>
-    </button>
-  </div>
   );
 };
 
