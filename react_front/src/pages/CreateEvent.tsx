@@ -31,6 +31,7 @@ const CreateEvent: FC<CreateEventProps> = ({ user }) => {
     mail: "",
     phone_number: "",
   });
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };

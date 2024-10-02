@@ -24,7 +24,7 @@ const Events: React.FC<EventsProps> = ({
       const httpApiMethods = new HttpApiMethods();
       const meets = await httpApiMethods.GetAllMeetings();
       setAllMeets(meets);
-      setTotalEvents(meets.length); // Устанавливаем общее количество мероприятий
+      setTotalEvents(meets?.length); // Устанавливаем общее количество мероприятий
 
       // Извлекаем уникальные типы из мероприятий и передаем их в SimpleFilter через Main
       const uniqueTypes = Array.from(new Set(meets.map((meet) => meet.type.id)))
@@ -40,7 +40,7 @@ const Events: React.FC<EventsProps> = ({
 
   useEffect(() => {
     // Фильтрация мероприятий по типу и актуальности
-    const filtered = allMeets.filter((meet) => {
+    const filtered = allMeets?.filter((meet) => {
       const matchType = filters.type
         ? meet.type.id.toString() === filters.type
         : true;
@@ -52,14 +52,14 @@ const Events: React.FC<EventsProps> = ({
   }, [allMeets, filters]);
 
   const renderCards = () => {
-    const meetsToShow = showMore ? filteredMeets : filteredMeets.slice(0, 6);
-    return meetsToShow.map((card) => <Card dataCard={card} key={card.id} />);
+    const meetsToShow = showMore ? filteredMeets : filteredMeets?.slice(0, 6);
+    return meetsToShow?.map((card) => <Card dataCard={card} key={card.id} />);
   };
 
   return (
     <div className="events">
       <div className="cards">{renderCards()}</div>
-      {filteredMeets.length > 6 && (
+      {filteredMeets?.length > 6 && (
         <button className="events__all" onClick={() => setShowMore(!showMore)}>
           <p>{showMore ? "Скрыть мероприятия" : "Все мероприятия"}</p>
         </button>
