@@ -5,6 +5,7 @@ import MainContent from "../components/main-content/MainContent.tsx";
 import HardFilter from "../components/filters/hard-filter/HardFilter.tsx";
 import Events from "../components/events/Events.tsx";
 import { IType, IMeet } from "../types/types";
+import SuccessfulyReg from "../components/successfully-reg/SuccessfulyReg.jsx";
 
 interface MainProps {
   user: {

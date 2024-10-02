@@ -1,0 +1,29 @@
+.successfully-reg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Размытый фон с затемнением */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.successfully-reg__content {
+  background: white;
+  padding: 1.042vw;
+  border-radius: 0.417vw;
+  box-shadow: 0 0.208vw 0.417vw rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.successfully-reg__content h2 {
+  font-size: 2vw;
+  color: #477ba6;
+  margin-bottom: 1vw;
+}
+
+.successfully-reg button {
+  font-size: 1.5vw;
+}

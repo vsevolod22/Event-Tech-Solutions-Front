@@ -79,7 +79,7 @@ const Profile: FC<ProfileProps> = () => {
   }, [id, localStorage.getItem("token")]);
   return (
     <>
-      {modalVisible && <EditProfilWindow />}
+      {modalVisible && <EditProfilWindow onClose={handleCloseModal} />}
       <Header getData={getValueModal} />
       <Login getData={getValueModal} visible={modal} setVisible={setModal} />
       <section className="container first">

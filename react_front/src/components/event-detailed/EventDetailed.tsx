@@ -7,6 +7,7 @@ import SvgDuration from "../../svg/svg-duration/SvgDuration";
 import Skeleton from "@mui/material/Skeleton";
 import { IMeet } from "../../types/types.tsx";
 import { HttpApiMethods } from "../utils/FetchUtils.tsx";
+import SuccessfulyReg from "../successfully-reg/SuccessfulyReg.jsx";
 
 interface EventDetailedProps {
   meet: IMeet | null;
@@ -17,6 +18,10 @@ const EventDetailed: FC<EventDetailedProps> = ({ meet }) => {
   const navigate_users_list = useNavigate();
   const [meetId, setMeetId] = useState<string | undefined>(meet?.id);
   const [message, setMessage] = useState<string | null>(null); // Для отображения сообщения об успехе или ошибке
+
+  const handleClose = () => {
+    setMessage(false);
+  };
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -112,7 +117,7 @@ const EventDetailed: FC<EventDetailedProps> = ({ meet }) => {
           </button>
 
           {/* Выводим сообщение об успехе или ошибке */}
-          {message && <p className="registration_message">{message}</p>}
+          {message && <SuccessfulyReg message={message} onClose={handleClose} />}
 
           <button type="button" className="link_event">
             Ссылка на мероприятие
