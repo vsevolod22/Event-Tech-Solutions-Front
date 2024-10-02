@@ -38,7 +38,7 @@ const Events: React.FC<EventsProps> = ({
       onTypesExtracted(uniqueTypes);
     };
     fetchEvents();
-  }, [setTotalEvents, onTypesExtracted]);
+  }, [setTotalEvents, onTypesExtracted, localStorage.getItem("token")]);
 
   useEffect(() => {
     // Фильтрация мероприятий по типу и актуальности
