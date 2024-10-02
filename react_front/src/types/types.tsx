@@ -71,7 +71,7 @@ export interface IUser {
 export interface IUsers {
   id: number;
   state: number;
-  user: IUser;
+  user: AllUserInfo;
 }
 
 export interface IPostMeet {

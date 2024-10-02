@@ -12,6 +12,7 @@ import {
   IPostUser,
   IUser,
   INotification,
+  IUsers,
 } from "../../types/types";
 
 export class HttpApiMethods {
@@ -146,7 +147,7 @@ export class HttpApiMethods {
       return null;
     }
   };
-  GetAllUsers = async (): Promise<IUser[] | null> => {
+  GetAllUsers = async (): Promise<AllUserInfo[] | null> => {
     let innerUrl = this.APIURL + `/users/user/`;
 
     try {
@@ -162,7 +163,7 @@ export class HttpApiMethods {
       return null;
     }
   };
-  GetUsersByMeet = async (id: string): Promise<IUser[] | null> => {
+  GetUsersByMeet = async (id: string): Promise<IUsers[] | null> => {
     let innerUrl = this.APIURL + `/events/event/${id}/participants/`;
     try {
       const response = await axios.get(innerUrl, {
@@ -208,6 +209,22 @@ export class HttpApiMethods {
       return response.data; // Возвращаем данные из ответа
     } catch (error) {
       console.error(error);
+      return null;
+    }
+  };
+  PostEvent = async (data: IPostMeet): Promise<IMeet | null> => {
+    let innerUrl = this.APIURL + `/events/event/`;
+
+    try {
+      const response = await axios.post(innerUrl, data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${this.API_KEY}`,
+        },
+      });
+      return response.data; // Возвращаем данные из ответа
+    } catch (error) {
+      console.error("Ошибка при создании мероприятия:", error);
       return null;
     }
   };
