@@ -3,7 +3,7 @@ import Header from "../components/header/Header";
 import "./createEvent.css";
 import SvgOnlineOffline from "../svg/svg-online-offline/SvgOnlineOffline";
 import SvgClock from "../svg/svg-clock/SvgCLock";
-import { IPostUser, IUser } from "../types/types.tsx";
+import { IPostUser, IUser, IUsers } from "../types/types.tsx";
 import { HttpApiMethods } from "../components/utils/FetchUtils.tsx";
 import UserUsersList from "../components/user-users-list/UserUsersList.tsx";
 import InputFindEvent from "../components/UI/input-find-event/InputFindEvent.tsx";
@@ -18,7 +18,7 @@ interface CreateEventProps {
 }
 
 const CreateEvent: FC<CreateEventProps> = ({ user }) => {
-  const [UsersList, setUsersList] = useState<IUser[] | null>(null);
+  const [UsersList, setUsersList] = useState<IUsers[] | null>(null);
   const [modal, setModal] = useState(0);
   const getValueModal = (data: number) => {
     setModal(data);

@@ -4,21 +4,31 @@ import { useNavigate } from "react-router-dom";
 import { IUser } from "../../types/types.tsx";
 
 interface UserUserProps {
-  users: IUser;
+  users: {
+    id: number;
+    state: number;
+    user: IUser;
+  };
 }
 
 const UserUser: FC<UserUserProps> = ({ users }) => {
   const [User, setUser] = React.useState<IUser | null>(null);
-
+  useEffect(() => {
+    console.log(users);
+    if (users && users.user) {
+      setUser(users.user);
+      console.log(User);
+    }
+  }, [users]);
   const navigate = useNavigate();
   return (
     <div
-      onClick={() => navigate(`/profile/${users?.id}`)}
+      onClick={() => navigate(`/profile/${User?.id}`)}
       className="user_users_list"
     >
       <div className="logo_role">
-        {users && users.avatar ? (
-          <img className="logo_role_img" src={users.avatar} alt="avatar" />
+        {User && User.avatar ? (
+          <img className="logo_role_img" src={User.avatar} alt="avatar" />
         ) : (
           <div className="logo_role_img"></div>
         )}
@@ -26,8 +36,8 @@ const UserUser: FC<UserUserProps> = ({ users }) => {
       </div>
       <div className="user_info">
         <h1>
-          {users && users.last_name && users.first_name
-            ? `${users.last_name} ${users.first_name}`
+          {User && User.last_name && User.first_name
+            ? `${User.last_name} ${User.first_name}`
             : "Нет имени"}{" "}
         </h1>
         <h2>Junior PHP разработчик</h2>
