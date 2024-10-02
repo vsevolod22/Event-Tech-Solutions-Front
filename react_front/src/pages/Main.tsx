@@ -1,12 +1,10 @@
-import Login from "../components/login-window/Login.tsx";
-import React, { FC, useEffect, useState } from "react";
-import { HttpApiMethods } from "../components/utils/FetchUtils.tsx";
+import React, { useState } from "react";
 import Header from "../components/header/Header.tsx";
-import axios from "axios";
+import Login from "../components/login-window/Login.tsx";
 import MainContent from "../components/main-content/MainContent.tsx";
-import Events from "../components/events/Events.tsx";
 import HardFilter from "../components/filters/hard-filter/HardFilter.tsx";
-const httpApiMethods = new HttpApiMethods();
+import Events from "../components/events/Events.tsx";
+import { IType, IMeet } from "../types/types";
 
 interface MainProps {
   user: {
@@ -15,20 +13,34 @@ interface MainProps {
   };
 }
 
-const Main: FC<MainProps> = ({ user }) => {
-  const [modal, setModal] = useState(0);
-  const getValueModal = (data: number) => {
-    setModal(data);
-  };
-  // console.log(modal);
+const Main: React.FC<MainProps> = ({ user }) => {
+  const [modal, setModal] = useState<number>(0);
+  const [filters, setFilters] = useState<{ type: string; isUpcoming: boolean }>(
+    {
+      type: "",
+      isUpcoming: true,
+    }
+  );
+  const [eventTypes, setEventTypes] = useState<IType[]>([]);
+  const [totalEvents, setTotalEvents] = useState<number>(0); // Добавлен стейт для общего количества мероприятий
+
+  const getValueModal = (data: number) => setModal(data);
 
   return (
     <>
       <Header getData={getValueModal} />
       <Login getData={getValueModal} visible={modal} setVisible={setModal} />
       <MainContent />
-      <HardFilter />
-      <Events />
+      <HardFilter
+        totalEvents={totalEvents} // Передаем общее количество мероприятий
+        eventTypes={eventTypes} // Передаем типы мероприятий
+        onFilterChange={setFilters} // Передаем функцию для изменения фильтров
+      />
+      <Events
+        filters={filters}
+        onTypesExtracted={setEventTypes}
+        setTotalEvents={setTotalEvents} // Передаем функцию для установки общего количества мероприятий
+      />
     </>
   );
 };

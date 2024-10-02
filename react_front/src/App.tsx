@@ -29,7 +29,10 @@ function App() {
           path="/users-list/meet/:id"
           element={<UsersList user={user} />}
         ></Route>
-        <Route path="/users-list/add" element={<UsersListAdmin />}></Route>
+        <Route
+          path="/users-list/add"
+          element={<UsersListAdmin user={user} />}
+        ></Route>
         <Route path="/all-events" element={<AllEvents />}></Route>
         <Route path="/users-list/confirm/:id" element={<CheckUsers />}></Route>
       </Routes>

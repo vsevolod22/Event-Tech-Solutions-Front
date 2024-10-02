@@ -1,54 +1,71 @@
 import React, { useState, useEffect } from "react";
 import "./events.css";
-import { Link } from "react-router-dom";
 import Card from "../card/Card.tsx";
 import { HttpApiMethods } from "../utils/FetchUtils.tsx";
-import { AllMeetings, IMeet } from "../../types/types.tsx";
-const Events = function () {
-  const [allMeets, setAllMeets] = useState<IMeet[] | null>(null);
-  const [showMore, setShowMore] = useState(false); // Состояние для показа всех элементов
-  const [btnText, setBtnText] = useState("Все мероприятия");
+import { IMeet } from "../../types/types";
+
+interface EventsProps {
+  filters: { type: string; isUpcoming: boolean | null }; // Фильтры включают тип и актуальность (null означает "все")
+  onTypesExtracted: (types: { id: number; name: string }[]) => void; // Передача типов мероприятий в Main
+  setTotalEvents: (total: number) => void; // Передача общего количества мероприятий
+}
+
+const Events: React.FC<EventsProps> = ({
+  filters,
+  onTypesExtracted,
+  setTotalEvents,
+}) => {
+  const [allMeets, setAllMeets] = useState<IMeet[]>([]);
+  const [filteredMeets, setFilteredMeets] = useState<IMeet[]>([]);
+  const [showMore, setShowMore] = useState(false);
 
   useEffect(() => {
-    const getAllMeetings = async () => {
+    const fetchEvents = async () => {
       const httpApiMethods = new HttpApiMethods();
-      const AllMeets = await httpApiMethods.GetAllMeetings();
-      console.log(AllMeets);
-      setAllMeets(AllMeets);
+      const meets = await httpApiMethods.GetAllMeetings();
+      setAllMeets(meets);
+      setTotalEvents(meets?.length); // Устанавливаем общее количество мероприятий
+
+      // Извлекаем уникальные типы из мероприятий и передаем их в SimpleFilter через Main
+      const uniqueTypes = Array.from(
+        new Set(meets?.map((meet) => meet.type.id))
+      )
+        .map((typeId) => meets?.find((meet) => meet.type.id === typeId)?.type)
+        .filter(
+          (type): type is { id: number; name: string } => type !== undefined
+        );
+
+      onTypesExtracted(uniqueTypes);
     };
-    getAllMeetings();
-  }, [localStorage.getItem("token")]);
+    fetchEvents();
+  }, [setTotalEvents, onTypesExtracted, localStorage.getItem("token")]);
+
+  useEffect(() => {
+    // Фильтрация мероприятий по типу и актуальности
+    const filtered = allMeets?.filter((meet) => {
+      const matchType = filters.type
+        ? meet.type.id.toString() === filters.type
+        : true;
+      const matchUpcoming =
+        filters.isUpcoming === null || meet.is_upcoming === filters.isUpcoming;
+      return matchType && matchUpcoming;
+    });
+    setFilteredMeets(filtered);
+  }, [allMeets, filters]);
 
   const renderCards = () => {
-    if (showMore) {
-      return allMeets?.map((card) => <Card dataCard={card} key={card.id} />);
-    } else {
-      return allMeets
-        ?.slice(0, 8)
-        .map((card) => <Card dataCard={card} key={card.id} />);
-    }
-  };
-  const renderBtn = () => {
-    if (showMore) {
-      return <p>Скрыть мероприятия</p>;
-    } else {
-      return <p>Все мероприятия</p>;
-    }
+    const meetsToShow = showMore ? filteredMeets : filteredMeets?.slice(0, 8);
+    return meetsToShow?.map((card) => <Card dataCard={card} key={card.id} />);
   };
 
-  const handleShowMore = () => {
-    setShowMore(!showMore);
-  };
-
-  // МАКСИМУМ ПОКАЗЫВАТЬ 6 МЕРОПРИЯТИЙ, ПОСЛЕ НАЖАТИЯ на показать все показывать все
   return (
     <div className="events">
-      <div className="cards">
-        {renderCards()} {/* Вызываем функцию для отрисовки карточек */}
-      </div>
-      <button className="events__all" onClick={handleShowMore}>
-        {renderBtn()}
-      </button>
+      <div className="cards">{renderCards()}</div>
+      {filteredMeets?.length > 8 && (
+        <button className="events__all" onClick={() => setShowMore(!showMore)}>
+          <p>{showMore ? "Скрыть мероприятия" : "Все мероприятия"}</p>
+        </button>
+      )}
     </div>
   );
 };
