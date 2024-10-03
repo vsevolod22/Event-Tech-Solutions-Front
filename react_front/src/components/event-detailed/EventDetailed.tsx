@@ -63,11 +63,15 @@ const EventDetailed: FC<EventDetailedProps> = ({ meet }) => {
 
   return (
     <>
-      <div className="event-detailed__admin container">
-        <button className="event-detailed__admin_btn-edit">
-          Редактировать мероприятие
-        </button>
-      </div>
+      {localStorage.getItem("token") &&
+        localStorage.getItem("id") &&
+        localStorage.getItem("groups") == "Администраторы" && (
+          <div className="event-detailed__admin container">
+            <button className="event-detailed__admin_btn-edit">
+              Редактировать мероприятие
+            </button>
+          </div>
+        )}
 
       <form className="event_detailed container">
         <div className="first_event_detailed">
@@ -117,7 +121,9 @@ const EventDetailed: FC<EventDetailedProps> = ({ meet }) => {
           </button>
 
           {/* Выводим сообщение об успехе или ошибке */}
-          {message && <SuccessfulyReg message={message} onClose={handleClose} />}
+          {message && (
+            <SuccessfulyReg message={message} onClose={handleClose} />
+          )}
 
           <button type="button" className="link_event">
             Ссылка на мероприятие

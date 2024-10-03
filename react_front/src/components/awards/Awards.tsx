@@ -12,11 +12,11 @@ const Awards: FC<AwardsProps> = (id) => {
         <h2>Полученные достижения</h2>
       </div>
       <div className="awards__list">
+        {/* <Award />
         <Award />
         <Award />
         <Award />
-        <Award />
-        <Award />
+        <Award /> */}
         {/* {allMeets &&
           allMeets.map((awards) => <Award dataAward={award} key={card.id} />)} */}
       </div>
