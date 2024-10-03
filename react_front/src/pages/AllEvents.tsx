@@ -9,6 +9,14 @@ import Login from "../components/login-window/Login.tsx";
 
 const AllEvents = () => {
   const [modal, setModal] = useState(0);
+  const [filters, setFilters] = useState<{ type: string; isUpcoming: boolean }>(
+    {
+      type: "",
+      isUpcoming: true,
+    }
+  );
+  const [eventTypes, setEventTypes] = useState<IType[]>([]);
+  const [totalEvents, setTotalEvents] = useState<number>(0); // Добавлен стейт для общего количества мероприятий
   const getValueModal = (data: number) => {
     setModal(data);
   };
@@ -23,7 +31,11 @@ const AllEvents = () => {
             Создать мероприятие
           </button>
         </Link>
-        <Events />
+        <Events
+          filters={filters}
+          onTypesExtracted={setEventTypes}
+          setTotalEvents={setTotalEvents}
+        />
         {/* <Hardfilter /> */}
         {/* <div className="all-events__list"> */}
         {/* {allMeets &&
