@@ -21,7 +21,7 @@ const Specialist: FC<SpecialistProps> = ({ meet }) => {
         console.log(newSpeaker);
         setSpeaker(newSpeaker);
       };
-      getMeet(meet?.speaker.id);
+      getMeet(meet?.speaker?.id);
     }
   }, [meet]);
 
