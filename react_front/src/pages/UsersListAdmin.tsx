@@ -5,7 +5,7 @@ import "./usersListAdmin.css";
 import UserUsersList from "../components/user-users-list/UserUsersList.tsx";
 import InputFindEvent from "../components/UI/input-find-event/InputFindEvent.tsx";
 import { useParams } from "react-router-dom";
-import { IUsers } from "../types/types.tsx";
+import { AllUserInfo, IUser, IUsers } from "../types/types.tsx";
 import AddUserModal from "../components/add-user-modal/AddUserModal.jsx";
 
 const httpApiMethods = new HttpApiMethods();
@@ -17,27 +17,54 @@ interface UserListProps {
   };
 }
 
-const UsersListAdmin: FC<UserListProps> = function ({ user }) {
+const UsersList: FC<UserListProps> = function ({ user }) {
   const { id } = useParams();
   const [modal, setModal] = useState(0);
-  const [UsersList, setUsersList] = React.useState<IUsers[] | null>(null);
+  const [UsersList, setUsersList] = useState<AllUserInfo[] | null>(null);
+  const [filteredUsers, setFilteredUsers] = useState<AllUserInfo[] | null>(
+    null
+  ); // Состояние для фильтрованных пользователей
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedRole, setSelectedRole] = useState<string>(""); // Состояние для выбранной роли
 
   const getValueModal = (data: number) => {
     setModal(data);
   };
 
   useEffect(() => {
-    if (id) {
-      const getUsers = async (id: string) => {
-        const newUsers = await httpApiMethods.GetUsersByMeet(id);
-        console.log(newUsers);
+    console.log("da");
+    const getUsers = async () => {
+      const newUsers = await httpApiMethods.GetAllUsers();
+      console.log(newUsers);
+      if (newUsers) {
         setUsersList(newUsers);
-      };
+        setFilteredUsers(newUsers);
+      }
+      // Изначально показываем всех пользователей
+    };
 
-      getUsers(id);
+    getUsers();
+  }, []);
+
+  // Обработчик изменения роли в фильтре
+  const handleRoleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const role = e.target.value;
+    setSelectedRole(role);
+
+    // Фильтрация пользователей по роли
+    if (UsersList) {
+      if (role === "") {
+        // Если выбрана опция "Все", показываем всех пользователей
+        setFilteredUsers(UsersList);
+      } else {
+        const filtered = UsersList.filter(
+          (users) =>
+            users && users.groups.length && users.groups[0].name === role
+        );
+        setFilteredUsers(filtered);
+      }
     }
-  }, [id, localStorage.getItem("token")]);
+  };
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -74,10 +101,21 @@ const UsersListAdmin: FC<UserListProps> = function ({ user }) {
       >
         <div className="simple_filter">
           <InputFindEvent />
-          <select name="type_even_selectt" id="" className="type_event_select">
-            <option value="">роль пользователя</option>
+
+          {/* Фильтр по ролям */}
+          <select
+            name="role_filter"
+            id="role_filter"
+            className="type_event_select"
+            value={selectedRole}
+            onChange={handleRoleChange}
+          >
+            <option value="">Все роли</option>
+            <option value="Администраторы">Администраторы</option>
+            <option value="Менеджеры">Менеджеры</option>
           </select>
         </div>
+
         <div className="users_list">
           <div className="add_user_users_list">
             <div className="add_user_users_list_content">
@@ -90,9 +128,9 @@ const UsersListAdmin: FC<UserListProps> = function ({ user }) {
               <h3 data-text="Добавить пользователя">Добавить пользователя</h3>
             </div>
           </div>
-          {UsersList &&
-            UsersList.map((user) => (
-              <UserUsersList users={user} key={user.id} />
+          {filteredUsers &&
+            filteredUsers.map((user) => (
+              <UserUsersList user={user} key={user.id} />
             ))}
         </div>
       </div>
@@ -108,4 +146,4 @@ const UsersListAdmin: FC<UserListProps> = function ({ user }) {
   );
 };
 
-export default UsersListAdmin;
+export default UsersList;
