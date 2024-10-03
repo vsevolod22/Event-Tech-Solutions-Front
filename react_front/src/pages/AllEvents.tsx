@@ -23,13 +23,14 @@ const AllEvents = () => {
             Создать мероприятие
           </button>
         </Link>
-        <Hardfilter />
-        <div className="all-events__list">
-          {/* {allMeets &&
+        <Events />
+        {/* <Hardfilter /> */}
+        {/* <div className="all-events__list"> */}
+        {/* {allMeets &&
 
 
     allMeets.map((card) => <Card dataCard={card} key={card.id} />)} */}
-        </div>
+        {/* </div> */}
       </div>
     </>
   );
