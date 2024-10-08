@@ -153,8 +153,6 @@ const EventDetailed: FC<EventDetailedProps> = ({ meet }) => {
           ) : (
             <div className="preview_img"></div>
           )}
-          <div className="questions"></div>{" "}
-          {/*component with question compoennt*/}
         </div>
       </form>
     </>

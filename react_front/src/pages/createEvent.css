@@ -325,4 +325,9 @@
   height: 6.823vw;
 }
 
+.user-selected {
+  background-color: #d3eaff;
+  border: 2px solid #0056b3; /* Добавление обводки */
+}
+
 /* ------------------------------- */

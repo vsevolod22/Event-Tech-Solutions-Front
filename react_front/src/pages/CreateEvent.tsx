@@ -1,4 +1,5 @@
 import React, { FC, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../components/header/Header";
 import "./createEvent.css";
 import SvgOnlineOffline from "../svg/svg-online-offline/SvgOnlineOffline";
@@ -18,6 +19,7 @@ interface CreateEventProps {
 }
 
 const CreateEvent: FC<CreateEventProps> = ({ user }) => {
+  const navigate = useNavigate();
   const [UsersList, setUsersList] = useState<AllUserInfo[] | null>(null);
   const [filteredUsers, setFilteredUsers] = useState<AllUserInfo[] | null>(
     null
@@ -128,6 +130,7 @@ const CreateEvent: FC<CreateEventProps> = ({ user }) => {
       const response = await httpApiMethods.PostEvent(eventData);
       if (response) {
         console.log("Мероприятие успешно создано:", response);
+        navigate("/");
       } else {
         console.error("Ошибка при создании мероприятия");
       }
@@ -317,7 +320,13 @@ const CreateEvent: FC<CreateEventProps> = ({ user }) => {
           <div className="users_list">
             {filteredUsers &&
               filteredUsers.map((user) => (
-                <div onClick={() => handleSelectSpeaker(user.id)} key={user.id}>
+                <div
+                  onClick={() => handleSelectSpeaker(user.id)}
+                  key={user.id}
+                  className={
+                    selectedSpeakerId === user.id ? "user-selected" : ""
+                  }
+                >
                   <UserUsersList user={user} />
                 </div>
               ))}
