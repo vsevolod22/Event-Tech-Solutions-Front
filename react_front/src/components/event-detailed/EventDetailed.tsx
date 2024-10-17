@@ -16,6 +16,7 @@ const httpApiMethods = new HttpApiMethods();
 
 const EventDetailed: FC<EventDetailedProps> = ({ meet }) => {
   const navigate_users_list = useNavigate();
+  const navigate_edit_event = useNavigate();
   const [meetId, setMeetId] = useState<string | undefined>(meet?.id);
   const [message, setMessage] = useState<string | null>(null); // Для отображения сообщения об успехе или ошибке
 
@@ -60,14 +61,18 @@ const EventDetailed: FC<EventDetailedProps> = ({ meet }) => {
       console.error("ID мероприятия не найден.");
     }
   };
-
   return (
     <>
       {localStorage.getItem("token") &&
         localStorage.getItem("id") &&
         localStorage.getItem("groups") == "Администраторы" && (
           <div className="event-detailed__admin container">
-            <button className="event-detailed__admin_btn-edit">
+            <button
+              onClick={() => {
+                navigate_edit_event(`/edit-event/${meetId}`);
+              }}
+              className="event-detailed__admin_btn-edit"
+            >
               Редактировать мероприятие
             </button>
           </div>

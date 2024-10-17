@@ -12,7 +12,7 @@ const AllEvents = () => {
   const [filters, setFilters] = useState<{ type: string; isUpcoming: boolean }>(
     {
       type: "",
-      isUpcoming: true,
+      isUpcoming: null,
     }
   );
   const [eventTypes, setEventTypes] = useState<IType[]>([]);

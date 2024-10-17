@@ -36,6 +36,7 @@ const CreateEvent: FC<CreateEventProps> = ({ user }) => {
     { id: 1, name: "Здоровье" },
     { id: 2, name: "Спорт" },
     { id: 3, name: "Культура" },
+    { id: 4, name: "Образование" },
   ];
 
   const [formData, setFormData] = useState({

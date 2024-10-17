@@ -41,7 +41,7 @@ const Profile: FC<ProfileProps> = () => {
   const [filters, setFilters] = useState<{ type: string; isUpcoming: boolean }>(
     {
       type: "",
-      isUpcoming: true,
+      isUpcoming: null,
     }
   );
   const [eventTypes, setEventTypes] = useState<IType[]>([]);
@@ -54,7 +54,7 @@ const Profile: FC<ProfileProps> = () => {
     setModalVisible(false);
   };
 
-  const defaultRole = "Участник"
+  const defaultRole = "Участник";
   // Функция для обработки клика на первый блок
   const handleFirstBlockClick = () => {
     setFirstBlockClicked(true); // Устанавливаем состояние нажатия на первый блок
@@ -93,12 +93,10 @@ const Profile: FC<ProfileProps> = () => {
             )}
             <div className="role">
               <p>
-                {user && user.groups[0]?.name ? (
-                  user.groups[0].name
-                ) : (
-                  // <Skeleton variant="text" sx={{ fontSize: "1.25vw" }} />
-                  defaultRole
-                )}
+                {user && user.groups[0]?.name
+                  ? user.groups[0].name
+                  : // <Skeleton variant="text" sx={{ fontSize: "1.25vw" }} />
+                    defaultRole}
               </p>
             </div>
           </div>
@@ -131,12 +129,12 @@ const Profile: FC<ProfileProps> = () => {
                 <Skeleton variant="text" sx={{ fontSize: "1.042vw" }} />
               )}
             </p>
-            <div className="exp">
+            {/* <div className="exp">
               <pre>
                 <p>Количество баллов: </p>
               </pre>
               <h3>56</h3>
-            </div>
+            </div> */}
           </div>
           <button onClick={handleOpenModal} className="edit-pencil">
             <SvgPencil />

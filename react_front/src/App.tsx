@@ -9,6 +9,7 @@ import CreateEvent from "./pages/CreateEvent.tsx";
 import AllEvents from "./pages/AllEvents.tsx";
 import UsersListAdmin from "./pages/UsersListAdmin.tsx";
 import CheckUsers from "./pages/CheckUsers.tsx";
+import EditEvent from "./pages/EditEvent.jsx";
 
 function App() {
   const [user, setUser] = useState({
@@ -35,6 +36,10 @@ function App() {
         ></Route>
         <Route path="/all-events" element={<AllEvents />}></Route>
         <Route path="/users-list/confirm/:id" element={<CheckUsers />}></Route>
+        <Route
+          path="/edit-event/:id"
+          element={<EditEvent user={user} />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   );

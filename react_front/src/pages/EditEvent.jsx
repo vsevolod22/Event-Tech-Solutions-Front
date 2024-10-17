@@ -1,27 +1,23 @@
-import React, { FC, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/header/Header";
-import "./createEvent.css";
 import SvgOnlineOffline from "../svg/svg-online-offline/SvgOnlineOffline";
 import SvgClock from "../svg/svg-clock/SvgCLock";
-import { AllUserInfo } from "../types/types.tsx";
-import { HttpApiMethods } from "../components/utils/FetchUtils.tsx";
-import UserUsersList from "../components/user-users-list/UserUsersList.tsx";
-import InputFindEvent from "../components/UI/input-find-event/InputFindEvent.tsx";
+import { HttpApiMethods } from "../components/utils/FetchUtils";
+import UserUsersList from "../components/user-users-list/UserUsersList";
+import InputFindEvent from "../components/UI/input-find-event/InputFindEvent";
+import "./createEvent.css";
 
 const httpApiMethods = new HttpApiMethods();
 
 const EditEvent = ({ user }) => {
   const navigate = useNavigate();
-  const [UsersList, setUsersList] = useState<AllUserInfo[] | null>(null);
-  const [filteredUsers, setFilteredUsers] = useState<AllUserInfo[] | null>(
-    null
-  ); // Состояние для фильтрованных пользователей
-  const [selectedRole, setSelectedRole] = useState<string>(""); // Состояние для выбранной роли
-  const [selectedSpeakerId, setSelectedSpeakerId] = useState<number | null>(
-    null
-  ); // Состояние для выбранного спикера
-  const [imageFile, setImageFile] = useState<File | null>(null); // Состояние для файла изображения
+  const { id } = useParams(); // Получаем ID мероприятия из URL
+  const [UsersList, setUsersList] = useState(null);
+  const [filteredUsers, setFilteredUsers] = useState(null);
+  const [selectedRole, setSelectedRole] = useState("");
+  const [selectedSpeakerId, setSelectedSpeakerId] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
   const [modal, setModal] = useState(0);
 
   // Массив с доступными типами мероприятий
@@ -29,46 +25,63 @@ const EditEvent = ({ user }) => {
     { id: 1, name: "Здоровье" },
     { id: 2, name: "Спорт" },
     { id: 3, name: "Культура" },
+    { id: 4, name: "Образование" },
   ];
 
   const [formData, setFormData] = useState({
     name: "",
-    event_type: 0, // ID выбранного типа мероприятия
-    place: "", // Новое поле для места проведения
-    time_start: "", // Дата начала мероприятия
-    time_end: "", // Дата окончания мероприятия
+    event_type: 0,
+    place: "",
+    time_start: "",
+    time_end: "",
     reference: "",
     reference_video: "",
     is_online: false,
     description: "",
   });
 
-  const getValueModal = (data: number) => {
+  const getValueModal = (data) => {
     setModal(data);
   };
 
-  // Запрос всех пользователей через useEffect
+  // Получаем данные мероприятия по ID
   useEffect(() => {
-    const fetchUsers = async () => {
-      const users = await httpApiMethods.GetAllUsers(); // Используем метод для получения всех пользователей
-      if (users) {
-        setUsersList(users); // Устанавливаем список пользователей в state
-        setFilteredUsers(users); // Изначально показываем всех пользователей
+    const fetchEvent = async () => {
+      const eventData = await httpApiMethods.GetMeetingById(id);
+      if (eventData) {
+        setFormData({
+          name: eventData.name || "",
+          event_type: eventData.event_type || 0,
+          place: eventData.place || "",
+          time_start: eventData.time_start || "",
+          time_end: eventData.time_end || "",
+          reference: eventData.reference || "",
+          reference_video: eventData.reference_video || "",
+          is_online: eventData.is_online || false,
+          description: eventData.description || "",
+        });
+        setSelectedSpeakerId(eventData.speaker || null);
       }
     };
+    fetchEvent();
+  }, [id]);
 
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const users = await httpApiMethods.GetAllUsers();
+      if (users) {
+        setUsersList(users);
+        setFilteredUsers(users);
+      }
+    };
     fetchUsers();
-  }, []); // Зависимость пустая, чтобы запрос был выполнен только при первом рендере
+  }, []);
 
-  // Обработчик изменения роли в фильтре
-  const handleRoleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleRoleChange = (e) => {
     const role = e.target.value;
     setSelectedRole(role);
-
-    // Фильтрация пользователей по роли
     if (UsersList) {
       if (role === "") {
-        // Если выбрана опция "Все роли", показываем всех пользователей
         setFilteredUsers(UsersList);
       } else {
         const filtered = UsersList.filter(
@@ -80,22 +93,17 @@ const EditEvent = ({ user }) => {
     }
   };
 
-  // Обработчик выбора спикера
-  const handleSelectSpeaker = (speakerId: number) => {
+  const handleSelectSpeaker = (speakerId) => {
     setSelectedSpeakerId(speakerId);
-    console.log("Выбран спикер с ID:", speakerId);
   };
 
-  // Обработчик загрузки изображения
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
       setImageFile(e.target.files[0]);
-      console.log("Выбрано изображение:", e.target.files[0]);
     }
   };
 
-  // Обработчик отправки данных о мероприятии
-  const handleSubmitEvent = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitEvent = async (event) => {
     event.preventDefault();
 
     if (!selectedSpeakerId) {
@@ -116,19 +124,18 @@ const EditEvent = ({ user }) => {
     eventData.append("speaker", String(selectedSpeakerId));
 
     if (imageFile) {
-      eventData.append("image", imageFile); // Добавляем изображение в форму
+      eventData.append("image", imageFile);
     }
 
     try {
-      const response = await httpApiMethods.PostEvent(eventData);
+      const response = await httpApiMethods.PatchMeetingById(id, eventData);
       if (response) {
-        console.log("Мероприятие успешно создано:", response);
         navigate("/");
       } else {
-        console.error("Ошибка при создании мероприятия");
+        console.error("Ошибка при обновлении мероприятия");
       }
     } catch (error) {
-      console.error("Ошибка при создании мероприятия:", error);
+      console.error("Ошибка при обновлении мероприятия:", error);
     }
   };
 
@@ -329,7 +336,7 @@ const EditEvent = ({ user }) => {
         {/* Кнопка "Опубликовать мероприятие" */}
         <section className="btn_section_create_event">
           <button type="submit" className="btn_post_event">
-            Опубликовать мероприятие
+            Обновить мероприятие
           </button>
         </section>
       </form>

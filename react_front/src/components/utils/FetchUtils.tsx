@@ -23,7 +23,21 @@ export class HttpApiMethods {
   get API_KEY() {
     return localStorage.getItem("token");
   }
-
+  PatchMeetingById = async (meetingId, updatedData) => {
+    let innerUrl = `${this.APIURL}/events/event/${meetingId}/`;
+    try {
+      const response = await axios.patch(innerUrl, updatedData, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.API_KEY}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Ошибка при обновлении мероприятия:", error);
+      return null;
+    }
+  };
   // получение фмльма по ID
   GetAllMeetings = async (): Promise<IMeet[] | null> => {
     let innerUrl = this.APIURL + `/events/event/`;
