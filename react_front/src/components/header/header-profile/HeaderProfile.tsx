@@ -2,8 +2,34 @@ import React, { useState, useEffect, useRef } from "react";
 import "./headerProfile.css";
 import { Link } from "react-router-dom";
 import SvgNotice from "../../../svg/svg-notice/SvgNotice";
+import { HttpApiMethods } from "../../../components/utils/FetchUtils.tsx";
+
+const httpApiMethods = new HttpApiMethods();
+
 const HeaderProfile = function () {
   const [id, setId] = React.useState(localStorage.getItem("id"));
+  // console.log(id);
+
+  const [userData, setUserData] = useState({
+    first_name: "",
+    last_name: "",
+    job: "",
+    avatar: "",
+    telegram: "",
+    mail: "",
+  });
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const data = await httpApiMethods.GetUserById(id);
+      if (data) {
+        setUserData(data);
+        // console.log(data);
+
+        // console.log(userData);
+      }
+    };
+    fetchUserData();
+  }, [id]);
 
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
@@ -37,7 +63,12 @@ const HeaderProfile = function () {
     <div className="navbar">
       <SvgNotice />
       <div className="profile-menu-container" ref={menuRef}>
-        <button className="profile" onClick={toggleMenu}></button>
+        {userData.avatar ? (
+          <img src={userData.avatar} className="profile" onClick={toggleMenu} />
+        ) : (
+          <div className="profile__default"></div>
+        )}
+
         {isOpen && (
           <div className="window_profile">
             <Link to={`/profile/${id}`} onClick={closeMenu}>

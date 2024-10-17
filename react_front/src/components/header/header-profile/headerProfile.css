@@ -1,10 +1,21 @@
 .profile {
   border-radius: 1.563vw;
   width: 3.125vw;
+  object-fit: cover;
   height: 3.125vw;
-  background-color: black;
   display: flex;
+  cursor: pointer;
 }
+
+.profile__default {
+  border-radius: 1.563vw;
+  width: 3.125vw;
+  height: 3.125vw;
+  display: flex;
+  cursor: pointer;
+  background-color: black;
+}
+
 .navbar {
   width: 8.906vw;
   height: 3.125vw;

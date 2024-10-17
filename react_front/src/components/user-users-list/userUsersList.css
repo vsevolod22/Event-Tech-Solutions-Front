@@ -14,6 +14,7 @@
   border-radius:   4.219vw;
   width: 8.906vw;
   height: 8.906vw;
+  object-fit: cover;
   background-color: black;
 }
 
@@ -21,6 +22,7 @@
   font-weight: 600;
   font-size: 1.011vw;
   line-height: 1.233vw;
+  text-align: center;
 }
 
 .user_info{

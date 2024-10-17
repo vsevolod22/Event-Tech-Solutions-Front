@@ -13,10 +13,9 @@ const AdminHeader = function () {
           <Link to="/all-events">
             <li>Мероприятия</li>
           </Link>
-          <Link to="/users-list/meet/:id">
+          <Link to="/users-list/add">
             <li>Пользователи</li>
           </Link>
-          <li>Статистика</li>
         </ul>
       </div>
       <HeaderProfile />

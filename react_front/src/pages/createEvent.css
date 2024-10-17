@@ -276,13 +276,13 @@
   flex-flow: column;
   align-items: center;
   gap: 2.083vw;
+}
 
-  & p {
-    line-height: 1.524vw;
-    font-size: 1.25vw;
-    color: rgba(0, 0, 0, 1);
-    white-space: nowrap;
-  }
+.adds_specialist_materials_links p {
+  line-height: 1.524vw;
+  font-size: 1.25vw;
+  color: rgba(0, 0, 0, 1);
+  white-space: nowrap;
 }
 
 .circle_links {
@@ -299,12 +299,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
-  & p {
-    line-height: 2.285vw;
-    color: rgba(136, 136, 136, 1);
-    font-size: 1.875vw;
-  }
+.add_specialist_material_link p {
+  line-height: 2.285vw;
+  color: rgba(136, 136, 136, 1);
+  font-size: 1.875vw;
 }
 
 .btn_section_create_event {

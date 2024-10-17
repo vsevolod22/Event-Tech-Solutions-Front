@@ -4,14 +4,14 @@
   display: flex;
   flex-flow: column;
   gap: 3.476vw;
-  margin-bottom: 10.417vw;
+  margin-bottom: 5.417vw;
+}
 
-  & h1 {
-    font-weight: 400;
-    font-size: 2.917vw;
-    line-height: 3.555vw;
-    color: black;
-  }
+.specialist h1 {
+  font-weight: 400;
+  font-size: 2.917vw;
+  line-height: 3.555vw;
+  color: black;
 }
 
 .svgs_links_specialist {

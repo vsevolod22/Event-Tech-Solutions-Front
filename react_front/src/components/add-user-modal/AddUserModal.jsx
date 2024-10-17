@@ -1,16 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import "./addUserModal.css";
+import { HttpApiMethods } from "../../components/utils/FetchUtils.tsx";
+
+const httpApiMethods = new HttpApiMethods();
 
 const AddUserModal = function ({ onClose }) {
-  const handleAddUser = () => {
+  const [formData, setFormData] = useState({
+    username: "",
+    first_name: "",
+    last_name: "",
+    password: "",
+    job: "",
+    avatar: "",
+    vk: "",
+    telegram: "",
+    mail: "",
+    phone_number: "",
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault(); // Предотвращаем стандартную отправку формы
+
+    try {
+      // Вызываем функцию PostUser для отправки данных
+      const response = await httpApiMethods.PostUser(formData);
+      console.log("Пользователь добавлен:", response);
+      // Обработка успешного добавления (например, закрытие модального окна)
+      onClose();
+    } catch (error) {
+      console.error("Ошибка при добавлении пользователя:", error);
+      // Обработка ошибки (например, отображение сообщения об ошибке)
+    }
+  };
+
+  const handleClose = () => {
     onClose();
   };
+
   return (
-    <form className="add_user">
-      {/* onSubmit={handleSubmitUser}>*/}
+    <form className="add_user" onSubmit={handleSubmit}>
       <div className="header_add_user">
         <p>Добавление пользователя</p>
-        <div className="svg_black_cross" onClick={handleAddUser}>
+        <div className="svg_black_cross" onClick={handleClose}>
           <svg
             width="2.396vw"
             height="2.448vw"
@@ -30,76 +66,75 @@ const AddUserModal = function ({ onClose }) {
         <div className="adds_inputs_user">
           <input
             name="username"
-            // onChange={handleChange}
-            // value={formData.username}
             className="input_add_user"
+            onChange={handleInputChange}
+            value={formData.username}
             type="text"
-            placeholder="ФИО специалиста/сотрудника"
+            placeholder="Логин специалиста/сотрудника"
+          />
+          <input
+            name="first_name"
+            className="input_add_user"
+            onChange={handleInputChange}
+            value={formData.first_name}
+            type="text"
+            placeholder="Имя специалиста/сотрудника"
+          />
+          <input
+            name="last_name"
+            className="input_add_user"
+            onChange={handleInputChange}
+            value={formData.last_name}
+            type="text"
+            placeholder="Фамилия специалиста/сотрудника"
           />
           <input
             name="password"
-            // onChange={handleChange}
-            // value={formData.password}
             className="input_add_user"
             type="password"
+            value={formData.password}
+            onChange={handleInputChange}
             placeholder="Пароль"
           />
           <input
             name="job"
-            // onChange={handleChange}
-            // value={formData.job}
             className="input_add_user"
+            value={formData.job}
+            onChange={handleInputChange}
             type="text"
             placeholder="Должность"
           />
-          {/*<select*/}
-          {/*    defaultValue="default_value_role"*/}
-          {/*    className="select_add_user"*/}
-          {/*    name="role"*/}
-          {/*    id=""*/}
-          {/*>*/}
-          {/*  <option*/}
-          {/*      disabled*/}
-          {/*      style={{display: "none"}}*/}
-          {/*      value="default_value_role"*/}
-          {/*  >*/}
-          {/*    Роль*/}
-          {/*  </option>*/}
-          {/*  <option value="user">Пользователь</option>*/}
-          {/*  <option value="event-manager">Ивент-менеджер</option>*/}
-          {/*  <option value="admin">Админ</option>*/}
-          {/*</select>*/}
           <input
             name="mail"
-            // onChange={handleChange}
-            // value={formData.mail}
             className="input_add_user"
             type="text"
             placeholder="Почта"
+            value={formData.mail}
+            onChange={handleInputChange}
           />
           <input
             name="telegram"
-            // onChange={handleChange}
-            // value={formData.telegram}
             className="input_add_user"
             type="text"
             placeholder="TG"
+            value={formData.telegram}
+            onChange={handleInputChange}
           />
           <input
             name="phone_number"
-            // onChange={handleChange}
-            // value={formData.phone_number}
             className="input_add_user"
             type="text"
             placeholder="Номер телефона"
+            value={formData.phone_number}
+            onChange={handleInputChange}
           />
         </div>
       </div>
       <div className="add_user_btns">
-        <button type="submit" className="btn_add_user" onClick={handleAddUser}>
+        <button type="submit" className="btn_add_user">
           Добавить
         </button>
-        <button onClick={handleAddUser} className="btn_cancel_add_user">
+        <button onClick={handleClose} className="btn_cancel_add_user">
           Отменить
         </button>
       </div>

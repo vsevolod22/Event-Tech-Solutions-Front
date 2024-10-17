@@ -1,35 +1,33 @@
-import React, {FC} from "react";
+import React, { FC } from "react";
 import "./card.css";
 import { useNavigate } from "react-router-dom";
 import SvgDurationCardEvent from "../../svg/svg-duration-card-event/SvgDurationCardEvent";
-import {IMeet} from "../../types/types.tsx";
-
+import { IMeet } from "../../types/types.tsx";
 
 interface CardProps {
-  dataCard : IMeet
+  dataCard: IMeet;
 }
 
-
-const Card : FC<CardProps> = function ({ dataCard }) {
+const Card: FC<CardProps> = function ({ dataCard }) {
   const navigate = useNavigate();
-  console.log(dataCard)
-  const formatDate = (dateString : string) => {
+  const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    const options : Intl.DateTimeFormatOptions = {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
     };
-    return date.toLocaleString('ru-RU', options); // Можно использовать locale-specific formatting
+    return date.toLocaleString("ru-RU", options); // Можно использовать locale-specific formatting
   };
 
   return (
     <div onClick={() => navigate(`/event/${dataCard.id}`)} className="card">
-      <div className="image_content"
-        style={{background: `url(${dataCard.image})`}}>
+      <div
+        className="image_content"
+        style={{ background: `url(${dataCard.image})` }}
+      >
         {dataCard.is_upcoming ? (
           <div className="status_card_event_green">Предстоящее</div>
         ) : (
@@ -39,7 +37,7 @@ const Card : FC<CardProps> = function ({ dataCard }) {
           <div className="text_duration_card_event">
             {dataCard.duration.hours}
           </div>
-     <SvgDurationCardEvent/>
+          <SvgDurationCardEvent />
         </div>
       </div>
       <div className="description_content">

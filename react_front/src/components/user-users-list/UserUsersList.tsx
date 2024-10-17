@@ -22,6 +22,7 @@ const UserUser: FC<UserUserProps> = ({ users, user }) => {
     }
   }, [users]);
   const navigate = useNavigate();
+  const defaultRole = "Участник"
   return (
     <>
       {users?.user ? (
@@ -36,7 +37,7 @@ const UserUser: FC<UserUserProps> = ({ users, user }) => {
               <div className="logo_role_img"></div>
             )}
             <div className="logo_role_text">
-              {User?.groups?.length && User.groups[0].name}
+              {User?.groups?.length !== 0 ?  User?.groups[0].name : defaultRole}
             </div>
           </div>
           <div className="user_info">
@@ -59,7 +60,7 @@ const UserUser: FC<UserUserProps> = ({ users, user }) => {
               <div className="logo_role_img"></div>
             )}
             <div className="logo_role_text">
-              {user?.groups?.length && user.groups[0].name}
+            {user?.groups?.length !== 0 ? user?.groups[0].name : defaultRole}
             </div>
           </div>
           <div className="user_info">

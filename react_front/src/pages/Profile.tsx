@@ -54,6 +54,7 @@ const Profile: FC<ProfileProps> = () => {
     setModalVisible(false);
   };
 
+  const defaultRole = "Участник"
   // Функция для обработки клика на первый блок
   const handleFirstBlockClick = () => {
     setFirstBlockClicked(true); // Устанавливаем состояние нажатия на первый блок
@@ -67,10 +68,8 @@ const Profile: FC<ProfileProps> = () => {
   };
 
   useEffect(() => {
-    console.log(id);
     const getMeet = async (id: string) => {
       const newSpeaker = await httpApiMethods.GetUserById(id);
-      console.log(newSpeaker);
       setUser(newSpeaker);
     };
     if (id) {
@@ -79,7 +78,9 @@ const Profile: FC<ProfileProps> = () => {
   }, [id, localStorage.getItem("token")]);
   return (
     <>
-      {modalVisible && <EditProfilWindow onClose={handleCloseModal} />}
+      {modalVisible && (
+        <EditProfilWindow onClose={handleCloseModal} userId={id} />
+      )}
       <Header getData={getValueModal} />
       <Login getData={getValueModal} visible={modal} setVisible={setModal} />
       <section className="container first">
@@ -92,10 +93,11 @@ const Profile: FC<ProfileProps> = () => {
             )}
             <div className="role">
               <p>
-                {user && user.role ? (
-                  user.role
+                {user && user.groups[0]?.name ? (
+                  user.groups[0].name
                 ) : (
-                  <Skeleton variant="text" sx={{ fontSize: "1.25vw" }} />
+                  // <Skeleton variant="text" sx={{ fontSize: "1.25vw" }} />
+                  defaultRole
                 )}
               </p>
             </div>
