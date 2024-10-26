@@ -66,7 +66,7 @@ const HeaderProfile = function () {
         {userData.avatar ? (
           <img src={userData.avatar} className="profile" onClick={toggleMenu} />
         ) : (
-          <div className="profile__default"></div>
+          <div onClick={toggleMenu} className="profile__default"></div>
         )}
 
         {isOpen && (

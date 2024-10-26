@@ -48,7 +48,7 @@ const Login: FC<LoginProps> = function ({ visible, setVisible, getData }) {
       // Если авторизация успешна, сохраняем данные
       localStorage.setItem("token", response.access);
       localStorage.setItem("id", response.user.id);
-      localStorage.setItem("groups", response.user.groups[0].name);
+      localStorage.setItem("groups", response.user?.groups[0].name);
       console.log(response);
       setErrorMessage(null); // Сбрасываем ошибку при успешном входе
       setVisible(0); // Закрываем модалку только при успешном входе

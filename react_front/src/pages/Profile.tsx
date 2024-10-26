@@ -50,6 +50,8 @@ const Profile: FC<ProfileProps> = () => {
     setModalVisible(true);
   };
 
+  console.log(user);
+
   const handleCloseModal = () => {
     setModalVisible(false);
   };
@@ -129,12 +131,18 @@ const Profile: FC<ProfileProps> = () => {
                 <Skeleton variant="text" sx={{ fontSize: "1.042vw" }} />
               )}
             </p>
-            {/* <div className="exp">
+            <div className="exp">
               <pre>
                 <p>Количество баллов: </p>
               </pre>
-              <h3>56</h3>
-            </div> */}
+              <h3>
+                {user && user.score ? (
+                  user.score
+                ) : (
+                  <Skeleton variant="text" sx={{ fontSize: "1.042vw" }} />
+                )}
+              </h3>
+            </div>
           </div>
           <button onClick={handleOpenModal} className="edit-pencil">
             <SvgPencil />
